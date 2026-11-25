@@ -1,0 +1,76 @@
+{
+  "study": "initialization_noise",
+  "design": {
+    "updates": 500,
+    "schedule_horizon": 500,
+    "seed": 17,
+    "noise_seed": 230017,
+    "occupied_atoms": 25,
+    "learning_rate": 70,
+    "max_step_norm": 0.25,
+    "chemistry_initial": 1,
+    "chemistry_final": 1,
+    "chemistry_hold": 0,
+    "chemistry_ramp_end": 500,
+    "valence_excess_weight": 1,
+    "temperature_initial": 1,
+    "temperature_final": 1,
+    "noise_initial": 0,
+    "noise_zero_at": 100
+  },
+  "parent_cohorts": [
+    "/work3/s234818/latentmol/runs/flow-followup-20261106a-520000",
+    "/work3/s234818/latentmol/runs/flow-followup-20261106a-530000",
+    "/work3/s234818/latentmol/runs/flow-followup-20261106a-540000"
+  ],
+  "panel_size": 4,
+  "panel_seed": 672103,
+  "perturbation_seed": 3491501,
+  "comparisons": {
+    "factorial": {
+      "parents": 2,
+      "matched_fresh": true,
+      "report_bond_density": true,
+      "variants": {
+        "untouched": {"policy": "none", "updates": [128, 128, 128], "shortlist": 4},
+        "update-1pct": {"policy": "none", "updates": [128, 128, 128], "shortlist": 4, "update_noise": 0.01},
+        "update-5pct": {"policy": "none", "updates": [128, 128, 128], "shortlist": 4, "update_noise": 0.05},
+        "parent-003": {"policy": "raw-latent", "updates": [128, 128, 128], "shortlist": 4, "strength": 0.003},
+        "parent-003-update-1pct": {"policy": "raw-latent", "updates": [128, 128, 128], "shortlist": 4, "strength": 0.003, "update_noise": 0.01},
+        "parent-003-update-5pct": {"policy": "raw-latent", "updates": [128, 128, 128], "shortlist": 4, "strength": 0.003, "update_noise": 0.05},
+        "parent-030": {"policy": "raw-latent", "updates": [128, 128, 128], "shortlist": 4, "strength": 0.03},
+        "parent-030-update-1pct": {"policy": "raw-latent", "updates": [128, 128, 128], "shortlist": 4, "strength": 0.03, "update_noise": 0.01},
+        "parent-030-update-5pct": {"policy": "raw-latent", "updates": [128, 128, 128], "shortlist": 4, "strength": 0.03, "update_noise": 0.05}
+      }
+    },
+    "bond-bias": {
+      "parents": 3,
+      "matched_fresh": true,
+      "report_bond_density": true,
+      "variants": {
+        "untouched": {"policy": "none", "updates": [160, 160, 160], "shortlist": 4},
+        "graph-005-none1": {"policy": "dense-protected", "updates": [160, 160, 160], "shortlist": 4, "strength": 0.05, "no_bond_weight": 1},
+        "graph-005-none8": {"policy": "dense-protected", "updates": [160, 160, 160], "shortlist": 4, "strength": 0.05, "no_bond_weight": 8},
+        "graph-025-none1": {"policy": "dense-protected", "updates": [160, 160, 160], "shortlist": 4, "strength": 0.25, "no_bond_weight": 1},
+        "graph-025-none8": {"policy": "dense-protected", "updates": [160, 160, 160], "shortlist": 4, "strength": 0.25, "no_bond_weight": 8}
+      }
+    },
+    "persistence": {
+      "parents": 2,
+      "matched_fresh": true,
+      "report_bond_density": true,
+      "variants": {
+        "untouched": {"policy": "none", "updates": [500, 500], "shortlist": 6},
+        "parent-030": {"policy": "raw-latent", "updates": [500, 500], "shortlist": 6, "strength": 0.03},
+        "update-1pct": {"policy": "none", "updates": [500, 500], "shortlist": 6, "update_noise": 0.01},
+        "parent-030-update-1pct": {"policy": "raw-latent", "updates": [500, 500], "shortlist": 6, "strength": 0.03, "update_noise": 0.01}
+      }
+    }
+  },
+  "tasks": {
+    "factorial-a": {"comparison": "factorial", "panel_offset": 0, "queue": "gpul40s"},
+    "factorial-b": {"comparison": "factorial", "panel_offset": 2, "queue": "gpuv100"},
+    "bond-bias": {"comparison": "bond-bias", "panel_offset": 0, "queue": "gpua100"},
+    "persistence": {"comparison": "persistence", "panel_offset": 0, "queue": "gpul40s"}
+  }
+}

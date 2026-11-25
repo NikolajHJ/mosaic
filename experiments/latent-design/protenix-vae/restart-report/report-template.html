@@ -92,8 +92,14 @@ input[type=range]{width:100%;accent-color:var(--accent)}
 .tree-tools{display:flex;flex-wrap:wrap;gap:6px;align-items:center;padding:10px 12px;border-bottom:1px solid #e4e9ec;background:#f5f8f8}
 .tree-tools button{background:white;border:1px solid #a9bdb1;border-radius:5px;padding:3px 8px}
 .tree-tools button:disabled{opacity:.45;cursor:default}
-.tree-jump{margin-left:auto;color:#294d92;font-size:13px;font-weight:650;text-decoration:none}
-.tree-jump:hover{text-decoration:underline}
+.tree-jump,.tree-cycle-jump{color:#294d92;font-size:13px;font-weight:650;text-decoration:none}
+.tree-cycle-jump{margin-left:auto}
+.tree-jump{margin-left:8px}
+.tree-jump:hover,.tree-cycle-jump:hover{text-decoration:underline}
+.tree-rate-switch{display:flex;gap:5px}
+.tree-rate-switch button{padding:5px 11px;border:1px solid #a9bdb1;border-radius:5px;background:white}
+.tree-rate-switch button[aria-pressed=true]{background:#e8eef9;border-color:#5576ac;color:#294d92;font-weight:650}
+#tree-winner-content .cards{grid-template-columns:repeat(auto-fit,minmax(min(100%,285px),1fr))}
 .tree-stage{position:relative;height:clamp(420px,61vh,620px);background-color:#f8faf9;background-image:radial-gradient(#dce5e4 1px,transparent 1px);background-size:19px 19px}
 .tree-stage canvas{display:block;width:100%;height:100%;cursor:grab;touch-action:none}
 .tree-stage canvas[data-dragging=true]{cursor:grabbing}
@@ -177,7 +183,8 @@ hr{border:0;border-top:1px solid var(--line);margin:16px 0}
 <footer id="footer"></footer>
 </main>
 <script type="application/json" id="snapshot">__SNAPSHOT_JSON__</script>
-<script type="application/octet-stream" id="tree-payload">__TREE_PAYLOAD__</script>
+<script type="application/json" id="tree-index">__TREE_INDEX__</script>
+__TREE_CHUNKS__
 <script>__REPORT_JAVASCRIPT__</script>
 </body>
 </html>

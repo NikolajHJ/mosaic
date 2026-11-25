@@ -1,0 +1,54 @@
+{
+  "study": "boltz_direct_graph",
+  "optimization_space": "relaxed_graph_logits",
+  "research_profile": "exploratory",
+  "target_id": "brd4-jq1",
+  "chain": "A",
+  "occupied_atoms": 31,
+  "scorer": {
+    "kind": "boltz2_dbmol",
+    "pocket_pdb_id": "3MXF",
+    "assets_config": "restart-boltz-dtu.json",
+    "execution": {"tf32": false, "autocast": "none", "checkpoint_every": 1, "checkpoint_preserve_rng_state": true}
+  },
+  "prepared_config": {
+    "path": "/work3/s234818/latentmol/runs/boltz-brd4-preparation-20261116a/prepared/brd4-jq1/scorer-config.json",
+    "sha256": "2c6eda048285906731824c09e822da93e57c922a82dd284cb02ebb5741246fbe"
+  },
+  "graph_spec": {
+    "max_nodes": 50,
+    "atomic_numbers": [0, 6, 7, 8, 9, 15, 16, 17, 35, 53],
+    "formal_charges": [-2, -1, 0, 1, 2],
+    "bond_names": ["NONE", "SINGLE", "DOUBLE", "TRIPLE", "AROMATIC"],
+    "version": 1
+  },
+  "vina_parent_panel": {
+    "receptor": {
+      "path": "/work3/s234818/latentmol/assets/vina-brd4-3mxf-v1/receptor.pdbqt",
+      "sha256": "f29be065ba549af5cd65e14b082ee90ff905ce454d95fd1f42b522783bbae721"
+    },
+    "box": {
+      "path": "/work3/s234818/latentmol/assets/vina-brd4-3mxf-v1/box.json",
+      "sha256": "0abcc293b9597c8a4766899d91763aafc7baa6765f821626a6f08500a34e78ed"
+    },
+    "python": "/work3/s234818/latentmol/assets/vina-brd4-3mxf-v1/env/bin/python",
+    "seed": 1701,
+    "exhaustiveness": 4
+  },
+  "lr": 0.1,
+  "step_cap": 0.25,
+  "updates": 75,
+  "fresh_budget": 8,
+  "variants": {
+    "control": {"motif_weight": 0.0, "triangle_weight": 0.0},
+    "motif": {"motif_weight": 0.3, "triangle_weight": 0.0},
+    "triangle": {"motif_weight": 0.0, "triangle_weight": 0.2},
+    "both": {"motif_weight": 0.3, "triangle_weight": 0.2}
+  },
+  "tasks": {
+    "seed-a": {"seed": 517111, "queue": "gpuv100", "host_resource": "gpu32gb"},
+    "seed-b": {"seed": 517133, "queue": "gpua40"},
+    "seed-c": {"seed": 517147, "queue": "gpuv100", "host_resource": "gpu32gb"}
+  },
+  "output_cap_mib": 192
+}

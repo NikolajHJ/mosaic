@@ -28,6 +28,7 @@ import torch
 from torch.nn import functional as F
 from torch.utils.data import DataLoader, Subset
 
+from .models.autoencoder import comparable_model_config, comparable_train_config
 from .atom_preserving_chemistry import (AtomPreservingRepairTeacher, composition_statistics,
                                       population_js, population_js_cotangent, repair_loss)
 from .chemistry_runtime import (RATIO2_VERSION, composition_prior_weight, epoch_fit_policy, epoch_fit_seconds,
@@ -130,6 +131,7 @@ def load_parent_config(path: Path) -> TrainConfig:
             raise ValueError(f"Parent configuration {prefix} requires a nonempty JSON string")
 
     schema(raw, TrainConfig, "train")
+    raw["model"] = comparable_model_config(raw["model"])
     schema(raw["model"], ModelConfig, "model")
     schema(raw["loss"], LossConfig, "loss")
     positive_ints = ("epochs", "batch_size", "validation_limit", "chemistry_limit", "checkpoint_every")
@@ -153,11 +155,19 @@ def load_parent_config(path: Path) -> TrainConfig:
     for key in ("mode", "device"):
         text(raw[key], key)
     for key, value in raw["model"].items():
-        if key == "decoder_variant":
+        if key in ("decoder_variant", "encoder_pooling", "encoder_aggregation"):
             text(value, "model." + key)
+        elif key == "encoder_degree_features":
+            if type(value) is not bool:
+                raise ValueError("Parent configuration model.encoder_degree_features requires a boolean")
+        elif key == "encoder_sum_scale":
+            number(value, "model.encoder_sum_scale", positive=True)
+        elif key == "atom_refinement_dropout":
+            number(value, "model.atom_refinement_dropout")
         else:
             integer(value, "model." + key,
-                    minimum=0 if key in ("refinement_rounds", "encoder_residual_layers") else 1,
+                    minimum=0 if key in ("refinement_rounds", "encoder_residual_layers",
+                                         "extra_bond_rounds", "encoder_graph_attention_layers") else 1,
                     optional=key in ("global_hidden", "trunk_hidden"))
     for key, value in raw["loss"].items():
         number(value, "loss." + key)
@@ -235,8 +245,8 @@ def authenticate_parent_metadata(checkpoint, config, plan, current_runtime, pare
     actual = {"format_version": checkpoint.get("format_version"),
         "continuation": {key: state[key] for key in
                          ("version", "epoch_complete", "scheduler_state", "updates", "split_sha256", "runtime") if key in state},
-        "epoch": checkpoint.get("epoch"), "train_config": checkpoint.get("train_config"),
-        "model_config": checkpoint.get("model_config"), "loss_config": checkpoint.get("loss_config"),
+        "epoch": checkpoint.get("epoch"), "train_config": comparable_train_config(checkpoint.get("train_config")),
+        "model_config": comparable_model_config(checkpoint.get("model_config")), "loss_config": checkpoint.get("loss_config"),
         "dataset_sha256": checkpoint.get("dataset_sha256"), "run_id": checkpoint.get("run_id"),
         "source_archive_sha256": checkpoint.get("source_archive_sha256"),
         "source_sha256": checkpoint.get("source_sha256")}
@@ -527,9 +537,9 @@ def authenticate_chemistry_handoff(plan, config, base_checkpoint, indices, runti
             or payload.get("dataset_sha256") != plan["dataset_sha256"]
             or payload.get("source_archive_sha256") != source["archive_sha256"]
             or payload.get("source_sha256") != source["manifest_sha256"]
-            or payload.get("train_config") != base_checkpoint["train_config"]
+            or comparable_train_config(payload.get("train_config")) != comparable_train_config(base_checkpoint["train_config"])
             or payload.get("graph_spec") != base_checkpoint["graph_spec"]
-            or payload.get("model_config") != base_checkpoint["model_config"]
+            or comparable_model_config(payload.get("model_config")) != comparable_model_config(base_checkpoint["model_config"])
             or payload.get("loss_config") != base_checkpoint["loss_config"]
             or payload.get("run_id") != record.get("run_id")
             or "fresh_prior" not in cont.get("rng", {}).get("loaders", {})):
@@ -652,7 +662,7 @@ def setup(plan, *, resume=None, parent_authentication=None):
                 or resumed["graph_spec"] != model.spec.to_dict()
                 or resumed["dataset_sha256"] != plan["dataset_sha256"]
                 or cont["split_sha256"] != plan["split_sha256"]
-                or resumed["train_config"] != checkpoint["train_config"]):
+                or comparable_train_config(resumed["train_config"]) != comparable_train_config(checkpoint["train_config"])):
             raise ValueError("Exact chemistry continuation identity differs")
         model.load_state_dict(resumed["model_state"], strict=True)
         optimizer.load_state_dict(resumed["optimizer_state"])

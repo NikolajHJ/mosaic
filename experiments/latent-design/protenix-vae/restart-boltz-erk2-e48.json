@@ -1,0 +1,33 @@
+{
+  "study": "boltz_generation_search",
+  "optimization_space": "vae_latent",
+  "vae_checkpoint": {
+    "path": "/zhome/95/e/206121/dbmol-control/vae-e48-encoder-bonds-early-20261124a/source/checkpoint-000623116.pt",
+    "sha256": "504fccee8954f684bace24c84e3b04af239260927531248b3ce5f974725d5df8",
+    "updates": 623116
+  },
+  "scorer": {
+    "kind": "boltz2_dbmol",
+    "assets_config": "restart-boltz-dtu.json",
+    "execution": {"tf32": false, "autocast": "none", "checkpoint_every": 1, "checkpoint_preserve_rng_state": true}
+  },
+  "search_config": "restart-boltz-timing.json",
+  "target_arm": "erk2",
+  "prior_founders": {"count": 8, "max_draws": 1024},
+  "history_exclusions": {
+    "path": "/work3/s234818/latentmol/runs/boltz-erk2-novelty-20261119a/excluded-smiles.json",
+    "sha256": "1f542c5f663a184c75307aaec2659b02cb330baab07904ba4eabf2cce3a66862"
+  },
+  "reject_unstable_identity": true,
+  "generation_settings": {
+    "generations": 6, "parents": 4, "children_per_parent": 2,
+    "updates_per_generation": 600, "fresh_per_generation": 16, "last_parent_similarity": 0.85
+  },
+  "seeds": {"a": 6248011, "b": 6248053},
+  "cases": {"fixed75": {"policy": "fixed75", "start": "vae_prior"}},
+  "tasks": {
+    "erk2-a": {"case": "fixed75", "panel": "a", "queue": "gpua100"},
+    "erk2-b": {"case": "fixed75", "panel": "b", "queue": "gpuv100", "host_resource": "gpu32gb"}
+  },
+  "output_cap_mib": 768
+}

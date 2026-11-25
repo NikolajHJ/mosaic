@@ -559,6 +559,20 @@ def test_parent_metadata_authenticates_latest_completed_boundary_with_stopped_ru
     assert authenticate_parent_metadata(checkpoint, config, plan, runtime, parent_run)["passed"]
 
 
+def test_legacy_parent_config_reloads_before_optional_epoch48_architecture(tmp_path):
+    checkpoint, config, plan, runtime, parent_run = _parent_metadata_fixture()
+    legacy = asdict(config)
+    for model in (legacy["model"], checkpoint["model_config"], checkpoint["train_config"]["model"],
+                  parent_run["config"]["model"]):
+        for feature in ("atom_refinement_dropout", "extra_bond_rounds", "encoder_graph_attention_layers"):
+            model.pop(feature, None)
+    path = tmp_path / "parent-config.json"
+    path.write_text(json.dumps(legacy))
+    restored = load_parent_config(path)
+    assert restored == config
+    assert authenticate_parent_metadata(checkpoint, restored, plan, runtime, parent_run)["passed"]
+
+
 @pytest.mark.parametrize("path,value", [
     (("format_version",), True), (("epoch",), 36),
     (("continuation", "epoch_complete"), False), (("continuation", "updates"), 230861),

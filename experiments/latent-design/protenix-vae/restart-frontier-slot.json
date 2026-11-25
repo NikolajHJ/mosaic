@@ -1,0 +1,50 @@
+{
+  "study": "restart_search",
+  "design": {
+    "updates": 250,
+    "schedule_horizon": 250,
+    "seed": 17,
+    "noise_seed": 230017,
+    "occupied_atoms": 25,
+    "learning_rate": 60.0,
+    "max_step_norm": 0.25,
+    "chemistry_initial": 1.0,
+    "chemistry_final": 1.0,
+    "chemistry_hold": 0,
+    "chemistry_ramp_end": 250,
+    "valence_excess_weight": 1.0,
+    "temperature_initial": 1.0,
+    "temperature_final": 1.0,
+    "noise_initial": 0.0,
+    "noise_zero_at": 100
+  },
+  "parent_cohorts": [
+    "/work3/s234818/latentmol/runs/flow-followup-20261106a-520000",
+    "/work3/s234818/latentmol/runs/flow-followup-20261106a-530000",
+    "/work3/s234818/latentmol/runs/flow-followup-20261106a-540000"
+  ],
+  "panel_seed": 982701,
+  "perturbation_seed": 1811901,
+  "search": {
+    "initialization": "archived",
+    "parents": 3,
+    "children": 1,
+    "waves": 4,
+    "batch_size": 1,
+    "cpu_workers": 1,
+    "parent_policy": "frontier",
+    "perturbation": "latent",
+    "shortlist": "mixed",
+    "fresh_per_branch": 6,
+    "min_step_gap": 100,
+    "max_similarity": 0.85,
+    "ancestor_lookback": 3,
+    "max_ancestor_fraction": 0.67,
+    "high_score_ceiling": 2.30,
+    "duplicate_refill_attempts": 4
+  },
+  "arms": {
+    "recent": {"queue": "gpul40s"},
+    "best-slot": {"queue": "gpul40s", "search": {"frontier_keep_best": true}}
+  }
+}

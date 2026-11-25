@@ -345,7 +345,7 @@ def main(argv=None):
 
     args = restart_args(__doc__, argv)
     config = json.loads(args.config.read_text())
-    design = LatentDesignConfig(**(config["design"] | config["arms"][args.arm]))
+    design = LatentDesignConfig.for_restart(config["design"] | config["arms"][args.arm])
     campaign = config["campaign"] | config.get("campaign_arms", {}).get(args.arm, {})
     decoder, _ = load_model(args.checkpoint, "cpu")
 

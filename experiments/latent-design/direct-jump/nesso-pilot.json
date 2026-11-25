@@ -1,0 +1,19 @@
+{
+  "target": "BRD4 first bromodomain, 3MXF chain A sequence",
+  "objective": "affinity_pred_value",
+  "optimization_space": "25 neutral atom probability rows and 300 unordered bond probability rows",
+  "founders": {
+    "111210": "CCCC(CN)(NC)C(C)(SN(OC)N(C)C(O)CN)N(C)C(N)F",
+    "111310": "CCCC(OOC(C)(NC)C(O)CN)(C(C)C(O)OO)N(C)C(C)C",
+    "111410": "CCC(C(C)N)C(CN)C(CC)(COC(C)C(C)C)N(S)C(C)CC"
+  },
+  "arms": {"minimize": 1, "reverse_direction": -1},
+  "updates": 100,
+  "learning_rate": 60,
+  "max_step_norm": 0.5,
+  "probability_floor": 0.0001,
+  "repair_weight": 1.0,
+  "gradient_recycles_to_try": [0, 1],
+  "hard_recycles": 5,
+  "fresh_new_per_arm": 8
+}

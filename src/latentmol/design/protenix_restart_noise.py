@@ -15,7 +15,7 @@ NOISE_POLICIES = (*POLICIES, "raw-latent", "prior", "sparse-mix", "dense-protect
 _GRAPH_MIX_POLICIES = ("sparse-mix", "dense-protected")
 
 
-def validate_noise_policy(policy, strength):
+def validate_noise_policy(policy, strength, no_bond_weight=None):
     """A raw kick needs a radius; probability mixing needs a safe-budget fraction."""
     if policy not in NOISE_POLICIES:
         raise ValueError(f"Unknown restart noise policy: {policy}")
@@ -25,9 +25,13 @@ def validate_noise_policy(policy, strength):
             raise ValueError("Require a finite positive latent radius or graph budget fraction in (0, 1]")
     elif strength is not None:
         raise ValueError(f"Unexpected strength for restart noise policy {policy}")
+    if no_bond_weight is not None and (policy not in _GRAPH_MIX_POLICIES
+            or type(no_bond_weight) not in (int, float) or not math.isfinite(no_bond_weight)
+            or no_bond_weight <= 0):
+        raise ValueError("A finite positive no-bond weight requires a protected graph-mix policy")
 
 
-def _mixed_delta(logits, labels, temperature, strength, generator, *, protect_none=False):
+def _mixed_delta(logits, labels, temperature, strength, generator, *, protect_none=False, no_bond_weight=None):
     """Use a fraction of the safe row-wise probability budget."""
     log_prob = (logits / temperature).log_softmax(dim=-1)
     if logits.shape[-1] == 1:
@@ -42,9 +46,19 @@ def _mixed_delta(logits, labels, temperature, strength, generator, *, protect_no
         budget = torch.where(labels.unsqueeze(-1) == 0, torch.minimum(budget, nonbond_budget), budget)
     amount = strength * budget
     noise = torch.empty_like(log_prob).exponential_(generator=generator)
-    noise.scatter_(-1, labels.unsqueeze(-1), 0)
-    noise = noise / noise.sum(dim=-1, keepdim=True)
-    mixed = torch.logaddexp(log_prob + torch.log1p(-amount), noise.log() + amount.log())
+    if no_bond_weight is None:
+        noise.scatter_(-1, labels.unsqueeze(-1), 0)
+        noise = noise / noise.sum(dim=-1, keepdim=True)
+        log_noise = noise.log()
+    else:
+        # A NONE draw stays eligible even on a NONE row. Existing bonds
+        # still exclude their current bond order from the added mass.
+        none = noise[..., 0].clone()
+        noise.scatter_(-1, labels.unsqueeze(-1), 0)
+        log_noise = noise.log()
+        log_noise[..., 0] = none.log() + math.log(no_bond_weight)
+        log_noise = log_noise.log_softmax(dim=-1)
+    mixed = torch.logaddexp(log_prob + torch.log1p(-amount), log_noise + amount.log())
     delta = torch.where(amount > 0, temperature * mixed - logits, 0)
     return delta, amount.squeeze(-1)
 
@@ -68,7 +82,8 @@ def _mix_readout(amount):
                 max_fraction=float(amount.max()) if amount.numel() else 0.0)
 
 
-def _graph_offset(base, hard, active, pairs, temperature, strength, fade_updates, generator, *, sparse):
+def _graph_offset(base, hard, active, pairs, temperature, strength, fade_updates, generator, *, sparse,
+                  no_bond_weight=None):
     slots = active.nonzero().flatten()
     left, right = pairs.nonzero(as_tuple=True)
     bond_logits = base.symmetric_bond_logits[:, left, right]
@@ -80,7 +95,7 @@ def _graph_offset(base, hard, active, pairs, temperature, strength, fade_updates
     charge_delta, charge_mix = _mixed_delta(base.charges[:, slots], hard.charges[:, slots],
                                             temperature, strength, generator)
     bond_delta, bond_mix = _mixed_delta(bond_logits, bond_labels, temperature, strength, generator,
-                                        protect_none=True)
+                                        protect_none=True, no_bond_weight=no_bond_weight)
     chosen = active.clone()
     if sparse:
         chosen.fill_(False)
@@ -114,9 +129,9 @@ def _with_parent_similarity(proposal, parent_smiles):
 
 @torch.no_grad()
 def propose_noise_start(decoder, parent, active, *, policy, seed, strength=None, temperature=1.0,
-                        fade_updates=25):
+                        fade_updates=25, no_bond_weight=None):
     """Return a proposed latent, fading logit offset if any, and start diagnostics."""
-    validate_noise_policy(policy, strength)
+    validate_noise_policy(policy, strength, no_bond_weight)
     if policy in POLICIES:
         latent, offset, receipt = propose_start(decoder, parent, active, policy=policy, seed=seed,
                                                 temperature=temperature, fade_updates=fade_updates)
@@ -142,7 +157,10 @@ def propose_noise_start(decoder, parent, active, *, policy, seed, strength=None,
     else:
         decoded = decoder.decode(latent)
         offset, mixing = _graph_offset(decoded, parent.hard, active, pairs, temperature, strength,
-                                       fade_updates, generator, sparse=policy == "sparse-mix")
+                                       fade_updates, generator, sparse=policy == "sparse-mix",
+                                       no_bond_weight=no_bond_weight)
+        if no_bond_weight is not None:
+            details["no_bond_weight"] = no_bond_weight
         no_bonds = parent.hard.bonds[:, pairs] == 0
         initial = (decoded.symmetric_bond_logits[:, pairs] / temperature).softmax(-1)
         mixing["no_bond_soft_mass_before"] = float((1 - initial[..., 0])[no_bonds].sum())

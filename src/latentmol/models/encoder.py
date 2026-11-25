@@ -6,6 +6,66 @@ from torch import nn
 from latentmol.representation import GraphSpec, HardGraphBatch, RelaxedGraph
 
 
+def _graph_attention_inputs(graph: RelaxedGraph):
+    """Build shared shortest-path buckets once for all blocks on a hard graph.
+
+    Buckets are self, 1, 2, 3, 4 and 5+ (including unreachable pairs). Adding
+    self-loops makes each Boolean matrix power represent reachability in *at
+    most* that many hops. Occupancy masks exclude padding from every path.
+    """
+    occupied = graph.occupancy.bool()
+    bond_type = graph.bonds.argmax(dim=-1)
+    live_pairs = occupied[:, :, None] & occupied[:, None, :]
+    direct = (bond_type != 0) & live_pairs
+    diagonal = torch.eye(direct.size(-1), device=direct.device, dtype=torch.bool)
+    self_pair = diagonal & live_pairs
+    one = (direct | self_pair).to(graph.atoms.dtype)
+    two = (one @ one > 0).to(one.dtype)
+    three = two @ one > 0
+    four = two @ two > 0
+    # Count missed reachability thresholds to get the clipped distance.
+    distance = ((~self_pair).long() + (one == 0) + (two == 0) + (~three) + (~four))
+    return occupied, bond_type, distance
+
+
+class GraphAttentionBlock(nn.Module):
+    """Two pre-normalized residual updates with independent structural biases."""
+
+    def __init__(self, hidden: int, heads: int, bond_types: int):
+        super().__init__()
+        self.heads = heads
+        self.head_dim = hidden // heads
+        self.attention_norm = nn.LayerNorm(hidden)
+        self.qkv = nn.Linear(hidden, 3 * hidden)
+        self.attention_output = nn.Linear(hidden, hidden)
+        self.distance_bias = nn.Embedding(6, heads)
+        self.bond_bias = nn.Embedding(bond_types, heads, padding_idx=0)
+        self.feedforward_norm = nn.LayerNorm(hidden)
+        self.feedforward = nn.Sequential(nn.Linear(hidden, 2 * hidden), nn.SiLU(),
+                                         nn.Linear(2 * hidden, hidden))
+        nn.init.normal_(self.distance_bias.weight, std=0.02)
+        with torch.no_grad():
+            nn.init.normal_(self.bond_bias.weight[1:], std=0.02)
+        # The initial graft reproduces the parent. Both output projections
+        # receive gradients on the very first update.
+        for projection in (self.attention_output, self.feedforward[-1]):
+            nn.init.zeros_(projection.weight)
+            nn.init.zeros_(projection.bias)
+
+    def forward(self, h, occupied, bond_type, distance):
+        batch, slots, hidden = h.shape
+        qkv = self.qkv(self.attention_norm(h)).reshape(batch, slots, 3, self.heads, self.head_dim)
+        q, k, v = qkv.permute(2, 0, 3, 1, 4).unbind(0)
+        bias = (self.distance_bias(distance) + self.bond_bias(bond_type)).permute(0, 3, 1, 2).to(q.dtype)
+        # Finite masking also handles an entirely empty graph. Its query outputs
+        # are cleared below, so it cannot contribute any learned atom state.
+        scores = (q @ k.transpose(-1, -2)) * (self.head_dim ** -0.5) + bias
+        scores = scores.masked_fill(~occupied[:, None, None, :], torch.finfo(scores.dtype).min)
+        context = scores.softmax(dim=-1) @ v
+        h = h + self.attention_output(context.transpose(1, 2).reshape(batch, slots, hidden))
+        return (h + self.feedforward(self.feedforward_norm(h))) * occupied[..., None]
+
+
 class MessageLayer(nn.Module):
     """Bond-specific messages with an explicit aggregation policy.
 
@@ -47,13 +107,18 @@ class GraphEncoder(nn.Module):
     def __init__(self, spec: GraphSpec, hidden: int, latent: int, layers: int,
                  pool_hidden: int | None = None, residual_layers: int = 0,
                  pooling: str = "ordered", aggregation: str = "mean",
-                 degree_features: bool = False, sum_scale: float = 3.):
+                 degree_features: bool = False, sum_scale: float = 3.,
+                 graph_attention_layers: int = 0, attention_heads: int = 4):
         super().__init__()
         # The old checkpoints used 2 * hidden. A separate pooled width lets a
         # wider molecular latent coexist with narrower per-atom states.
         pool_hidden = 2 * hidden if pool_hidden is None else pool_hidden
         if pooling not in ("ordered", "invariant", "canonical"):
             raise ValueError("Unknown encoder pooling")
+        if (type(graph_attention_layers) is not int or graph_attention_layers < 0
+                or (graph_attention_layers and (pooling != "canonical" or attention_heads < 1
+                                                or hidden % attention_heads))):
+            raise ValueError("Graph attention requires canonical hard inputs and a divisible head width")
         self.pooling, self.capacity, self.spec = pooling, spec.max_nodes, spec
         self.atom_projection = nn.Linear(len(spec.atomic_numbers), hidden, bias=False)
         self.charge_projection = nn.Linear(len(spec.formal_charges), hidden, bias=False)
@@ -65,6 +130,10 @@ class GraphEncoder(nn.Module):
         self.sum_scale = sum_scale
         self.layers = nn.ModuleList(MessageLayer(hidden, len(spec.bond_names), aggregation, sum_scale)
                                     for _ in range(layers))
+        self.graph_attention = nn.ModuleList(GraphAttentionBlock(hidden, attention_heads, len(spec.bond_names))
+                                             for _ in range(graph_attention_layers))
+        if self.graph_attention and self.degree_projection is not None:
+            nn.init.zeros_(self.degree_projection.weight)
         # Keep the historical pool.1 parameter names and default state exactly.
         self.pool = nn.Sequential(nn.Flatten(1) if pooling != "invariant" else nn.Identity(),
             nn.Linear(spec.max_nodes * hidden if pooling != "invariant" else 2*hidden+1, pool_hidden), nn.SiLU())
@@ -92,6 +161,10 @@ class GraphEncoder(nn.Module):
         h = h * graph.occupancy[..., None]
         for layer in self.layers:
             h = layer(h, graph)
+        if self.graph_attention:
+            structural_inputs = _graph_attention_inputs(graph)
+            for block in self.graph_attention:
+                h = block(h, *structural_inputs)
         if self.pooling == "invariant":
             # h is already occupancy-gated by the input/each message layer.
             # Do not gate it again for soft input occupancies. Count is explicit

@@ -17,10 +17,6 @@ import base64
 import gzip
 
 
-def cycle_number(name):
-    return int(name.split('-')[-1]) if name.startswith('cycle-') else None
-
-
 def archive_records(phase, task):
     archive = read_json(phase / 'archive.json')
     lineage = read_json(phase / 'archives.json')
@@ -95,10 +91,11 @@ def collect_branch(path, cycle, job, detail, run_parents, preceding_archive, ret
     parent_fresh_loss = detail.get('parent_fresh_loss')
     parent_provenance = detail.get('parent_provenance')
     source, parent_row = None, None
+    saved_source = start.get('parent_source') or {}
+    source_path = saved_source.get('branch') or ''
+    policy = detail.get('policy') or (start.get('proposal') or {}).get('policy') or start.get('source_kind')
     arm, parent_index, repeat, planned = branch_plan(path, cycle, job)
     if central:
-        saved_source = start.get('parent_source')
-        policy = (start.get('proposal') or {}).get('policy') or start.get('source_kind')
         raw_invalid = policy in ('raw-invalid', 'invalid')
         if saved_source:
             source = archive_source(dict(saved_source, smiles=parent_smiles,
@@ -107,10 +104,10 @@ def collect_branch(path, cycle, job, detail, run_parents, preceding_archive, ret
                 source['raw_invalid'] = True
             if source:
                 root_type = 'archive-fork'
-            elif (saved_source.get('branch') or '').startswith('founder-'):
+            elif source_path.startswith('founder-'):
                 parent_row = match_parent(run_parents, parent_smiles)
                 root_type = 'archived-parent' if parent_row else 'unresolved'
-            elif (saved_source.get('branch') or '').startswith('prior-'):
+            elif source_path.startswith('prior-'):
                 root_type = 'independent'
             else:
                 root_type = 'unresolved'
@@ -122,19 +119,31 @@ def collect_branch(path, cycle, job, detail, run_parents, preceding_archive, ret
         else:
             parent_row = match_parent(preceding_archive.get(job['task'], []), parent_smiles)
             source = archive_source(parent_row, cycle)
-            saved_source = start.get('parent_source')
             if source is None and saved_source and parent_smiles:
                 source = archive_source(dict(saved_source, smiles=parent_smiles), cycle)
             root_type = 'archive-fork' if source else 'unresolved'
     else:
-        if arm == 'independent':
+        if (parent_provenance or {}).get('source_job_id') is not None:
+            agreed = (source_path == parent_provenance['branch']
+                      and saved_source.get('step') == parent_provenance['step']
+                      and start.get('parent') == parent_provenance.get('smiles'))
+            root_type = 'external-parent' if agreed else 'unresolved'
+        elif arm == 'independent' or source_path.startswith('prior-'):
             root_type = 'independent'
-        elif cycle is None or cycle == 1:
-            parent_row = match_parent(run_parents, parent_smiles)
-            root_type = 'archived-parent' if parent_row else 'unresolved'
+        elif cycle is not None and source_path.startswith('cycle-'):
+            source = archive_source(dict(saved_source, smiles=parent_smiles,
+                                         fresh_loss=parent_fresh_loss), cycle)
+            if source and branch_plan(Path(source['branch']), source['cycle'], job)[0] != arm:
+                source = None
+            root_type = 'archive-fork' if source else 'unresolved'
         else:
-            parent_row = match_parent(preceding_archive.get('elite', []), parent_smiles)
-            source = archive_source(parent_row, cycle)
+            parent_row = match_parent(run_parents, parent_smiles)
+            if parent_row and saved_source and parent_row.get('branch') and (
+                    parent_row['branch'] != source_path or parent_row['step'] != saved_source.get('step')):
+                parent_row = None
+            if not saved_source and cycle is not None and cycle > 1 and arm != 'fixed':
+                parent_row = match_parent(preceding_archive.get(arm, []), parent_smiles) or parent_row
+                source = archive_source(parent_row, cycle)
             root_type = 'archive-fork' if source else ('archived-parent' if parent_row else 'unresolved')
     if parent_row:
         if parent_fresh_loss is None:
@@ -159,7 +168,7 @@ def collect_branch(path, cycle, job, detail, run_parents, preceding_archive, ret
         updates = 0
     return dict(name=path.name, cycle=cycle, arm=arm, parent_index=parent_index, repeat=repeat,
                 root_type=root_type, source=source, parent_smiles=parent_smiles,
-                parent_fresh_loss=parent_fresh_loss, parent_provenance=parent_provenance,
+                parent_fresh_loss=parent_fresh_loss, parent_provenance=parent_provenance, policy=policy,
                 complete=complete, planned_updates=planned, completed_updates=min(planned, updates),
                 first_step=rows[0]['step'] if rows else None, last_step=rows[-1]['step'] if rows else None,
                 observations=len(rows), state_count=len(states), change_state_count=changes,
@@ -195,13 +204,7 @@ def tree_job(spec, scheduler):
     branches = []
     for phase in phases:
         cycle = cycle_number(phase.name)
-        if central:
-            plan = read_json(phase / 'wave-plan.json') or {}
-            detail = {row['name']: dict(parent_fresh_loss=row['source'].get('fresh_loss'))
-                      for row in plan.get('branches', [])}
-        else:
-            batch = read_json(phase / 'batch.json') or {}
-            detail = {row['name']: row for row in batch.get('branches', [])}
+        detail = phase_details(phase, run)
         preceding = archive_pairs.get(cycle - 1, ({}, {}))[1] if cycle else {}
         for path in branch_entries[phase]:
             branches.append(collect_branch(path, cycle, spec, detail.get(path.name, {}),
@@ -226,10 +229,10 @@ def tree_job(spec, scheduler):
         valid, smiles, raw_key = source_states.get((source['cycle'], source['branch'], source['step']),
                                                    (False, None, None))
         if source.get('raw_invalid'):
-            confirmed = not valid and raw_key is not None
+            confirmed = False
             if branch['states'] and branch['states'][0][0] == 0:
                 _, child_valid, _, child_raw_key, _ = branch['states'][0]
-                confirmed = confirmed and not child_valid and (child_raw_key is None or child_raw_key == raw_key)
+                confirmed = not valid and raw_key is not None and not child_valid and child_raw_key == raw_key
         else:
             confirmed = valid and smiles == source['smiles']
         if not confirmed:

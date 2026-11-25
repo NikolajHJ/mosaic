@@ -146,3 +146,49 @@ def test_graph_doses_preserve_argmax_and_protect_nonbonds(inputs):
         else:
             assert len(high_receipt["mixing"]["atom_slots"]) == int(active.sum())
             assert before < after <= 1.2 * before + 1e-6
+
+
+@pytest.mark.parametrize("policy", ("sparse-mix", "dense-protected"))
+def test_no_bond_weight_matches_support_and_reduces_added_bond_mass(inputs, policy):
+    decoder, parent, active = inputs
+    base = decoder.decode(parent.latent)
+    kwargs = dict(policy=policy, seed=12, strength=1)
+    _, one, one_receipt = propose_noise_start(*inputs, **kwargs, no_bond_weight=1.)
+    _, eight, eight_receipt = propose_noise_start(*inputs, **kwargs, no_bond_weight=8.)
+    _, legacy, legacy_receipt = propose_noise_start(*inputs, **kwargs)
+    _, explicit_none, none_receipt = propose_noise_start(*inputs, **kwargs, no_bond_weight=None)
+
+    assert one_receipt["no_bond_weight"] == 1. and eight_receipt["no_bond_weight"] == 8.
+    assert "no_bond_weight" not in legacy_receipt and legacy_receipt == none_receipt
+    assert torch.equal(legacy(base, 0).bonds, explicit_none(base, 0).bonds)
+    for field in ("atom_slots", "atoms", "charges", "existing_bonds", "no_bonds"):
+        assert one_receipt["mixing"][field] == eight_receipt["mixing"][field]
+    assert torch.equal(one(base, 0).atoms, eight(base, 0).atoms)
+    assert torch.equal(one(base, 0).charges, eight(base, 0).charges)
+
+    graphs = [graph_from_decoder(offset(base, 0), decoder.spec, fixed_active=active)
+              for offset in (one, eight)]
+    for graph in graphs:
+        hard = hard_from_graph(graph)
+        assert torch.equal(hard.atoms, parent.hard.atoms)
+        assert torch.equal(hard.charges, parent.hard.charges)
+        assert torch.equal(hard.bonds, parent.hard.bonds)
+    one_mass, eight_mass = (graph.bonds[..., 1:].sum(dim=-1) for graph in graphs)
+    active_pairs = torch.triu(active[:, None] & active[None, :], diagonal=1)[None, ...]
+    existing = active_pairs & (parent.hard.bonds != 0)
+    absent = active_pairs & ~existing
+    assert torch.all(eight_mass[active_pairs] <= one_mass[active_pairs])
+    assert torch.any(eight_mass[existing] < one_mass[existing])
+    if policy == "dense-protected":
+        assert torch.all(eight_mass[absent] < one_mass[absent])
+    else:
+        assert torch.equal(eight_mass[absent], one_mass[absent])
+
+
+@pytest.mark.parametrize("policy,strength,weight", (
+    ("none", None, 1.), ("raw-latent", .25, 8.), ("dense-protected", 1., 0.),
+    ("sparse-mix", 1., float("inf")), ("sparse-mix", 1., True),
+))
+def test_no_bond_weight_requires_a_positive_finite_graph_mix_weight(inputs, policy, strength, weight):
+    with pytest.raises(ValueError, match="no-bond weight"):
+        propose_noise_start(*inputs, policy=policy, seed=12, strength=strength, no_bond_weight=weight)

@@ -1,0 +1,76 @@
+{
+  "study": "conformer_rescore",
+  "panel_kind": "synthesis_saved",
+  "source_job": "30043386+30043389",
+  "source_result": {
+    "path": "/work3/s234818/latentmol/runs/protenix-restart-synthesis-waves-20261113a-seed-a/result.json",
+    "sha256": "cf86995686d42e0bc909492fd5b0e358b744c8d1a5aa1b36534aa6a65c043f0b"
+  },
+  "sources": {
+    "anchor-cycle-1": {
+      "path": "/work3/s234818/latentmol/runs/protenix-restart-synthesis-next-20261113a-anchors/cycle-01/batch.json",
+      "sha256": "28763a024e0cdba0fa1c8433ca1539095ac42615457cfa758c6d2ff536762241"
+    },
+    "wave-cycle-1": {
+      "path": "/work3/s234818/latentmol/runs/protenix-restart-synthesis-waves-20261113a-seed-a/cycle-01/batch.json",
+      "sha256": "830c823d34b026110bdb4e1f1965417176935ae1eea13600b9d222a3eb52f15c"
+    },
+    "wave-cycle-3": {
+      "path": "/work3/s234818/latentmol/runs/protenix-restart-synthesis-waves-20261113a-seed-a/cycle-03/batch.json",
+      "sha256": "192b267784ef2fb56fbfb61f1dea60f33dc496655b7fc286fc9519f5583abebb"
+    }
+  },
+  "historical_seed": 1201,
+  "geometry_seeds": [
+    1201,
+    2203,
+    3209
+  ],
+  "panel": [
+    {
+      "id": "anchor-endpoint",
+      "source_key": "anchor-cycle-1",
+      "location": "endpoint",
+      "smiles": "C#CCC1CCCC(C)C(C2CC2)CC1NC(O)c1cccc(N)c1",
+      "branch": "cycle-01/parent-01-sf-anchor-00",
+      "step": 500,
+      "score": null,
+      "provenance": "Combined SynFrag and low-SA latent-attraction endpoint from job30043386; SA4.363, no original fresh binding score"
+    },
+    {
+      "id": "selected-parent",
+      "source_key": "wave-cycle-1",
+      "location": "candidate",
+      "smiles": "OC1C[SH]2CC3CC3CC34C5CCC6CC6C23C42CNCC2C(N1)N5",
+      "branch": "cycle-01/parent-01-wave-pareto-00",
+      "step": 130,
+      "score": 2.1673449969734975,
+      "provenance": "Pareto-selected source for the useful wave3 branch in job30043389; SA6.127"
+    },
+    {
+      "id": "selected-intermediate",
+      "source_key": "wave-cycle-3",
+      "location": "candidate",
+      "smiles": "CC1CCCC23C4CNCC4C(NCCC4C5CC452)NC(O)C[SH]3C1",
+      "branch": "cycle-03/parent-01-wave-pareto-00",
+      "step": 278,
+      "score": 2.202838848572603,
+      "provenance": "Saved update278 intermediate in job30043389; SA4.217 and original fresh loss2.20284"
+    },
+    {
+      "id": "branch-endpoint",
+      "source_key": "wave-cycle-3",
+      "location": "endpoint",
+      "smiles": "OC1C[SH]2CC3CC3CC3C45CC6C7C6C7C32C2CNCC2C(N4)N15",
+      "branch": "cycle-03/parent-01-wave-pareto-00",
+      "step": 500,
+      "score": null,
+      "provenance": "Update500 endpoint of the same branch in job30043389; SA6.758, original fresh binding unscored"
+    }
+  ],
+  "tasks": {
+    "panel": {
+      "queue": "gpuv100"
+    }
+  }
+}

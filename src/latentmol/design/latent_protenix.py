@@ -65,6 +65,8 @@ class LatentDesignConfig:
         beam_width=4, probability_weight=1., probability_floor=1e-12))
     structural_proposals: dict = field(default_factory=lambda: asdict(RepairProposalConfig()))
     valence_excess_weight: float = 0.
+    # Opt-in linear ramp across the absolute update indices 0..schedule_horizon-1.
+    max_step_norm_final: float | None = None
 
     def __post_init__(self):
         if self.version != VERSION:
@@ -83,6 +85,10 @@ class LatentDesignConfig:
         v = self.valence_excess_weight
         if isinstance(v, bool) or not math.isfinite(v) or v < 0:
             raise ValueError("Require finite nonnegative valence_excess_weight")
+        v = self.max_step_norm_final
+        if v is not None and (isinstance(v, bool) or not math.isfinite(v) or v <= 0
+                              or self.schedule_horizon < 2):
+            raise ValueError("Step cap schedule requires a finite positive final cap and at least two steps")
         if not (0 <= self.noise_initial <= 1 and 0 <= self.chemistry_hold < self.chemistry_ramp_end
                 <= self.schedule_horizon and 0 < self.noise_zero_at <= self.schedule_horizon
                 and self.updates <= self.schedule_horizon):
@@ -94,11 +100,19 @@ class LatentDesignConfig:
     def from_mapping(cls, raw):
         return cls(**raw.get("design", raw))
 
+    @classmethod
+    def for_restart(cls, settings):
+        """Keep update noise opt-in for restart searches."""
+        return cls(**({"noise_initial": 0.0} | settings))
+
     def identity(self):
         payload = asdict(self)
         if not self.valence_excess_weight:
             # Old checkpoints authenticated the config before this opt-in field.
             del payload["valence_excess_weight"]
+        if self.max_step_norm_final is None:
+            # Keep fixed-cap resume identities valid.
+            del payload["max_step_norm_final"]
         return hashlib.sha256(json.dumps(payload, sort_keys=True).encode()).hexdigest()
 
     @property
@@ -201,7 +215,7 @@ def prepare_point(decoder, point, active, config, step, *, logit_offset=None,
     return PreparedPoint(point, active, config, step, schedule, decoded, graph, features)
 
 
-def finish_point(decoder, prepared, scored, *, target_bundle=None):
+def finish_point(decoder, prepared, scored, *, target_bundle=None, guidance=None):
     """Finish one branch using a score attached to its prepared graph."""
     point, active, config, step = prepared.point, prepared.active, prepared.config, prepared.step
     schedule, decoded, graph = prepared.schedule, prepared.decoded, prepared.graph
@@ -209,11 +223,31 @@ def finish_point(decoder, prepared, scored, *, target_bundle=None):
     binding = _finite_scalar(binding, "Binding objective")
     if not binding.requires_grad:
         raise ValueError("Required binding path is detached")
-    binding_gradient, = torch.autograd.grad(binding, point, retain_graph=True, allow_unused=True)
+    channel_norms = {}
+    if step == 0 and getattr(decoder, "raw_coordinate_key", None) == "graph_logits":
+        channels = ("atoms", "charges", "bonds")
+        paths = tuple(getattr(graph, name) for name in channels)
+        binding_gradient, *gradients = torch.autograd.grad(binding, (point, *paths), retain_graph=True,
+                                                          allow_unused=True)
+        for name, grad in zip(channels, gradients, strict=True):
+            if grad is None or not bool(grad.isfinite().all()):
+                raise ValueError(f"Missing or nonfinite direct graph binding gradient for {name}")
+        channel_norms["direct_binding_channels"] = {k: float(g.norm()) for k, g in zip(channels, gradients)}
+    else:
+        binding_gradient, = torch.autograd.grad(binding, point, retain_graph=True, allow_unused=True)
     if binding_gradient is None or not bool(binding_gradient.isfinite().all()):
         raise ValueError("Missing/nonfinite binding latent gradient")
+    extra = {}
+    guidance_gradient = None
     target, repair = (structural_target(graph, decoder.spec, active, config, step)
                       if target_bundle is None else target_bundle)
+    if guidance is not None:
+        validity = ({"raw_valid": repair["status"] == "already_valid"}
+                    if getattr(guidance, "requires_raw_valid", False) else {})
+        guidance_gradient, metadata = guidance.evaluate(graph, active, point, binding_gradient, step, **validity)
+        if (guidance_gradient.shape != point.shape or not bool(guidance_gradient.isfinite().all())):
+            raise ValueError("Incompatible/nonfinite auxiliary guidance gradient")
+        extra["synthesis"] = metadata
     if target is None:
         chemistry = sum(getattr(decoded, k).sum()*0 for k in ("atoms", "charges", "bonds"))
         detail = dict(normalized_nll=0., raw_nll=0., target_sha256=None,
@@ -240,6 +274,8 @@ def finish_point(decoder, prepared, scored, *, target_bundle=None):
     gradient = binding_gradient + schedule["chemistry_weight"]*chemistry_gradient
     if config.valence_excess_weight:
         gradient = gradient + config.valence_excess_weight*valence_gradient
+    if guidance_gradient is not None:
+        gradient = gradient + guidance_gradient
     if not bool(gradient.isfinite().all()):
         raise ValueError("Nonfinite combined latent gradient")
     binding_norm = float(binding_gradient.norm())
@@ -252,7 +288,7 @@ def finish_point(decoder, prepared, scored, *, target_bundle=None):
         repair_detail=detail, schedule=schedule, target_bundle=(target, repair),
         gradient_norms=dict(binding=binding_norm, chemistry=chemistry_norm,
             weighted_chemistry=schedule["chemistry_weight"]*chemistry_norm,
-            combined=float(gradient.norm()), cosine=cosine, **valence_norms), **valence_details)
+            combined=float(gradient.norm()), cosine=cosine, **valence_norms, **channel_norms), **valence_details, **extra)
 
 
 def evaluate_point(decoder, scorer, point, active, config, step, *, target_bundle=None,
@@ -281,14 +317,21 @@ def latent_step(point, binding_gradient, gradient, config, step, generator):
         noise = direction*(requested/norm)
     displacement = deterministic+noise
     norm = float(displacement.norm())
-    factor = min(1., config.max_step_norm/norm) if norm else 1.
+    cap = config.max_step_norm
+    if config.max_step_norm_final is not None:
+        progress = min(1., step / (config.schedule_horizon - 1))
+        cap = (1. - progress) * cap + progress * config.max_step_norm_final
+    factor = min(1., cap/norm) if norm else 1.
     proposal = point+factor*displacement
     if not bool(proposal.isfinite().all()):
         raise ValueError("Nonfinite proposed latent")
-    return proposal.detach(), dict(noise_ratio=ratio, noise_norm=float(noise.norm()),
+    update = dict(noise_ratio=ratio, noise_norm=float(noise.norm()),
         requested_noise_norm=requested, deterministic_norm=float(deterministic.norm()),
         requested_displacement_norm=norm, displacement_norm=float((proposal-point).norm()),
         bound_factor=factor, accepted=True, policy="one_finite_bounded_sgd_update_no_descent_gate")
+    if config.max_step_norm_final is not None:
+        update["max_step_norm"] = cap
+    return proposal.detach(), update
 
 
 def _json(path, value):
@@ -307,8 +350,9 @@ def _model_identity(model):
 
 class RawBlocks:
     """Compact all-state labels/z; full probabilities have a declared sparse cadence."""
-    def __init__(self, directory, nodes, size):
+    def __init__(self, directory, nodes, size, coordinate_key="latent"):
         self.directory, self.size = Path(directory), size
+        self.coordinate_key = coordinate_key
         self.directory.mkdir()
         self.left, self.right = np.triu_indices(nodes, 1)
         self.rows = []
@@ -324,7 +368,7 @@ class RawBlocks:
         p=self.directory/f"states-{self.rows[0][0]:06d}-{self.rows[-1][0]:06d}.npz"
         with p.open("xb") as f:
             np.savez_compressed(f, steps=np.array([r[0] for r in self.rows]),
-                latent=np.stack([r[1] for r in self.rows]), atoms=np.stack([r[2] for r in self.rows]),
+                **{self.coordinate_key: np.stack([r[1] for r in self.rows])}, atoms=np.stack([r[2] for r in self.rows]),
                 charges=np.stack([r[3] for r in self.rows]), bonds_upper=np.stack([r[4] for r in self.rows]),
                 upper_left=self.left, upper_right=self.right)
         self.rows.clear()

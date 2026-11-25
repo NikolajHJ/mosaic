@@ -11,6 +11,7 @@ This is a partial, fixed-context derivative, not differentiation of recropping.
 from __future__ import annotations
 
 import json
+import math
 from pathlib import Path
 
 import torch
@@ -63,7 +64,7 @@ class NessoBranch(nn.Module):
     def assess(self, graph: RelaxedGraph) -> InputSupport:
         return self.bundle.assess(graph, self.losses)
 
-    def _forward_features(self, graph: RelaxedGraph) -> dict[str, Tensor]:
+    def _forward_features(self, graph: RelaxedGraph, *, return_binder_loss: bool = False) -> dict[str, Tensor]:
         """Explicit native eval equations, fixed pocket, expected bond embeddings.
 
         Unlike the upstream inference wrapper, this method keeps the s/z and
@@ -101,17 +102,23 @@ class NessoBranch(nn.Module):
         with torch.autocast(device_type=sf.device.type, enabled=False):
             one = model.affinity_module(s_inputs=sf.float(), z=zf.float(), pdistogram=pf.float(), feats=ff, use_kernels=False)
             two = model.affinity_module2(s_inputs=sf.float(), z=zf.float(), pdistogram=pf.float(), feats=ff, use_kernels=False)
-        probability = (one["affinity_logits_binary"].sigmoid() + two["affinity_logits_binary"].sigmoid()) / 2
-        return {"affinity_pred_value": (one["affinity_pred_value"] + two["affinity_pred_value"]) / 2,
-                "affinity_probability_binary": probability,
-                "affinity_logits_binary": torch.logit(probability.clamp(1e-6, 1 - 1e-6))}
+        first, second = one["affinity_logits_binary"], two["affinity_logits_binary"]
+        probability = (first.sigmoid() + second.sigmoid()) / 2
+        result = {"affinity_pred_value": (one["affinity_pred_value"] + two["affinity_pred_value"]) / 2,
+                  "affinity_probability_binary": probability,
+                  "affinity_logits_binary": torch.logit(probability.clamp(1e-6, 1 - 1e-6))}
+        if return_binder_loss:
+            # The native probability is the mean of the two sigmoid outputs.
+            # Work in log space to preserve derivatives for very small probabilities.
+            result["binder_loss"] = _binder_loss(first, second)
+        return result
 
-    def forward(self, graph: RelaxedGraph) -> dict[str, Tensor]:
+    def forward(self, graph: RelaxedGraph, *, return_binder_loss: bool = False) -> dict[str, Tensor]:
         require_frozen_eval(self)
         support = self.assess(graph)
         if support.status == "unsupported":
             raise ValueError("; ".join(support.reasons))
-        return self._forward_features(graph)
+        return self._forward_features(graph, return_binder_loss=return_binder_loss)
 
     def native_reference(self) -> dict[str, Tensor]:
         """Ordinary seed forward with native discrete inputs, for parity only.
@@ -125,6 +132,11 @@ class NessoBranch(nn.Module):
         if not torch.equal(out["affinity_keep_indices"], self.keep):
             raise ValueError("Prepared affinity crop differs from current native seed forward")
         return {key: out[key] for key in OUTPUTS}
+
+
+def _binder_loss(first_logit: Tensor, second_logit: Tensor) -> Tensor:
+    return math.log(2.0) - torch.logaddexp(torch.nn.functional.logsigmoid(first_logit),
+                                           torch.nn.functional.logsigmoid(second_logit))
 
 
 def load_nesso(*, spec: GraphSpec, device: str, options: dict, source_sha256: str):

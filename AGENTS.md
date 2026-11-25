@@ -7,6 +7,11 @@ defaults; make rigorous qualification explicit. Historical campaign rules do not
 become universal prerequisites. Small local CPU/unit/smoke tests are allowed.
 Keep tests and documentation proportional to the changed behavior.
 
+For new small-molecule design experiments, the baseline optimizes relaxed
+atom, formal-charge and bond logits directly. Use VAE latent optimization
+only when the user explicitly requests it. Identify the optimized variables
+in the run configuration and results. See the [direct BRD4 pilot](experiments/latent-design/protenix-vae/restart-boltz-brd4-direct.md).
+
 Keep checks for nonfinite computations, incompatible inputs/shapes, detached
 required paths, unintended frozen-model writes, output collisions and duplicate
 writers. Quality drops, flat derivatives, inconclusive FD and nonmonotone loss

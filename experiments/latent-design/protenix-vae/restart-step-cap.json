@@ -1,0 +1,55 @@
+{
+  "study": "step_cap",
+  "design": {
+    "updates": 500,
+    "schedule_horizon": 500,
+    "seed": 17,
+    "noise_seed": 230017,
+    "occupied_atoms": 25,
+    "learning_rate": 70.0,
+    "max_step_norm": 0.25,
+    "chemistry_initial": 1.0,
+    "chemistry_final": 1.0,
+    "chemistry_hold": 0,
+    "chemistry_ramp_end": 500,
+    "valence_excess_weight": 1.0,
+    "temperature_initial": 1.0,
+    "temperature_final": 1.0,
+    "noise_initial": 0.0,
+    "noise_zero_at": 100
+  },
+  "parent_cohorts": [
+    "/work3/s234818/latentmol/runs/flow-followup-20261106a-520000",
+    "/work3/s234818/latentmol/runs/flow-followup-20261106a-530000",
+    "/work3/s234818/latentmol/runs/flow-followup-20261106a-540000"
+  ],
+  "panel_size": 8,
+  "panel_seed": 402721,
+  "perturbation_seed": 4701101,
+  "comparisons": {
+    "fixed": {
+      "parents": 2,
+      "variants": {
+        "cap025": {"updates": [500, 500], "cap": 0.25, "policy": "latent", "shortlist": 6},
+        "cap050": {"updates": [500, 500], "cap": 0.50, "policy": "latent", "shortlist": 6}
+      }
+    },
+    "schedules": {
+      "parents": 2,
+      "variants": {
+        "cap025": {"updates": [500], "cap": 0.25, "policy": "latent", "shortlist": 6},
+        "cap050": {"updates": [500], "cap": 0.50, "policy": "latent", "shortlist": 6},
+        "anneal": {"updates": [500], "cap": 0.50, "cap_final": 0.25, "policy": "latent", "shortlist": 6},
+        "accelerate": {"updates": [500], "cap": 0.25, "cap_final": 0.50, "policy": "latent", "shortlist": 6},
+        "cap080": {"updates": [500], "cap": 0.80, "policy": "latent", "shortlist": 6}
+      }
+    }
+  },
+  "tasks": {
+    "seed-a": {"comparison": "fixed", "panel_offset": 0, "queue": "gpuv100"},
+    "seed-b": {"comparison": "fixed", "panel_offset": 2, "queue": "gpua100"},
+    "seed-c": {"comparison": "fixed", "panel_offset": 4, "queue": "gpul40s"},
+    "seed-d": {"comparison": "fixed", "panel_offset": 6, "queue": "gpuv100"},
+    "schedules": {"comparison": "schedules", "panel_offset": 6, "queue": "gpul40s"}
+  }
+}

@@ -1,0 +1,172 @@
+{
+  "study": "boltz_search_methods",
+  "scorer": {
+    "kind": "boltz2_dbmol",
+    "assets_config": "restart-boltz-dtu.json"
+  },
+  "search_config": "restart-boltz-brd4.json",
+  "target_arm": "brd4-jq1",
+  "parent_state": {
+    "path": "/work3/s234818/latentmol/runs/boltz-restart-brd4-method-inputs-20261117a/search-state.pt",
+    "sha256": "7d79faed8503c897a38b82cffac956f4ea857c655b41797d1f0b68f95e3c4f24",
+    "identity": "1a1be4c3256d4240a67fdf8431de33c7a3b887576a039b49cc431c12d2571255",
+    "source_job": 30082565,
+    "completed_wave": 4
+  },
+  "output_cap_mib": 192,
+  "screen_pool_size": 512,
+  "gradient_reuse": {
+    "steps_per_refresh": 2,
+    "max_graph_distance": 0.25,
+    "min_graph_distance": 0.04,
+    "acceptance_ratio": 0.25
+  },
+  "seeds": {
+    "a": 811211,
+    "b": 813211,
+    "c": 817211
+  },
+  "cases": {
+    "fixed400": {
+      "policy": "fixed400",
+      "count": 6,
+      "start": "archive",
+      "fresh_budget": 48
+    },
+    "fixed150": {
+      "policy": "fixed150",
+      "count": 16,
+      "start": "archive",
+      "fresh_budget": 48
+    },
+    "extend": {
+      "policy": "promote",
+      "count": 12,
+      "start": "archive",
+      "fresh_budget": 48
+    },
+    "reuse": {
+      "policy": "fixed150",
+      "count": 16,
+      "start": "archive",
+      "fresh_budget": 48,
+      "reuse": true
+    },
+    "prior": {
+      "policy": "fixed150",
+      "count": 6,
+      "start": "random",
+      "fresh_budget": 24
+    },
+    "screen": {
+      "policy": "fixed150",
+      "count": 6,
+      "start": "screened",
+      "fresh_budget": 24
+    }
+  },
+  "tasks": {
+    "fixed400-a": {
+      "case": "fixed400",
+      "panel": "a",
+      "queue": "gpuv100",
+      "host_resource": "gpu32gb"
+    },
+    "fixed150-a": {
+      "case": "fixed150",
+      "panel": "a",
+      "queue": "gpuv100",
+      "host_resource": "gpu32gb"
+    },
+    "extend-a": {
+      "case": "extend",
+      "panel": "a",
+      "queue": "gpuv100",
+      "host_resource": "gpu32gb"
+    },
+    "reuse-a": {
+      "case": "reuse",
+      "panel": "a",
+      "queue": "gpuv100",
+      "host_resource": "gpu32gb"
+    },
+    "prior-a": {
+      "case": "prior",
+      "panel": "a",
+      "queue": "gpuv100",
+      "host_resource": "gpu32gb"
+    },
+    "screen-a": {
+      "case": "screen",
+      "panel": "a",
+      "queue": "gpuv100",
+      "host_resource": "gpu32gb"
+    },
+    "fixed400-b": {
+      "case": "fixed400",
+      "panel": "b",
+      "queue": "gpua40"
+    },
+    "fixed150-b": {
+      "case": "fixed150",
+      "panel": "b",
+      "queue": "gpua40"
+    },
+    "extend-b": {
+      "case": "extend",
+      "panel": "b",
+      "queue": "gpua40"
+    },
+    "reuse-b": {
+      "case": "reuse",
+      "panel": "b",
+      "queue": "gpua40"
+    },
+    "prior-b": {
+      "case": "prior",
+      "panel": "b",
+      "queue": "gpua40"
+    },
+    "screen-b": {
+      "case": "screen",
+      "panel": "b",
+      "queue": "gpua40"
+    },
+    "fixed400-c": {
+      "case": "fixed400",
+      "panel": "c",
+      "queue": "gpua100",
+      "host_resource": "gpu80gb"
+    },
+    "fixed150-c": {
+      "case": "fixed150",
+      "panel": "c",
+      "queue": "gpua100",
+      "host_resource": "gpu80gb"
+    },
+    "extend-c": {
+      "case": "extend",
+      "panel": "c",
+      "queue": "gpua100",
+      "host_resource": "gpu80gb"
+    },
+    "reuse-c": {
+      "case": "reuse",
+      "panel": "c",
+      "queue": "gpua100",
+      "host_resource": "gpu80gb"
+    },
+    "prior-c": {
+      "case": "prior",
+      "panel": "c",
+      "queue": "gpua100",
+      "host_resource": "gpu80gb"
+    },
+    "screen-c": {
+      "case": "screen",
+      "panel": "c",
+      "queue": "gpua100",
+      "host_resource": "gpu80gb"
+    }
+  }
+}

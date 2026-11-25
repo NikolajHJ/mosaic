@@ -215,7 +215,7 @@ def run_case(decoder, scorer, starts, design, case, *, updates):
 
 
 def run_benchmark(args, config):
-    design = LatentDesignConfig(**config["design"])
+    design = LatentDesignConfig.for_restart(config["design"])
     cases = config["cases"]
     device = config.get("device", "a100-80gb")
     if not isinstance(device, str) or device not in DEVICES:

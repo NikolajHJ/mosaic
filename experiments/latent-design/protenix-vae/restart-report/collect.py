@@ -110,6 +110,44 @@ def observations(path):
         return []
 
 
+def cycle_number(name):
+    return int(name.split('-')[-1]) if name.startswith('cycle-') else None
+
+
+def phase_details(phase, run):
+    batch = read_json(phase / 'batch.json') or {}
+    details = {row['name']: row for row in batch.get('branches', [])}
+    if run.get('runner') == 'restart_search':
+        plan = read_json(phase / 'wave-plan.json') or {}
+        for row in plan.get('branches', []):
+            details.setdefault(row['name'], {}).update(parent_fresh_loss=row['source'].get('fresh_loss'),
+                                                       policy=row.get('policy'))
+    if phase.name == 'paired' and run.get('source_job_id') is not None:
+        for index, pair in enumerate(run.get('pairs', [])):
+            for arm, key in (('near-valid', 'invalid_source'), ('exact-valid', 'exact_source')):
+                source = pair[key]
+                provenance = dict(source, source_job_id=run['source_job_id'], source_wave=pair['source_wave'])
+                if arm == 'near-valid':
+                    provenance.update(raw_invalid=True, repair_smiles=pair['witness_smiles'],
+                                      repair_edits=pair['repair_edits'])
+                details.setdefault(f'parent-{index:02d}-{arm}-00', {}).update(
+                    parent_smiles=source.get('smiles'), parent_fresh_loss=source.get('archived_fresh_loss'),
+                    parent_provenance=provenance)
+    return details
+
+
+def fresh_candidates_by_branch(phase):
+    summaries = [phase / 'fresh' / 'summary.json', *sorted(phase.glob('fresh-*/fresh/summary.json'))]
+    by_branch = {}
+    for path in summaries:
+        for row in (read_json(path) or {}).get('candidates', []):
+            branch = (row.get('arm') or '').rsplit('/', 1)[-1]
+            if branch.startswith(('branch-', 'parent-')):
+                by_branch.setdefault(branch, []).append(
+                    {key: row.get(key) for key in ('smiles', 'step', 'loss', 'status')})
+    return by_branch
+
+
 def branch_plan(path, cycle, spec):
     planned = spec['updates_per_branch']
     if spec['layout'] == 'cycles':
@@ -239,6 +277,7 @@ def branch_record(path, cycle, job, detail, parents, fresh_candidates, elite_ste
             row['update']['bound_factor'] < 1 for row in rows if row.get('update') is not None)),
         points=points, candidates=candidates, parent_smiles=parent_smiles,
         parent_fresh_loss=parent_loss, policy=detail.get('policy') or proposal.get('policy'),
+        parent_provenance=detail.get('parent_provenance'), parent_source=start.get('parent_source'),
         proposal=proposal, max_step_norm=detail.get('max_step_norm'),
     )
     if INCLUDE_RAW:
@@ -274,15 +313,9 @@ def job_record(spec, scheduler):
                 if '/' in branch and step is not None:
                     elite_steps.setdefault(branch, set()).add(step)
     for phase in phases:
-        cycle = int(phase.name.split('-')[-1]) if phase.name.startswith('cycle-') else None
-        batch = read_json(phase / 'batch.json') or {}
-        detail = {row['name']: row for row in batch.get('branches', [])}
-        fresh = read_json(phase / 'fresh' / 'summary.json') if spec['layout'] == 'cycles' else None
-        fresh_by_branch = {}
-        for row in (fresh or {}).get('candidates', []):
-            branch = row.get('arm', '').rsplit('/', 1)[-1]
-            fresh_by_branch.setdefault(branch, []).append(
-                {k: row.get(k) for k in ('smiles', 'step', 'loss', 'status')})
+        cycle = cycle_number(phase.name)
+        detail = phase_details(phase, run)
+        fresh_by_branch = fresh_candidates_by_branch(phase)
         for path in sorted(phase.iterdir()):
             if path.is_dir() and (path.name.startswith('branch-') or path.name.startswith('parent-')):
                 branches.append(branch_record(path, cycle, spec, detail.get(path.name, {}),

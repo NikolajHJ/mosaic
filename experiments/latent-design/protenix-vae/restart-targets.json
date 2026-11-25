@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "er-alpha": {"name": "Estrogen receptor alpha", "pdb": "2IOK", "ligand": "IOK", "ligand_residue": 600, "atoms": 30, "pocket": "MET343 GLU353 LEU384 MET388 VAL418 MET421 LEU428 HIS524 LEU525", "queue": "gpua10"},
+    "er-alpha-y537s": {"name": "Estrogen receptor alpha Y537S construct", "pdb": "2P15", "ligand": "EZT", "ligand_residue": 600, "atoms": 32, "pocket": "LEU346 GLU353 ARG394 ILE424 PHE425 HIS524", "queue": "gpul40s"},
+    "glucocerebrosidase": {"name": "Glucocerebrosidase", "pdb": "2V3D", "ligand": "NBV", "ligand_residue": 1503, "atoms": 15, "pocket": "ASP127 PHE128 TRP179 ASN234 GLU235 PHE246 GLU340 TRP381 ASN396", "queue": "gpua40"},
+    "erk2": {"name": "MAPK1 / ERK2", "pdb": "4ZZN", "ligand": "CQ8", "ligand_residue": 1355, "atoms": 25, "pocket": "GLU31 ALA50 GLN103 ASP104 MET106 GLU107 THR108 LEU154", "queue": "gpuv100"},
+    "aldh1a1": {"name": "ALDH1A1", "pdb": "5L2M", "ligand": "6ZY", "ligand_residue": 602, "atoms": 27, "pocket": "PHE290 HIS293", "queue": "gpul40s"},
+    "p53-y220c": {"name": "p53 Y220C construct", "pdb": "3ZME", "ligand": "QC5", "ligand_residue": 1291, "atoms": 22, "pocket": "VAL147 PRO153 CYS220 GLU221 PRO222 PRO223", "queue": "gpuv100"},
+    "vdr-h305f": {"name": "Vitamin D receptor H305F construct", "pdb": "3A2I", "ligand": "TEJ", "ligand_residue": 1, "atoms": 31, "pocket": "TYR143 SER237 ARG274 SER275 SER278 PHE305 HIS397", "queue": "gpua10"}
+  }
+}

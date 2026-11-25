@@ -1,0 +1,45 @@
+{
+  "study": "initialization_noise",
+  "design": {
+    "updates": 500,
+    "schedule_horizon": 500,
+    "seed": 17,
+    "noise_seed": 230017,
+    "occupied_atoms": 25,
+    "learning_rate": 70,
+    "max_step_norm": 0.25,
+    "chemistry_initial": 1,
+    "chemistry_final": 1,
+    "chemistry_hold": 0,
+    "chemistry_ramp_end": 500,
+    "valence_excess_weight": 1,
+    "temperature_initial": 1,
+    "temperature_final": 1,
+    "noise_initial": 0,
+    "noise_zero_at": 100
+  },
+  "parent_cohorts": [
+    "/work3/s234818/latentmol/runs/flow-followup-20261106a-520000",
+    "/work3/s234818/latentmol/runs/flow-followup-20261106a-530000",
+    "/work3/s234818/latentmol/runs/flow-followup-20261106a-540000"
+  ],
+  "panel_size": 4,
+  "panel_seed": 672103,
+  "perturbation_seed": 3491501,
+  "comparisons": {
+    "tiny-kick": {
+      "parents": 2,
+      "matched_fresh": true,
+      "report_bond_density": true,
+      "variants": {
+        "untouched": {"policy": "none", "updates": [500, 500, 500], "shortlist": 6},
+        "parent-003": {"policy": "raw-latent", "updates": [500, 500, 500], "shortlist": 6, "strength": 0.003},
+        "parent-030": {"policy": "raw-latent", "updates": [500, 500, 500], "shortlist": 6, "strength": 0.03}
+      }
+    }
+  },
+  "tasks": {
+    "tiny-kick-a": {"comparison": "tiny-kick", "panel_offset": 0, "queue": "gpul40s"},
+    "tiny-kick-b": {"comparison": "tiny-kick", "panel_offset": 2, "queue": "gpuv100"}
+  }
+}

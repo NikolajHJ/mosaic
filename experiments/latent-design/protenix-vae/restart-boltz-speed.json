@@ -1,0 +1,206 @@
+{
+  "study": "boltz_speed",
+  "scorer": {
+    "kind": "boltz2_dbmol",
+    "assets_config": "restart-boltz-dtu.json"
+  },
+  "search_config": "restart-multitarget.json",
+  "target_arm": "erk2",
+  "children": 6,
+  "updates": 2,
+  "cpu_threads": 2,
+  "child_seed": 281113,
+  "parent_state": {
+    "path": "/work3/s234818/latentmol/runs/boltz-restart-timing-20261112b-a10-erk2/search-state.pt",
+    "sha256": "c8de6fa0505e13560e1404f2df1a912430625fa2876280edaf75809f19b9df90"
+  },
+  "startup_timeout": 1800,
+  "case_timeout": 900,
+  "output_cap_mib": 256,
+  "cases": {
+    "fp32-c1": {
+      "parallel": 1,
+      "execution": {
+        "tf32": false,
+        "autocast": "none",
+        "checkpoint_every": 1,
+        "checkpoint_preserve_rng_state": true
+      }
+    },
+    "fp32-c2": {
+      "parallel": 2,
+      "execution": {
+        "tf32": false,
+        "autocast": "none",
+        "checkpoint_every": 1,
+        "checkpoint_preserve_rng_state": true
+      }
+    },
+    "fp32-c3": {
+      "parallel": 3,
+      "execution": {
+        "tf32": false,
+        "autocast": "none",
+        "checkpoint_every": 1,
+        "checkpoint_preserve_rng_state": true
+      }
+    },
+    "tf32-c1": {
+      "parallel": 1,
+      "execution": {
+        "tf32": true,
+        "autocast": "none",
+        "checkpoint_every": 1,
+        "checkpoint_preserve_rng_state": true
+      }
+    },
+    "tf32-c2": {
+      "parallel": 2,
+      "execution": {
+        "tf32": true,
+        "autocast": "none",
+        "checkpoint_every": 1,
+        "checkpoint_preserve_rng_state": true
+      }
+    },
+    "tf32-c3": {
+      "parallel": 3,
+      "execution": {
+        "tf32": true,
+        "autocast": "none",
+        "checkpoint_every": 1,
+        "checkpoint_preserve_rng_state": true
+      }
+    },
+    "bf16-blocks-c1": {
+      "parallel": 1,
+      "execution": {
+        "tf32": false,
+        "autocast": "bfloat16_blocks",
+        "checkpoint_every": 1,
+        "checkpoint_preserve_rng_state": true
+      }
+    },
+    "bf16-blocks-c2": {
+      "parallel": 2,
+      "execution": {
+        "tf32": false,
+        "autocast": "bfloat16_blocks",
+        "checkpoint_every": 1,
+        "checkpoint_preserve_rng_state": true
+      }
+    },
+    "bf16-blocks-c3": {
+      "parallel": 3,
+      "execution": {
+        "tf32": false,
+        "autocast": "bfloat16_blocks",
+        "checkpoint_every": 1,
+        "checkpoint_preserve_rng_state": true
+      }
+    },
+    "bf16-no-rng-c1": {
+      "parallel": 1,
+      "execution": {
+        "tf32": false,
+        "autocast": "bfloat16_blocks",
+        "checkpoint_every": 1,
+        "checkpoint_preserve_rng_state": false
+      }
+    },
+    "bf16-no-rng-c2": {
+      "parallel": 2,
+      "execution": {
+        "tf32": false,
+        "autocast": "bfloat16_blocks",
+        "checkpoint_every": 1,
+        "checkpoint_preserve_rng_state": false
+      }
+    },
+    "bf16-no-rng-c3": {
+      "parallel": 3,
+      "execution": {
+        "tf32": false,
+        "autocast": "bfloat16_blocks",
+        "checkpoint_every": 1,
+        "checkpoint_preserve_rng_state": false
+      }
+    },
+    "bf16-half-checkpoints-c1": {
+      "parallel": 1,
+      "execution": {
+        "tf32": false,
+        "autocast": "bfloat16_blocks",
+        "checkpoint_every": 2,
+        "checkpoint_preserve_rng_state": false
+      }
+    },
+    "bf16-half-checkpoints-c2": {
+      "parallel": 2,
+      "execution": {
+        "tf32": false,
+        "autocast": "bfloat16_blocks",
+        "checkpoint_every": 2,
+        "checkpoint_preserve_rng_state": false
+      }
+    },
+    "bf16-half-checkpoints-c3": {
+      "parallel": 3,
+      "execution": {
+        "tf32": false,
+        "autocast": "bfloat16_blocks",
+        "checkpoint_every": 2,
+        "checkpoint_preserve_rng_state": false
+      }
+    }
+  },
+  "tasks": {
+    "a10": {
+      "queue": "gpua10",
+      "cases": [
+        "fp32-c1",
+        "tf32-c1",
+        "bf16-blocks-c1",
+        "bf16-no-rng-c1",
+        "bf16-blocks-c2",
+        "bf16-no-rng-c2"
+      ],
+      "managed_mps": true
+    },
+    "a40": {
+      "queue": "gpua40",
+      "cases": [
+        "fp32-c1",
+        "fp32-c2",
+        "tf32-c1",
+        "tf32-c2",
+        "bf16-blocks-c1",
+        "bf16-blocks-c2",
+        "bf16-blocks-c3",
+        "bf16-no-rng-c1",
+        "bf16-no-rng-c2",
+        "bf16-half-checkpoints-c1",
+        "bf16-half-checkpoints-c2"
+      ],
+      "managed_mps": true
+    },
+    "a100": {
+      "queue": "gpua100",
+      "cases": [
+        "fp32-c1",
+        "fp32-c2",
+        "fp32-c3",
+        "tf32-c1",
+        "tf32-c3",
+        "bf16-blocks-c1",
+        "bf16-blocks-c3",
+        "bf16-no-rng-c1",
+        "bf16-no-rng-c3",
+        "bf16-half-checkpoints-c1",
+        "bf16-half-checkpoints-c3"
+      ],
+      "managed_mps": true,
+      "host_resource": "gpu80gb"
+    }
+  }
+}

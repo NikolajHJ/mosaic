@@ -20,14 +20,18 @@ const label = name => ({
   untouched:"Untouched latent","all-row":"All-row 50/50",latent:"Latent kick",sparse:"Sparse perturbation",
   "cap-01":"Cap 0.1","cap-05":"Cap 0.5","four-short":"Four short branches","one-long":"One long branch",
   elite:"Elite restarts",independent:"Independent starts",mixed:"Mixed shortlist",relaxed:"Relaxed-rank shortlist",
+  adaptive:"Adaptive elite",fixed:"Fixed parents",hybrid:"Hybrid starts",
+  cap025:"Cap 0.25",cap050:"Cap 0.5","near-valid-replay · paired":"Near-valid versus exact-valid replay",
 })[name] || name;
 const color = name => ({
   latent:"#13695e",sparse:"#5863a3",untouched:"#486f85","all-row":"#a25c26",
   "cap-01":"#5863a3","cap-05":"#13695e","four-short":"#13695e","one-long":"#a25c26",
   elite:"#13695e",independent:"#5863a3",constant1:"#13695e",constant10:"#5863a3","late-ramp":"#a25c26",
+  adaptive:"#13695e",fixed:"#a25c26",hybrid:"#a25c26",cap025:"#5863a3",cap050:"#13695e",
 })[name] || "#486f85";
 const state = {study:"mutation", panel:"", shortlist:"mixed", repeat:"matched", parent:"all",
-  job:"", cycle:"", branch:"", metric:"relaxed", archive:"chemistry", archiveCycle:"", requestedStep:null};
+  job:"", cycle:"", branch:"", metric:"relaxed", archive:"chemistry", archiveCycle:"", winnerCycle:"", requestedStep:null};
+const relaxedLabel = job => job?.relaxed_label || "Relaxed contact loss";
 let stopPlayback = () => {};
 const statusNames = {DONE:"Completed",RUN:"Running",PEND:"Queued",EXIT:"Exited",UNKNOWN:"Unknown"};
 const status = job => String(job.status || "UNKNOWN").toUpperCase();
@@ -37,10 +41,29 @@ const campaignLabel = name => ({
   "lr70-pilot":"LR 70 standalone","lr70-six":"LR 70 six-cycle comparison",
   "lr30-pilot":"LR 30 standalone","lr30-six":"LR 30 six-cycle comparison",
   diversity:"LR 100 diversity pilot",noise:"Initialization noise and persistence",
+  "lr60-long":"LR 60 long search","frontier-slot":"Frontier parent selection",
+  "lineage-feedback":"Matched lineage feedback","step-cap":"LR 70 step cap and initialization",
+  "noise-timing":"Noise dose, timing, and persistence","near-valid-replay":"Near-valid replay",
 })[name] || String(name || "Other runs").replaceAll("-"," ");
-const studyKey = job => (job.campaign==="noise"?"noise-":"")+job.task.replace(/-[a-z]$/,"");
+const studyKey = job => ["followup","noise"].includes(job.campaign)
+  ? (job.campaign==="noise"?"noise-":"")+job.task.replace(/-[a-z]$/,"")
+  : `${job.campaign} · ${job.task.replace(/-[a-z]$/,"")}`;
 const title = job => job.label || (["followup","noise"].includes(job.campaign)
   ? `${label(studyKey(job))} · panel ${job.task.split("-").at(-1).toUpperCase()}` : label(job.task));
+const restartRate = job => ({"lr30-six":"LR 30","lr70-six":"LR 70",
+  "lr30-pilot":"LR 30","lr70-pilot":"LR 70"})[job.campaign];
+function matchedRestartJobs(job, runs) {
+  if (!restartRate(job)) return [job];
+  const counterpart = job.campaign.replace(/lr(30|70)/, (_, rate) => rate === "30" ? "lr70" : "lr30");
+  return [job, ...runs.filter(run => run.campaign === counterpart && run.task === job.task && isDone(run))]
+    .sort((a,b) => restartRate(a).localeCompare(restartRate(b)));
+}
+function restartRateSwitch(job, runs) {
+  const matched=matchedRestartJobs(job,runs);
+  if(matched.length<2)return "";
+  return `<div class="tree-rate-switch" role="group" aria-label="Matched learning rates">${matched.map(row=>
+    `<button type="button" data-matched-run="${row.id}" aria-pressed="${row.id===job.id}">${restartRate(row)}</button>`).join("")}</div>`;
+}
 const badge = job => `<span class="pill status-${escape(status(job).toLowerCase())}">${escape(statusNames[status(job)] || status(job))}</span>`;
 const empty = message => `<div class="empty">${escape(message)}</div>`;
 const metric = (value, name) => `<div class="metric"><strong>${escape(value)}</strong><span>${escape(name)}</span></div>`;
@@ -73,7 +96,7 @@ function switchTab(name) {
 for (const tab of document.querySelectorAll("nav [role=tab]")) {
   tab.addEventListener("click", () => switchTab(tab.getAttribute("aria-controls")));
   tab.addEventListener("keydown", event => {
-    const tabs = [...document.querySelectorAll("nav [role=tab]")];
+    const tabs = [...document.querySelectorAll("nav [role=tab]:not([hidden])")];
     if (!["ArrowRight","ArrowLeft"].includes(event.key)) return;
     event.preventDefault();
     const next = tabs[(tabs.indexOf(tab)+(event.key === "ArrowRight" ? 1 : -1)+tabs.length)%tabs.length];
@@ -85,6 +108,7 @@ for (const tab of document.querySelectorAll("nav [role=tab]")) {
 function openJob(jobId, cycle = "", branch = "", step = null) {
   Object.assign(state,{job:String(jobId),cycle:String(cycle),branch:String(branch),requestedStep:step});
   switchTab("trajectories");
+  byId("trajectory-controls").scrollIntoView({block:"nearest"});
 }
 
 function renderHeader(currentJobs,capturedAt) {
@@ -94,7 +118,7 @@ function renderHeader(currentJobs,capturedAt) {
     [key,currentJobs.filter(job => key === "DONE" ? isDone(job) : status(job) === key).length]).filter(([,n]) => n);
   byId("header-info").innerHTML = statuses.map(([key,n]) =>
     `<span class="pill status-${key.toLowerCase()}">${n} ${escape(statusNames[key].toLowerCase())}</span>`).join("") +
-    `<span class="quiet small">Snapshot ${escape(captureLabel)}</span><span class="quiet small">BRD4 · epoch-45 VAE</span>`;
+    `<span class="quiet small">Snapshot ${escape(captureLabel)}</span><span class="quiet small">${escape(snapshot.model_tag || "BRD4 · epoch-45 VAE")}</span>`;
 }
 
 function renderOverview() {
@@ -142,7 +166,7 @@ function gainPlot(groups) {
 }
 
 function renderComparisons() {
-  const comparisons=jobs.filter(job=>["followup","noise"].includes(job.campaign)||job.result?.paired?.length);
+  const comparisons=jobs.filter(job=>["followup","noise","near-valid-replay"].includes(job.campaign)||job.result?.paired?.length);
   const studies = [...new Set(comparisons.map(studyKey))].map(value => [value,label(value)]);
   state.study=pick(state.study,studies);
   const panels = comparisons.filter(job=>studyKey(job)===state.study);
@@ -171,6 +195,13 @@ function renderComparisons() {
     });
   }
   const target = byId("comparison-content");
+  if(job?.campaign==="near-valid-replay" && job.result?.pairs?.length){
+    target.innerHTML=table(["Source wave","Repair witness","Near-valid best","Exact start","Exact-valid best"],
+      job.result.pairs.map(pair=>[count(pair.source_wave),fmt(pair.fresh_baselines.witness.loss,4),
+        fmt(pair.arms["near-valid"].best_new_fresh_loss,4),fmt(pair.fresh_baselines.exact_start.loss,4),
+        fmt(pair.arms["exact-valid"].best_new_fresh_loss,4)]),[0,1,2,3,4]);
+    return;
+  }
   if (!rows.length) {
     target.innerHTML = state.study === "lineage" && job?.archives?.length
       ? `<div class="empty">Saved lineage scores are available in Elite archives. <button type="button" id="view-lineage" class="run-button">Open archive</button></div>`
@@ -256,8 +287,9 @@ const series = {
   displacement:[6,"Outgoing latent displacement L2"],
 };
 
-function trajectoryPlot(points, field, maxStep) {
-  const [column, description] = series[field];
+function trajectoryPlot(points, field, maxStep, job) {
+  const [column, defaultLabel] = series[field];
+  const description = field === "relaxed" ? relaxedLabel(job) : defaultLabel;
   const numbers = points.map(row=>num(row[column])).filter(value=>value!==null);
   if (!numbers.length) return empty("This metric is unavailable for the selected branch.");
   let lo = Math.min(...numbers), hi = Math.max(...numbers);
@@ -312,9 +344,10 @@ function renderTrajectories() {
   state.branch=pick(state.branch,branchOptions);
   const branch=phase.find(row=>row.name===state.branch);
   byId("trajectory-controls").innerHTML=select("trajectory-job","Run",choices,state.job) +
+    (job?restartRateSwitch(job,jobs):"") +
     (cycleChoices.length>1?select("trajectory-cycle","Cycle",cycleChoices,state.cycle):"") +
     (branchOptions.length?select("trajectory-branch","Branch",branchOptions,state.branch):"") +
-    (branch?.points?.length?select("trajectory-metric","Metric",Object.entries(series).map(([key,v])=>[key,v[1]]),state.metric):"");
+    (branch?.points?.length?select("trajectory-metric","Metric",Object.entries(series).map(([key,v])=>[key,key==="relaxed"?relaxedLabel(job):v[1]]),state.metric):"");
   for (const key of ["job","cycle","branch","metric"]) {
     byId("trajectory-"+key)?.addEventListener("change",event=>{
       state[key]=event.target.value;
@@ -323,6 +356,9 @@ function renderTrajectories() {
       if (key!=="metric") state.requestedStep=null;
       renderTrajectories();
     });
+  }
+  for(const button of byId("trajectory-controls").querySelectorAll("[data-matched-run]")){
+    button.addEventListener("click",()=>openJob(button.dataset.matchedRun,state.cycle,state.branch,state.requestedStep));
   }
   const target=byId("trajectory-content");
   if(!branch?.points?.length) {
@@ -340,7 +376,7 @@ function renderTrajectories() {
     ? (Number.isFinite(branch.parent_fresh_loss) ? `Fresh loss ${fmt(branch.parent_fresh_loss,4)}` : "Saved parent graph")
     : `Update ${branchStart[0]} · ${branchStart[4] ? "Valid" : "Raw graph"}`;
   const maxStep=Math.max(branch.planned_updates||0,points.at(-1)[0],1);
-  const plot=trajectoryPlot(points,state.metric,maxStep);
+  const plot=trajectoryPlot(points,state.metric,maxStep,job);
   const proposal=branch.proposal;
   const context=proposal?.parent && proposal?.proposal ? `<p class="quiet small">${escape(label(branch.arm))} · expected soft bonds ${fmt(proposal.parent.soft_bonds,1)} → ${fmt(proposal.proposal.soft_bonds,1)} at start · ${count(proposal.proposal.edit_count)} hard label edits</p>` : "";
   const candidates=[...new Map(Object.values(branch.candidates||{}).flat()
@@ -376,7 +412,7 @@ function renderTrajectories() {
     byId("selected-molecule").innerHTML=`<header><h3>Update ${step} <span class="pill ${statusStyle}">${statusText}</span></h3><p class="quiet small">${detail}</p></header>`+
       (drawStructure(structure,`${statusText} 2D graph at update ${step}`) || empty("This frame has a saved score and validity, but its structure is unavailable."))+
       (smiles?`<code>${escape(smiles)}</code>`:"");
-    byId("point-detail").innerHTML=`<div class="metrics">${metric(fmt(relaxed,4),"Relaxed contact loss")}${metric(fmt(chem,4),"Chemistry loss")}${metric(fmt(weight,3),"Chemistry weight")}${metric(fmt(displacement,4),"Outgoing L2 step")}</div>`;
+    byId("point-detail").innerHTML=`<div class="metrics">${metric(fmt(relaxed,4),relaxedLabel(job))}${metric(fmt(chem,4),"Chemistry loss")}${metric(fmt(weight,3),"Chemistry weight")}${metric(fmt(displacement,4),"Outgoing L2 step")}</div>`;
     if (plot?.x) {
       const cursor=byId("cursor-line"),dot=byId("cursor-dot");
       cursor.setAttribute("x1",plot.x(step));cursor.setAttribute("x2",plot.x(step));
@@ -424,10 +460,10 @@ function renderTrajectories() {
   setPoint(state.requestedStep===null?0:nearest(state.requestedStep));
 }
 
-function archivePlot(rows) {
+function archivePlot(rows, {metric = "Best fresh contact loss", selectedCycle = ""} = {}) {
   const values=rows.flatMap(row=>row.points.map(p=>p.loss));
   const lo=Math.min(...values),hi=Math.max(...values),margin=(hi-lo||.06)*.14;
-  const maximum=Math.max(5,...rows.flatMap(row=>row.points.map(p=>p.cycle)));
+  const maximum=Math.max(2,...rows.flatMap(row=>row.points.map(p=>p.cycle)));
   const x=value=>scale(value,1,maximum,71,770),y=value=>scale(value,lo-margin,hi+margin,180,24);
   let body="";
   for(let i=1;i<=maximum;i++)body+=line(x(i),19,x(i),186,"grid")+text(x(i),207,i,"middle");
@@ -435,15 +471,83 @@ function archivePlot(rows) {
     const v=lo-margin+(hi-lo+2*margin)*i/4;
     body+=line(70,y(v),770,y(v),"grid")+text(64,y(v)+4,fmt(v,2),"end");
   }
-  body+=text(72,14,"Best fresh contact loss")+text(420,231,"Cycle","middle");
+  body+=text(72,14,metric)+text(420,231,"Cycle","middle");
   for(const row of rows){
-    body+=`<polyline points="${row.points.map(p=>`${x(p.cycle)},${y(p.loss)}`).join(" ")}" fill="none" stroke="${color(row.arm)}" stroke-width="2.5"/>`;
+    const ink=row.ink || color(row.arm);
+    const name=row.name || label(row.arm);
+    body+=`<polyline points="${row.points.map(p=>`${x(p.cycle)},${y(p.loss)}`).join(" ")}" fill="none" stroke="${ink}" stroke-width="2.5"/>`;
     for(const p of row.points){
-      const desc=`${label(row.arm)} · cycle ${p.cycle} · fresh loss ${fmt(p.loss,4)}`;
-      body+=`<circle cx="${x(p.cycle)}" cy="${y(p.loss)}" r="6" fill="${color(row.arm)}" stroke="#fffefa" tabindex="0" data-cycle="${p.cycle}" aria-label="${escape(desc)}">${titleMark(desc)}</circle>`;
+      const desc=`${name} · cycle ${p.cycle} · fresh loss ${fmt(p.loss,4)}`;
+      const selected=String(p.cycle)===selectedCycle;
+      body+=`<circle cx="${x(p.cycle)}" cy="${y(p.loss)}" r="${selected?8:6}" fill="${ink}" stroke="${selected?"#23372c":"#fffefa"}" stroke-width="${selected?2:1}" tabindex="0" role="button" data-cycle="${p.cycle}" aria-label="${escape(desc)}">${titleMark(desc)}</circle>`;
     }
   }
   return svg(body,239,"Best saved fresh Protenix loss by cycle. Lower is better.");
+}
+
+function cycleWinners(job, arm) {
+  const completedCycles=new Set((job.archives || []).map(archive=>Number(archive.cycle)));
+  const best=new Map();
+  for(const branch of job.branches || []){
+    if(arm && branch.arm!==arm)continue;
+    const cycle=Number(branch.cycle);
+    if(!completedCycles.has(cycle))continue;
+    for(const candidate of branch.candidates?.fresh || []){
+      if(candidate.status!=="scored" || !candidate.smiles || !Number.isFinite(candidate.loss))continue;
+      const previous=best.get(cycle);
+      if(!previous || candidate.loss<previous.loss ||
+        (candidate.loss===previous.loss && candidate.smiles<previous.smiles)){
+        best.set(cycle,{...candidate,cycle,branch:branch.name});
+      }
+    }
+  }
+  return [...best.values()].sort((a,b)=>a.cycle-b.cycle);
+}
+
+function renderCycleWinners(job, target) {
+  const rows=matchedRestartJobs(job,jobs).flatMap(run=>{
+    const arms=new Set((run.archives || []).flatMap(archive=>Object.keys(archive.elites)));
+    if(arms.size>1)return [...arms].map(arm=>({
+      job:run, name:label(arm), points:cycleWinners(run,arm), ink:color(arm),
+    }));
+    return [{job:run, name:restartRate(run) || title(run), points:cycleWinners(run),
+      ink:restartRate(run)==="LR 70"?"#6656a4":"#13695e"}];
+  }).filter(row=>row.points.length);
+  if(!rows.length){
+    target.innerHTML=empty("This snapshot has no completed cycle with saved fresh scores.");
+    return;
+  }
+  const cycles=[...new Set(rows.flatMap(row=>row.points.map(point=>point.cycle)))].sort((a,b)=>a-b);
+  const options=cycles.map(cycle=>[cycle,`Cycle ${cycle}`]);
+  state.winnerCycle=pick(state.winnerCycle,options,cycles.at(-1));
+  target.innerHTML=archivePlot(rows,{metric:"Lowest fresh contact loss in this cycle",selectedCycle:state.winnerCycle})+
+    `<div class="legend">${rows.map(row=>`<span><i class="swatch" style="background:${row.ink}"></i>${escape(row.name)}</span>`).join("")}</div>`+
+    `<div class="tree-chart-controls">${select("winner-cycle","Inspect cycle",options,state.winnerCycle)}</div>`+
+    `<div class="cards">${rows.map((row,index)=>{
+      const point=row.points.find(point=>String(point.cycle)===state.winnerCycle);
+      if(!point)return empty(`No scored molecule saved for ${row.name} in this cycle.`);
+      const action=`<div class="molecule-controls"><button type="button" class="run-button" data-winner-row="${index}">Open source trajectory</button></div>`;
+      return moleculeCard(point,`${row.name} · cycle ${point.cycle} · ${point.branch}`,action);
+    }).join("")}</div>`;
+  const inspect=cycle=>{
+    state.winnerCycle=String(cycle);
+    renderCycleWinners(job,target);
+    target.querySelector("#winner-cycle").focus({preventScroll:true});
+  };
+  target.querySelector("#winner-cycle").addEventListener("change",event=>inspect(event.target.value));
+  for(const dot of target.querySelectorAll("[data-cycle]")){
+    dot.addEventListener("click",()=>inspect(dot.dataset.cycle));
+    dot.addEventListener("keydown",event=>{
+      if(event.key==="Enter" || event.key===" "){event.preventDefault();inspect(dot.dataset.cycle);}
+    });
+  }
+  for(const button of target.querySelectorAll("[data-winner-row]")){
+    button.addEventListener("click",()=>{
+      const row=rows[Number(button.dataset.winnerRow)];
+      const point=row.points.find(point=>String(point.cycle)===state.winnerCycle);
+      openJob(row.job.id,point.cycle,point.branch,point.step);
+    });
+  }
 }
 
 function renderArchives(){
@@ -495,5 +599,17 @@ const coverage=snapshot.structure_coverage;
 byId("footer").textContent="Offline snapshot from DTU scheduler and saved optimization artifacts. "+
   (coverage?`${count(coverage.drawn)} of ${count(coverage.frames)} sampled frames have a 2D graph layout. `:"")+
   "Fresh contact loss is a model score for this BRD4 pocket.";
-renderOverview();
+if (snapshot.report_title) {
+  document.title = document.querySelector("h1").textContent = snapshot.report_title;
+  document.querySelector("header .sub").textContent = "Follow each restart to its source and inspect the molecules and losses along a path.";
+  document.querySelector("header .eyebrow").textContent = snapshot.model_tag;
+  byId("tab-overview").hidden = byId("tab-comparisons").hidden = true;
+  const link = document.createElement("a");
+  link.href = "index.html";
+  link.textContent = "← Results overview";
+  link.className = "tree-jump";
+  document.querySelector("header").prepend(link);
+} else {
+  renderOverview();
+}
 switchTab("trees");

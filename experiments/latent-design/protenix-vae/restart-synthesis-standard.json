@@ -1,0 +1,73 @@
+{
+  "study": "synthesis_pilot",
+  "design": {
+    "updates": 500,
+    "schedule_horizon": 500,
+    "seed": 17,
+    "noise_seed": 230017,
+    "occupied_atoms": 25,
+    "learning_rate": 60.0,
+    "max_step_norm": 0.25,
+    "chemistry_initial": 1.0,
+    "chemistry_final": 1.0,
+    "chemistry_hold": 375,
+    "chemistry_ramp_end": 500,
+    "valence_excess_weight": 1.0,
+    "temperature_initial": 1.0,
+    "temperature_final": 1.0,
+    "noise_initial": 0.0,
+    "noise_zero_at": 100
+  },
+  "parent_count": 3,
+  "fresh_per_parent": 6,
+  "parent_panel": {
+    "path": "/work3/s234818/latentmol/assets/synthesis-standard-history-20261119a/founders.json",
+    "sha256": "dafc1c9446f7b82d0d63c5f3d097e809cece77e259bf4b6a3c62bc16db5e3a58"
+  },
+  "research_profile": "exploratory",
+  "synthesis_assets": {
+    "synfrag": {
+      "path": "/work3/s234818/latentmol/assets/restart-synthesis-20261111a/synfrag_default.pth",
+      "sha256": "b199767d33d30dd9314c2a06de35786f29b3b230ca84d3043a830da854b96eba"
+    }
+  },
+  "fresh_scoring_policy": "equal_allowance",
+  "shortlist_policy": "audited-binding-diverse",
+  "guided_controls": true,
+  "waves": 3,
+  "recovery_wave": 3,
+  "chemistry_profile": [
+    1.0,
+    1.0,
+    1.0
+  ],
+  "parent_max_similarity": 0.85,
+  "min_parent_step_gap": 100,
+  "parent_binding_ceiling": 2.35,
+  "apply_binding_ceiling_to_all": true,
+  "tasks": {
+    "seed-1": {
+      "seed": 1811261,
+      "queue": "gpuv100"
+    }
+  },
+  "variants": {
+    "standard": {
+      "ratios": {
+        "synfrag": 0.05
+      },
+      "controller": {
+        "max_ratio": 0.05,
+        "ema_decay": 0.9,
+        "invalid_grace": 20,
+        "invalid_scale": 0.2
+      },
+      "parent_selection": "pareto",
+      "selection_ranking": "diversity",
+      "recovery_start": "terminal"
+    }
+  },
+  "sa_mode": "pre_smoothing",
+  "founder_policy": "audited-near-miss",
+  "confirm_top_hits": 3
+}

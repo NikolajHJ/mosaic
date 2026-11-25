@@ -32,6 +32,8 @@ class Branch:
     shortlist: int
     strength: float | None = None
     update_noise: float | None = None
+    cap_final: float | None = None
+    no_bond_weight: float | None = None
 
     @property
     def name(self):
@@ -46,6 +48,10 @@ def budgets(comparison, *, feedback=False):
                      for key in ("parents", "cycles", "branches_per_parent", "updates", "shortlist"))
                      or not math.isfinite(comparison["high_score_ceiling"])):
         raise ValueError("Invalid lineage feedback budget or high-score ceiling")
+    hybrid_priors = comparison.get("hybrid_prior_children", 0)
+    if (type(hybrid_priors) is not int or not 0 <= hybrid_priors <= comparison["parents"]
+            or (hybrid_priors and (not feedback or comparison["branches_per_parent"] < 2))):
+        raise ValueError("Hybrid priors may replace at most one repeat per parent in a lineage feedback study")
     if "variants" in comparison:
         runs = [updates for variant in comparison["variants"].values() for updates in variant["updates"]]
         branches = comparison["parents"] * len(runs)
@@ -65,7 +71,8 @@ def paired_branches(parents, comparison, design, seed):
             for repeat, updates in enumerate(variant["updates"]):
                 yield Branch(arm, parent, index, repeat, seed + 100 * index + repeat,
                     updates, variant.get("cap", design.max_step_norm), variant["policy"], variant["shortlist"],
-                    variant.get("strength"), variant.get("update_noise"))
+                    variant.get("strength"), variant.get("update_noise"), variant.get("cap_final"),
+                    variant.get("no_bond_weight"))
 
 
 def parent_record(parent):
@@ -96,6 +103,19 @@ def matched_shortlists(branches, reserves, arm_caches, limit):
     return selections
 
 
+def matched_parent_shortlists(branches, reserves, arm_caches, limit):
+    """Match attempts within each parent and reserve identities across parents."""
+    reserved = {arm: set(cache) for arm, cache in arm_caches.items()}
+    selections = {}
+    for parent in dict.fromkeys(branch.parent_index for branch in branches):
+        group = [branch for branch in branches if branch.parent_index == parent]
+        selected = matched_shortlists(group, reserves, reserved, limit)
+        selections.update(selected)
+        for branch in group:
+            reserved[branch.arm].update(row.smiles for row in selected[branch.name]["mixed"])
+    return selections
+
+
 def score_shortlists(fresh_score, root, selections, cache):
     pending = {}
     for name, lists in selections.items():
@@ -118,7 +138,7 @@ def score_shortlists(fresh_score, root, selections, cache):
 
 def run_batch(decoder, make_scorer, fresh_score, design, root, branches, cache, *,
               compare_shortlists=False, first_batch=True, noise_study=False,
-              arm_caches=None, fresh_limit=None):
+              arm_caches=None, fresh_limit=None, match_by_parent=False):
     if noise_study:
         from latentmol.design.protenix_restart_noise import propose_noise_start
 
@@ -130,11 +150,14 @@ def run_batch(decoder, make_scorer, fresh_score, design, root, branches, cache, 
             parent = branch.parent
             proposal_kwargs = dict(policy=branch.policy, seed=branch.seed,
                                    temperature=design.temperature_initial)
+            noise_kwargs = {"no_bond_weight": branch.no_bond_weight} if branch.no_bond_weight is not None else {}
             proposal = (propose_noise_start(decoder, parent.candidate, parent.active,
-                                            strength=branch.strength, **proposal_kwargs)
+                                            strength=branch.strength, **proposal_kwargs, **noise_kwargs)
                         if noise_study else
                         propose_start(decoder, parent.candidate, parent.active, **proposal_kwargs))
             config = replace(design, updates=branch.updates, max_step_norm=branch.cap)
+            if branch.cap_final is not None:
+                config = replace(config, max_step_norm_final=branch.cap_final)
             if branch.update_noise is not None:
                 config = replace(config, noise_initial=branch.update_noise,
                                  noise_seed=design.noise_seed + branch.seed)
@@ -145,7 +168,7 @@ def run_batch(decoder, make_scorer, fresh_score, design, root, branches, cache, 
                     preferred = select_candidates(eligible, limit, False)["mixed"]
                     preferred_ids = {row.smiles for row in preferred}
                     reserve = preferred + [row for row in eligible if row.smiles not in preferred_ids]
-                    selections[branch.name] = {"mixed": reserve[:fresh_limit]}
+                    selections[branch.name] = {"mixed": reserve if match_by_parent else reserve[:fresh_limit]}
                     return reserve[:fresh_limit]
                 # Include an independent start in its own fresh budget. Elite
                 # starts already have a matched archived score.
@@ -167,7 +190,8 @@ def run_batch(decoder, make_scorer, fresh_score, design, root, branches, cache, 
     finally:
         scorer.close()
     if arm_caches is not None:
-        selections = matched_shortlists(branches, selections, arm_caches, fresh_limit)
+        match = matched_parent_shortlists if match_by_parent else matched_shortlists
+        selections = match(branches, selections, arm_caches, fresh_limit)
     planned = {name: {policy: [dict(smiles=r.smiles, step=r.step, relaxed_loss=r.relaxed_loss)
                                 for r in rows] for policy, rows in lists.items()}
                for name, lists in selections.items()}
@@ -191,13 +215,14 @@ def run_batch(decoder, make_scorer, fresh_score, design, root, branches, cache, 
         noise_metadata = (dict(strength=branch.strength, update_noise=branch.update_noise,
                                proposal=json.loads((root / branch.name / "start.json").read_text())["proposal"])
                           if noise_study else {})
+        cap_metadata = (dict(max_step_norm_final=branch.cap_final) if branch.cap_final is not None else {})
         readouts.append(dict(name=branch.name, arm=branch.arm, parent_index=branch.parent_index,
             repeat=branch.repeat,
             parent_smiles=branch.parent.candidate.smiles, parent_fresh_loss=branch.parent.fresh_loss,
             parent_provenance=branch.parent.provenance, active_slots=branch.parent.active.nonzero().flatten().tolist(),
             policy=branch.policy, seed=branch.seed, max_step_norm=branch.cap, summary=data,
             candidates={policy: [row | branch_cache[row["smiles"]] for row in rows]
-                        for policy, rows in planned[branch.name].items()}, **noise_metadata))
+                        for policy, rows in planned[branch.name].items()}, **noise_metadata, **cap_metadata))
     write_json(root / "batch.json", dict(new_fresh_attempts=attempts, native_identity=scorer.identity,
                optimization_updates=sum(branch.updates for branch in branches), branches=readouts))
     return selections, readouts
@@ -219,6 +244,44 @@ def paired_summary(readouts):
     return [row | {"gain": row["parent_fresh_loss"] - row["best"]} for row in groups.values()]
 
 
+def matched_paired_limits(comparison, *, step_cap=False):
+    variants = list(comparison.get("variants", {}).values())
+    if len(variants) < 2 or comparison.get("compare_shortlists"):
+        raise ValueError("Matched paired budgets require at least two arms and one shortlist policy")
+    updates, shortlist = variants[0]["updates"], variants[0]["shortlist"]
+    if (not updates or any(type(count) is not int or count < 1 for count in updates)
+            or type(shortlist) is not int or shortlist < 1
+            or any(variant["updates"] != updates or variant["shortlist"] != shortlist for variant in variants)):
+        raise ValueError("Matched arms require the same branch updates and shortlist slots")
+    if step_cap and (any(count != 500 for count in updates)
+                     or len({(variant["policy"], variant.get("update_noise")) for variant in variants}) != 1):
+        raise ValueError("Step cap arms require paired starts, paired noise, and 500 updates per branch")
+    return sum(updates), len(updates) * shortlist
+
+
+def paired_budget_readout(readouts, *, updates_per_parent, attempts_per_parent):
+    groups = {}
+    for branch in readouts:
+        parent = groups.setdefault(branch["parent_index"], {})
+        arm = parent.setdefault(branch["arm"], dict(updates=0, fresh_attempts=0, fresh_scored=0))
+        candidates = branch["candidates"]["mixed"]
+        arm["updates"] += branch["summary"]["updates"]
+        arm["fresh_attempts"] += len(candidates)
+        arm["fresh_scored"] += sum(row["loss"] is not None for row in candidates)
+    totals = {}
+    for parent in groups.values():
+        if ({row["updates"] for row in parent.values()} != {updates_per_parent}
+                or len({row["fresh_attempts"] for row in parent.values()}) != 1
+                or any(row["fresh_attempts"] > attempts_per_parent for row in parent.values())):
+            raise ValueError(f"Paired arms have inconsistent realized budgets: {parent}")
+        for name, row in parent.items():
+            total = totals.setdefault(name, dict.fromkeys(row, 0))
+            for key, value in row.items():
+                total[key] += value
+    return dict(updates_per_parent=updates_per_parent, fresh_attempt_limit_per_parent=attempts_per_parent,
+                by_parent=groups, by_arm=totals)
+
+
 def analyze_noise_paths(root, branches, sources):
     from latentmol.design.protenix_restart_path_metrics import PathTrace, read_hard_path, read_path, summarize_paths
 
@@ -229,6 +292,26 @@ def analyze_noise_paths(root, branches, sources):
         expected_updates=branch.updates, hard_observations=read_hard_path(root / branch.name / "raw-blocks"))
         for branch in branches]
     return summarize_paths(traces)
+
+
+def early_bond_readout(root, branches):
+    """Summarize graph density before and during the first 100 updates."""
+    readout = []
+    for branch in branches:
+        with (root / branch.name / "metrics.jsonl").open(encoding="utf-8") as stream:
+            rows = []
+            for line in stream:
+                row = json.loads(line)
+                if row["step"] > 100:
+                    break
+                rows.append(row)
+        first = rows[0]
+        readout.append(dict(branch=branch.name, arm=branch.arm, parent_index=branch.parent_index,
+            initial_hard_bonds=first["hard_bond_count"], initial_soft_bond_mass=first["soft_bond_mass"],
+            max_hard_bonds=max(row["hard_bond_count"] for row in rows),
+            max_soft_bond_mass=max(row["soft_bond_mass"] for row in rows),
+            valid_observations=sum(row["raw_valid"] for row in rows), observations=len(rows)))
+    return readout
 
 
 def draw_prior(decoder, design, used, seed):
@@ -281,8 +364,11 @@ def lineage_feedback(decoder, make_scorer, fresh_score, design, output, parents,
 
     initial = {parent.candidate.smiles: parent for parent in parents}
     fixed = ranked(initial)
-    archives = {arm: dict(initial) for arm in FEEDBACK_ARMS}
-    caches = {arm: dict(cache) for arm in FEEDBACK_ARMS}
+    hybrid_priors = comparison.get("hybrid_prior_children", 0)
+    middle_arm = "hybrid" if hybrid_priors else "fixed"
+    arms = ("adaptive", middle_arm, "independent")
+    archives = {arm: dict(initial) for arm in arms}
+    caches = {arm: dict(cache) for arm in arms}
     used_priors = set(initial)
     repeats, updates, shortlist = (comparison[key] for key in ("branches_per_parent", "updates", "shortlist"))
     updates_per_arm = len(fixed) * repeats * updates
@@ -290,22 +376,28 @@ def lineage_feedback(decoder, make_scorer, fresh_score, design, output, parents,
     cycles = []
     for cycle in range(1, comparison["cycles"] + 1):
         adaptive = ranked(archives["adaptive"])[:len(fixed)]
+        middle = ranked(archives["hybrid"])[:len(fixed)] if hybrid_priors else fixed
+        prior_ranks = {(cycle - 1 + index) % len(fixed) for index in range(hybrid_priors)}
         branches = []
         first_prior_seed = prior_seed
-        for index, (elite, initial_parent) in enumerate(zip(adaptive, fixed)):
+        for index, (elite, middle_parent) in enumerate(zip(adaptive, middle, strict=True)):
             for repeat in range(repeats):
                 prior, prior_seed = draw_prior(decoder, design, used_priors, prior_seed)
                 slot_seed = seed + 10000 * (cycle - 1) + 100 * index + repeat
-                for arm, parent, policy in (("adaptive", elite, "latent"), ("fixed", initial_parent, "latent"),
+                # Keep a child of each elite. Rotate which ranks yield their final repeat
+                # to the exact same prior drawn for the independent arm at that slot.
+                use_prior = index in prior_ranks and repeat == repeats - 1
+                source, policy = (prior, "none") if use_prior else (middle_parent, "latent")
+                for arm, parent, policy in (("adaptive", elite, "latent"), (middle_arm, source, policy),
                                             ("independent", prior, "none")):
                     branches.append(Branch(arm, parent, index, repeat, slot_seed, updates,
                                            design.max_step_norm, policy, shortlist))
         root = output / f"cycle-{cycle:02d}"
         selections, readouts = run_batch(decoder, make_scorer, fresh_score, design, root, branches, None,
             first_batch=cycle == 1, arm_caches=caches, fresh_limit=limit)
-        fresh_attempts = dict.fromkeys(FEEDBACK_ARMS, 0)
-        fresh_scored = dict.fromkeys(FEEDBACK_ARMS, 0)
-        actual_updates = dict.fromkeys(FEEDBACK_ARMS, 0)
+        fresh_attempts = dict.fromkeys(arms, 0)
+        fresh_scored = dict.fromkeys(arms, 0)
+        actual_updates = dict.fromkeys(arms, 0)
         for branch, readout in zip(branches, readouts, strict=True):
             arm = branch.arm
             actual_updates[arm] += readout["summary"]["updates"]
@@ -326,12 +418,17 @@ def lineage_feedback(decoder, make_scorer, fresh_score, design, output, parents,
             eligible = {smiles: (parent.candidate, parent.fresh_loss) for smiles, parent in archive.items()
                         if smiles not in initial and parent.fresh_loss <= comparison["high_score_ceiling"]}
             high[arm] = list(select_diverse_output(eligible, len(eligible), max_similarity=0.60)) if eligible else []
-        cycles.append(dict(cycle=cycle, updates=sum(actual_updates.values()), updates_by_arm=actual_updates,
+        summary = dict(cycle=cycle, updates=sum(actual_updates.values()), updates_by_arm=actual_updates,
             fresh_attempt_limit=limit, fresh_attempt_shortfall=limit - min(fresh_attempts.values()),
             fresh_attempts=fresh_attempts, fresh_scored=fresh_scored, prior_draws=prior_seed - first_prior_seed,
             best={arm: rows[0].fresh_loss for arm, rows in leaders.items()},
             top_three_mean={arm: sum(parent.fresh_loss for parent in rows) / len(rows) for arm, rows in leaders.items()},
-            diverse_high_scorers={arm: len(smiles) for arm, smiles in high.items()}, diverse_high_smiles=high))
+            diverse_high_scorers={arm: len(smiles) for arm, smiles in high.items()}, diverse_high_smiles=high)
+        if hybrid_priors:
+            summary["prior_starts_by_arm"] = {
+                arm: sum(branch.arm == arm and branch.policy == "none" for branch in branches) for arm in arms
+            }
+        cycles.append(summary)
     return cycles
 
 
@@ -340,11 +437,16 @@ def run_study(decoder, make_scorer, fresh_score, config, task_name, output, chec
     comparison = config["comparisons"][task["comparison"]]
     noise_study = config.get("study") == "initialization_noise"
     feedback = config.get("study") == "lineage_feedback"
+    step_cap = config.get("study") == "step_cap"
+    matched_paired = step_cap or comparison.get("matched_fresh", False)
+    paired_limits = matched_paired_limits(comparison, step_cap=step_cap) if matched_paired else None
     budget = budgets(comparison, feedback=feedback)
-    design = LatentDesignConfig(**config["design"])
-    expected_lr = 70 if noise_study or feedback else 150
+    design = LatentDesignConfig.for_restart(config["design"])
+    expected_lr = 70 if noise_study or feedback or step_cap else 150
     if design.learning_rate != expected_lr or design.chemistry_initial != design.chemistry_final:
         raise ValueError(f"Require LR {expected_lr} and a common constant chemistry weight")
+    if step_cap and design.schedule_horizon != 500:
+        raise ValueError("Step cap schedules require a 500-update horizon")
     decoder.eval().requires_grad_(False)
     if any(p.grad is not None for p in decoder.parameters()):
         raise ValueError("Frozen decoder carries preexisting gradients")
@@ -377,13 +479,22 @@ def run_study(decoder, make_scorer, fresh_score, config, task_name, output, chec
             if any(source.get(p.candidate.step) != p.candidate.smiles
                    for p, source in zip(parents, sources)):
                 raise ValueError("Archived source trajectory does not contain its recorded parent identity")
+        arm_caches = {arm: dict(cache) for arm in comparison["variants"]} if matched_paired else None
         _, readouts = run_batch(decoder, make_scorer, fresh_score, design, paired, branches,
                                 cache, compare_shortlists=comparison.get("compare_shortlists", False),
-                                noise_study=noise_study)
+                                noise_study=noise_study, arm_caches=arm_caches,
+                                fresh_limit=paired_limits[1] if paired_limits else None,
+                                match_by_parent=matched_paired)
         result = dict(paired=paired_summary(readouts))
+        if paired_limits:
+            result["matched_budget"] = paired_budget_readout(
+                readouts, updates_per_parent=paired_limits[0], attempts_per_parent=paired_limits[1])
         if noise_study:
             write_json(output / "path-analysis.json", analyze_noise_paths(paired, branches, sources))
             result["path_analysis"] = "path-analysis.json"
+            if comparison.get("report_bond_density"):
+                write_json(output / "early-bond-density.json", early_bond_readout(paired, branches))
+                result["early_bond_density"] = "early-bond-density.json"
         if comparison.get("compare_shortlists", False):
             result["matched_first_branch"] = paired_summary([row for row in readouts if row["repeat"] == 0])
     else:
@@ -393,8 +504,12 @@ def run_study(decoder, make_scorer, fresh_score, config, task_name, output, chec
         result = dict(cycles=cycles)
     if _model_identity(decoder) != identity or any(p.grad is not None for p in decoder.parameters()):
         raise ValueError("Frozen decoder parameters or gradients changed")
-    attempts = (sum(sum(cycle["fresh_attempts"].values()) for cycle in cycles)
-                if feedback else len(cache) - len(parents))
+    if paired_limits:
+        attempts = sum(row["fresh_attempts"] for row in result["matched_budget"]["by_arm"].values())
+    elif feedback:
+        attempts = sum(sum(cycle["fresh_attempts"].values()) for cycle in cycles)
+    else:
+        attempts = len(cache) - len(parents)
     result.update(status="completed", budget=budget, new_fresh_attempts=attempts)
     write_json(output / "result.json", result)
     return result

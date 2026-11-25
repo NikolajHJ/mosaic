@@ -1,0 +1,35 @@
+{
+  "study": "boltz_precision",
+  "scorer": {"kind": "boltz2_dbmol", "assets_config": "restart-boltz-dtu.json"},
+  "search_config": "restart-multitarget.json",
+  "target_arm": "erk2",
+  "children": 1,
+  "updates": 200,
+  "cpu_threads": 2,
+  "child_seed": 281113,
+  "checkpoints": [0, 50, 100, 200],
+  "parent_state": {
+    "path": "/work3/s234818/latentmol/runs/boltz-restart-timing-20261112b-a10-erk2/search-state.pt",
+    "sha256": "c8de6fa0505e13560e1404f2df1a912430625fa2876280edaf75809f19b9df90"
+  },
+  "startup_timeout": 1800,
+  "case_timeout": 7200,
+  "scoring_timeout": 3600,
+  "output_cap_mib": 128,
+  "cases": {
+    "fp32": {"parallel": 1, "execution": {
+      "tf32": false, "autocast": "none", "checkpoint_every": 1, "checkpoint_preserve_rng_state": true
+    }},
+    "bf16": {"parallel": 1, "execution": {
+      "tf32": false, "autocast": "bfloat16_blocks", "checkpoint_every": 1, "checkpoint_preserve_rng_state": true
+    }}
+  },
+  "tasks": {
+    "seed-a": {"queue": "gpul40s", "child_seed": 281113, "case_order": ["fp32", "bf16"]},
+    "seed-b": {"queue": "gpul40s", "child_seed": 281114, "case_order": ["bf16", "fp32"]},
+    "seed-c": {"queue": "gpul40s", "child_seed": 281115, "case_order": ["fp32", "bf16"]},
+    "seed-d": {"queue": "gpul40s", "child_seed": 281116, "case_order": ["bf16", "fp32"]},
+    "seed-e": {"queue": "gpua100", "child_seed": 281117, "case_order": ["fp32", "bf16"]},
+    "seed-f": {"queue": "gpua100", "child_seed": 281118, "case_order": ["bf16", "fp32"]}
+  }
+}

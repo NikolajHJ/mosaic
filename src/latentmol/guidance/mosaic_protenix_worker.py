@@ -96,7 +96,12 @@ class NativeServer:
             expected=config.get("expected_"+field)
             if expected is not None and self.before[field]!=expected:
                 raise ValueError("Frozen native identity differs: " + field)
-        loss = NativeContactLoss(8.,map_protenix_pocket(self.context,pocket))
+        if pocket.get("version") == "protenix-explicit-pocket-v1":
+            from latentmol.guidance.protenix_pocket import map_explicit_pocket
+            pocket_tokens = map_explicit_pocket(self.context, pocket)
+        else:
+            pocket_tokens = map_protenix_pocket(self.context, pocket)
+        loss = NativeContactLoss(8., pocket_tokens)
         self.key = jax.random.key(int(config.get("model_key",17)))
         context,model,key = self.context,self.model,self.key
         elements, formal_charges = self.atomic_numbers, self.formal_charges

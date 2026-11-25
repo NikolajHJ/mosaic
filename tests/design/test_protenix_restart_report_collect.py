@@ -31,10 +31,9 @@ def test_manifest_defaults_and_explicit_job_selection(tmp_path):
     collector = report_module("collect")
     default = collector.select_runs(collector.DEFAULT_MANIFEST)
     all_runs = collector.select_runs(collector.DEFAULT_MANIFEST, all_runs=True)
-    assert [job["id"] for job in default] == [
-        29914616, 29914617, 29914618, 29914683, 29914684, 29914686,
-        29914687, 29914688, 29914689, 29914690, 29914691,
-    ]
+    excluded = {29916515, 29916522, 29916530}
+    assert [job["id"] for job in default] == [job["id"] for job in all_runs if job["id"] not in excluded]
+    assert {29926090, 29926097, 29943712, 29948379, 29973695} <= {job["id"] for job in default}
     assert len(all_runs) > len(default)
     subset = collector.select_runs(collector.DEFAULT_MANIFEST, job_ids=[29926073, 29920256, 29924369])
     assert [job["id"] for job in subset] == [29926073, 29920256, 29924369]

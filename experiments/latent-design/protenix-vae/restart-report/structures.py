@@ -66,13 +66,18 @@ def _raw_structure(graph, periodic_table):
 def build_structures(snapshot: dict) -> dict[str, object]:
     """Return normalized, y-down 2D graphs indexed by SMILES or raw graph key."""
     smiles_set = set()
+    raw_keys = set()
     for job in snapshot.get("jobs", []):
         for archive in job.get("archives") or []:
             for elites in archive.get("elites", {}).values():
                 smiles_set.update(elite.get("smiles") for elite in elites)
         for branch in job.get("branches") or []:
             smiles_set.add(branch.get("parent_smiles"))
-            smiles_set.update(row[5] for row in branch.get("points") or [] if row[4])
+            for row in branch.get("points") or []:
+                if row[4]:
+                    smiles_set.add(row[5])
+                elif len(row) > 7 and row[7]:
+                    raw_keys.add(row[7])
             for candidates in (branch.get("candidates") or {}).values():
                 smiles_set.update(row.get("smiles") for row in candidates)
 
@@ -86,6 +91,7 @@ def build_structures(snapshot: dict) -> dict[str, object]:
                 continue
             if structure is not None:
                 structures[smiles] = structure
-        for key, graph in (snapshot.get("raw_graphs") or {}).items():
-            structures[key] = _raw_structure(graph, periodic_table)
+        raw_graphs = snapshot.get("raw_graphs") or {}
+        for key in sorted(raw_keys & raw_graphs.keys()):
+            structures[key] = _raw_structure(raw_graphs[key], periodic_table)
     return structures

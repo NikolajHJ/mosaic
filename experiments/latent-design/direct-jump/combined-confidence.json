@@ -1,0 +1,62 @@
+{
+  "target": "BRD4 3MXF chain A, Protenix JQ1 pocket contact and Nesso-1 affinity and binder probability",
+  "optimization_space": "direct_neutral_atom_and_unordered_bond_probabilities",
+  "seeds": [
+    111310,
+    111410
+  ],
+  "repair_weights": [
+    2.0
+  ],
+  "learning_rate": 60.0,
+  "compare_repair_weights": false,
+  "max_step_norm": 0.5,
+  "contact_weight": 1.0,
+  "atom_preservation": 0.0,
+  "substructure_preservation": 0.0,
+  "occupied_atoms": 25,
+  "founder_updates": 700,
+  "child_updates": 700,
+  "child_generations": 6,
+  "parents": 4,
+  "children_per_parent": 3,
+  "probability_floor": 0.0001,
+  "connectivity_operator": "none",
+  "update_noise": 0.0,
+  "restart_mass": 0.002,
+  "restart_mass_after_merge": 0.01,
+  "search_versions": {
+    "confidence": {
+      "vina_weight": 0.5,
+      "gradient_shares": {
+        "protenix": 0.35,
+        "affinity": 0.35,
+        "confidence": 0.3
+      }
+    }
+  },
+  "vina_parent_panel": {
+    "receptor": {
+      "path": "/work3/s234818/latentmol/assets/vina-brd4-3mxf-v1/receptor.pdbqt",
+      "sha256": "f29be065ba549af5cd65e14b082ee90ff905ce454d95fd1f42b522783bbae721"
+    },
+    "box": {
+      "path": "/work3/s234818/latentmol/assets/vina-brd4-3mxf-v1/box.json",
+      "sha256": "0abcc293b9597c8a4766899d91763aafc7baa6765f821626a6f08500a34e78ed"
+    },
+    "python": "/work3/s234818/latentmol/assets/vina-brd4-3mxf-v1/env/bin/python",
+    "panel_size": 8,
+    "seed": 1701,
+    "exhaustiveness": 4
+  },
+  "calibration_steps": [
+    0,
+    1,
+    4,
+    8,
+    16,
+    32,
+    48
+  ],
+  "matched_child_generations": 5
+}

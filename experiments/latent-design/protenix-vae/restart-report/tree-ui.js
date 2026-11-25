@@ -1,24 +1,31 @@
 "use strict";
 
 const RestartTreeView = (() => {
-  let pendingData;
-  let runId = "";
+  let index;
+  let decoded;
+  const initial = new URLSearchParams(window.location.search);
+  const hashJob = new URLSearchParams(window.location.hash.slice(1)).get("job");
+  if (hashJob && !initial.has("run")) initial.set("run",hashJob);
+  let runId = initial.get("run") || "";
   let cleanup = () => {};
   let request = 0;
   const green = "#178553";
   const yellow = "#eac73b";
   const pathInk = "#294d92";
 
-  function load() {
-    pendingData ??= (async () => {
-      const encoded = byId("tree-payload").textContent.trim();
-      if (!encoded) return {jobs:[],structures:{},raw_graphs:{}};
+  function load(id) {
+    if (decoded?.id === id) return decoded.pending;
+    const pending = (async () => {
+      const encoded = byId(`tree-payload-${id}`)?.textContent.trim();
+      if (!encoded) throw new Error("Missing saved tree payload for this run.");
       const bytes = typeof Uint8Array.fromBase64 === "function"
         ? Uint8Array.fromBase64(encoded) : Uint8Array.from(atob(encoded),char=>char.charCodeAt(0));
       const stream = new Blob([bytes]).stream().pipeThrough(new DecompressionStream("gzip"));
       return new Response(stream).json();
     })();
-    return pendingData;
+    decoded = {id, pending};
+    pending.catch(() => { if (decoded?.pending === pending) decoded = undefined; });
+    return pending;
   }
 
   const nodeLabel = node => [
@@ -61,32 +68,41 @@ const RestartTreeView = (() => {
     byId("tree-controls").textContent = "";
     content.innerHTML = empty("Loading the saved state trees…");
     try {
-      const data = await load();
-      if (request!==current || byId("trees").hidden) return;
-      const jobs = data.jobs || [];
+      index ??= JSON.parse(byId("tree-index").textContent);
+      const jobs = index.jobs;
       if (!jobs.length) {
         content.innerHTML=empty("No saved tree data is available in this report.");
         return;
       }
-      renderHeader(jobs,data.captured_at);
-      const available = job => job.branches?.some(branch=>branch.states?.length);
-      const hasFork=job=>job.branches?.some(branch=>branch.source&&branch.states?.length);
+      renderHeader(jobs,index.captured_at);
+      const available = job => job.has_states;
+      const hasFork = job => job.has_fork;
       const best = jobs.find(job=>isDone(job)&&hasFork(job)) || jobs.find(hasFork) ||
         jobs.find(job=>isDone(job)&&available(job)) || jobs.find(available) || jobs[0];
       if (!jobs.some(job=>String(job.id)===runId)) runId=String(best.id);
-      const job=jobs.find(row=>String(row.id)===runId);
+      const entry=jobs.find(row=>String(row.id)===runId);
       const choices=[
         ["Completed runs",jobs.filter(row=>isDone(row))],
         ["Runs with partial or pending data",jobs.filter(row=>!isDone(row))],
       ];
       byId("tree-controls").innerHTML=`<label for="tree-run">Experiment<select id="tree-run">${choices.filter(([,group])=>group.length)
         .map(([name,group])=>`<optgroup label="${escape(name)}">${group.map(row=>option(row.id,`${title(row)} · ${row.id}`,runId)).join("")}</optgroup>`).join("")}</select></label>`+
-        `<span class="quiet small">Tree snapshot ${escape(formatTreeDate(data.captured_at))}</span>`;
-      byId("tree-run").addEventListener("change",event=>{runId=event.target.value;render();});
-      if (!available(job)) {
-        content.innerHTML = badge(job)+empty(job.reason || "This run has no saved state tree yet.");
+        restartRateSwitch(entry,jobs)+
+        `<span class="quiet small">Tree snapshot ${escape(formatTreeDate(index.captured_at))}</span>`;
+      const choose=id=>{runId=String(id);render();};
+      byId("tree-run").addEventListener("change",event=>choose(event.target.value));
+      for(const button of byId("tree-controls").querySelectorAll("[data-matched-run]")){
+        button.addEventListener("click",()=>choose(button.dataset.matchedRun));
+      }
+      if (!available(entry)) {
+        decoded = undefined;
+        content.innerHTML = badge(entry)+empty(entry.reason || "This run has no saved state tree yet.");
         return;
       }
+      const data = await load(runId);
+      if (request!==current || byId("trees").hidden) return;
+      const job = data.job;
+      if (String(job?.id) !== runId) throw new Error("Tree payload does not match the selected run.");
       const model=ProtenixTree.build(job);
       if(!model.nodes.length) {
         content.innerHTML=empty("This run has no distinct saved states to display.");
@@ -121,6 +137,8 @@ const RestartTreeView = (() => {
       `${count(leaves.length)} ${leaves.length===1?"leaf":"leaves"}`,`${count(forks)} recorded restarts`,
     ].join(" · ");
     const disclaimer = !isDone(job) ? " · partial tree" : "";
+    const lossOptions = [["relaxed",relaxedLabel(job)],["chemistry","Repair loss"],["valence","Valence excess"]];
+    if (job.has_blend_components) lossOptions.push(["contact","Relaxed Protenix contact loss"],["affinity","Relaxed Nesso affinity"]);
     content.innerHTML=`<div class="legend tree-legend">${badge(job)}<span>${escape(summary+disclaimer)}</span><span><i class="swatch tree-valid"></i>Valid</span><span><i class="swatch tree-invalid"></i>Invalid</span><span><i class="swatch tree-selected"></i>Selected path</span></div>
       <div class="tree-stack">
         <div class="tree-panel">
@@ -130,6 +148,7 @@ const RestartTreeView = (() => {
             <button type="button" id="tree-minus" aria-label="Zoom out">−</button>
             <button type="button" id="tree-fit-path">Fit selected path</button>
             <button type="button" id="tree-latest">Latest leaf</button>
+            <a href="#tree-cycle-winners" class="tree-cycle-jump">Cycle winners ↓</a>
             <a href="#tree-inspection" class="tree-jump">Inspect selected path ↓</a>
           </div>
           <div class="tree-stage" id="tree-stage">
@@ -143,7 +162,7 @@ const RestartTreeView = (() => {
             <div><h3 id="tree-loss-title">Selected path loss</h3><p class="quiet small" id="tree-loss-coverage"></p></div>
             <div class="tree-chart-controls">
               ${select("tree-leaf","Leaf", [["","Select a leaf"], ...leaves.map(node=>[node.index,nodeLabel(node)])],"")}
-              ${select("tree-loss-metric","Metric",[["relaxed","Relaxed contact loss"],["chemistry","Repair loss"],["valence","Valence excess"]],"relaxed")}
+              ${select("tree-loss-metric","Metric",lossOptions,"relaxed")}
             </div>
           </div>
           <div id="tree-loss-chart" class="tree-loss-chart"></div>
@@ -164,9 +183,15 @@ const RestartTreeView = (() => {
           </div>
           <div id="tree-node"></div>
         </section>
+        <section class="tree-inspector tree-chart-panel" id="tree-cycle-winners" aria-labelledby="tree-winner-title">
+          <div class="tree-section-header"><div><h3 id="tree-winner-title">Best valid molecule per cycle</h3>
+          <p class="quiet small">Each point is the lowest fresh Protenix loss among valid molecules scored in that cycle. Select a cycle to see its winners and their source updates.</p></div></div>
+          <div id="tree-winner-content"></div>
+        </section>
       </div>
       <p class="tree-note">An unchanged hard state occupies one node within a branch. An independent start has its own root.${missing ? ` Raw topology is unavailable for ${escape(count(missing))} saved observations.` : ""}</p>`;
 
+    renderCycleWinners(jobs.find(row=>String(row.id)===String(job.id)) || job,byId("tree-winner-content"));
     const canvas=byId("tree-canvas");
     const ctx=canvas.getContext("2d");
     const stage=byId("tree-stage");
@@ -312,7 +337,7 @@ const RestartTreeView = (() => {
         (restart?`<p class="quiet small">${escape(restart)}</p>`:"")+
         (drawStructure(graph,`${validLabel} graph at update ${point.step}`)||empty("This state has no saved molecular graph."))+
         (node.smiles?`<code class="mono-block">${escape(node.smiles)}</code>`:"")+
-        `<p class="quiet small">${Number.isFinite(point.relaxed)?`Relaxed contact loss ${fmt(point.relaxed,5)}`:""}${graph?.raw?` · Raw topology with ${graph.atoms.length} atoms and ${graph.bonds.length} bonds`:""}</p>`;
+        `<p class="quiet small">${Number.isFinite(point.relaxed)?`${escape(relaxedLabel(job))} ${fmt(point.relaxed,5)}`:""}${graph?.raw?` · Raw topology with ${graph.atoms.length} atoms and ${graph.bonds.length} bonds`:""}</p>`;
       if(follow&&!visibleNode(node)){
         view.ox=width/2-node.x*view.sx;
         view.oy=height/2-node.y*view.sy;
@@ -398,9 +423,9 @@ const RestartTreeView = (() => {
     });
     byId("tree-export").addEventListener("click",()=>{
       const quote=value=>'"'+String(value??"").replaceAll('"','""')+'"';
-      const rows=points.map(({node,step,depth,relaxed,chemistry,weight,valence,restart})=>
-        [depth,node.cycle,node.branch,step,relaxed,chemistry,weight,valence,node.valid,node.smiles,restart].map(quote).join(","));
-      const csv=["path_step,cycle,branch,update,relaxed_loss,repair_loss,repair_weight,valence_excess,valid,smiles,restart",...rows].join("\n");
+      const rows=points.map(({node,step,depth,relaxed,chemistry,weight,valence,restart,contact,affinity})=>
+        [depth,node.cycle,node.branch,step,relaxed,chemistry,weight,valence,node.valid,node.smiles,restart,...(job.has_blend_components?[contact,affinity]:[])].map(quote).join(","));
+      const csv=["path_step,cycle,branch,update,relaxed_loss,repair_loss,repair_weight,valence_excess,valid,smiles,restart"+(job.has_blend_components?",relaxed_protenix_contact,relaxed_nesso_affinity":""),...rows].join("\n");
       const url=URL.createObjectURL(new Blob([csv],{type:"text/csv;charset=utf-8"}));
       const link=document.createElement("a");
       link.href=url;link.download="protenix-"+job.id+"-path.csv";link.click();
@@ -417,7 +442,16 @@ const RestartTreeView = (() => {
     const observer=new ResizeObserver(resize);observer.observe(stage);
     cleanup=()=>{observer.disconnect();chart.destroy();if(scheduled)cancelAnimationFrame(scheduled);};
     resize();
-    selectNode(leaves[0]||roots[0]||model.nodes[0],false);
+    const linked = initial.get("run") === String(job.id) && initial.has("step")
+      && model.lanes.find(lane=>lane.cycle===Number(initial.get("cycle")) && lane.name===initial.get("branch"));
+    if (linked) {
+      selectNode(linked.nodes.at(-1),false);
+      const i=points.findIndex(point=>point.node.laneId===linked.id && point.step===Number(initial.get("step")));
+      if(i>=0) showNode(i,true);
+      initial.delete("step");
+    } else {
+      selectNode(leaves[0]||roots[0]||model.nodes[0],false);
+    }
   }
 
   return {render,destroy};

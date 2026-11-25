@@ -60,18 +60,32 @@ def _rank(point, loss):
     return (-_source_wave(point), loss, candidate.branch, candidate.step, candidate.smiles or "")
 
 
+def _eligible(points, wave, history, min_step_gap):
+    return (point for point in points if point.candidate.smiles and point.fresh_loss is not None
+            and _time_allowed(point, wave, history, min_step_gap))
+
+
+def best_frontier_parent(points, *, wave, history, min_step_gap):
+    """Return the lowest-loss eligible checkpoint, independent of its age."""
+    return min(_eligible(points, wave, history, min_step_gap),
+               key=lambda point: (point.fresh_loss, _rank(point, point.fresh_loss)), default=None)
+
+
 def select_frontier(points, *, wave, slots, children_per_parent, history, min_step_gap,
-                    max_similarity, ancestor_lookback, max_ancestor_fraction):
+                    max_similarity, ancestor_lookback, max_ancestor_fraction, reserved=None):
     """Pick up to slots valid parents without relaxing time, graph or ancestry limits."""
     capacity = _family_capacity(wave, slots, children_per_parent, min_step_gap,
                                 ancestor_lookback, max_ancestor_fraction)
     if isinstance(max_similarity, bool) or not 0 <= max_similarity <= 1:
         raise ValueError("Invalid frontier Morgan similarity limit")
     ranked = sorted(
-        (point for point in points if point.candidate.smiles and point.fresh_loss is not None
-         and _time_allowed(point, wave, history, min_step_gap)),
+        _eligible(points, wave, history, min_step_gap),
         key=lambda point: _rank(point, point.fresh_loss),
     )
+    if reserved is not None:
+        if not any(point is reserved for point in ranked):
+            raise ValueError("Reserved checkpoint must be eligible for the frontier")
+        ranked = [reserved, *(point for point in ranked if point is not reserved)]
     chosen = []
     branches = set()
     molecules = set()
@@ -80,8 +94,9 @@ def select_frontier(points, *, wave, slots, children_per_parent, history, min_st
     for point in ranked:
         candidate = point.candidate
         family = _ancestor(point, ancestor_lookback)
+        children = 1 if point is reserved else children_per_parent
         if (candidate.branch in branches or candidate.smiles in molecules
-                or families[family] + children_per_parent > capacity):
+                or families[family] + children > capacity):
             continue
         _, fingerprint = next(_morgan_fingerprints([candidate.smiles]))
         if any(similarity > max_similarity
@@ -90,7 +105,7 @@ def select_frontier(points, *, wave, slots, children_per_parent, history, min_st
         chosen.append(point)
         branches.add(candidate.branch)
         molecules.add(candidate.smiles)
-        families[family] += children_per_parent
+        families[family] += children
         fingerprints.append(fingerprint)
         if len(chosen) == slots:
             break
@@ -99,7 +114,7 @@ def select_frontier(points, *, wave, slots, children_per_parent, history, min_st
 
 def select_invalid_frontier(points, *, wave, selected, slots, children_per_parent, history,
                             min_step_gap, ancestor_lookback, max_ancestor_fraction,
-                            max_repair_edits, replacing_parent=None):
+                            max_repair_edits, replacing_parent=None, reserved=None):
     """Pick one bounded-repair invalid start under the remaining branch and ancestry budget."""
     capacity = _family_capacity(wave, slots, children_per_parent, min_step_gap,
                                 ancestor_lookback, max_ancestor_fraction)
@@ -109,7 +124,7 @@ def select_invalid_frontier(points, *, wave, selected, slots, children_per_paren
     branches = set()
     replacement_found = False
     for point in selected:
-        children = children_per_parent
+        children = 1 if point is reserved else children_per_parent
         if replacing_parent is point:
             if replacement_found:
                 raise ValueError("Replacement parent appears more than once")

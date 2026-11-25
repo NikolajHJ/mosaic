@@ -1,0 +1,30 @@
+{
+  "study": "boltz_generation_search",
+  "optimization_space": "relaxed_graph_logits",
+  "scorer": {
+    "kind": "boltz2_dbmol",
+    "assets_config": "restart-boltz-dtu.json",
+    "execution": {
+      "tf32": false, "autocast": "none", "checkpoint_every": 1, "checkpoint_preserve_rng_state": true
+    }
+  },
+  "search_config": "restart-boltz-timing.json",
+  "target_arm": "erk2",
+  "parent_state": {
+    "format": "boltz-scored-latents-v1",
+    "path": "/work3/s234818/latentmol/runs/boltz-erk2-founders-20261119a/panel.json",
+    "sha256": "ff0703752106abe7ebee37df5aa0f729fbd0cb3d687d814570648a326dcfe978"
+  },
+  "generation_settings": {
+    "generations": 18,
+    "parents": 4,
+    "children_per_parent": 2,
+    "updates_per_generation": 600,
+    "fresh_per_generation": 8,
+    "last_parent_similarity": 0.85
+  },
+  "seeds": {"a": 4919011},
+  "cases": {"fixed75": {"policy": "fixed75", "start": "archive"}},
+  "tasks": {"erk2-18": {"case": "fixed75", "panel": "a", "queue": "gpua100", "host_resource": "gpu80gb"}},
+  "output_cap_mib": 768
+}

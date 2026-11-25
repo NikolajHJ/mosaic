@@ -2,9 +2,10 @@ from dataclasses import asdict, replace
 import hashlib
 import json
 
+import pytest
 import torch
 
-from latentmol.design.latent_protenix import LatentDesignConfig, evaluate_point
+from latentmol.design.latent_protenix import LatentDesignConfig, evaluate_point, latent_step
 from latentmol.representation import DecoderOutput, GraphSpec
 
 
@@ -46,6 +47,24 @@ def test_zero_valence_weight_preserves_legacy_checkpoint_identity():
     config = LatentDesignConfig()
     legacy = asdict(config)
     del legacy["valence_excess_weight"]
+    del legacy["max_step_norm_final"]
     expected = hashlib.sha256(json.dumps(legacy, sort_keys=True).encode()).hexdigest()
     assert config.identity() == expected
     assert replace(config, valence_excess_weight=1.).identity() != expected
+    assert replace(config, max_step_norm_final=.25).identity() != expected
+
+
+def test_scheduled_step_cap_reaches_final_cap_on_last_update():
+    fixed = LatentDesignConfig(updates=500, schedule_horizon=500, chemistry_hold=250,
+                               chemistry_ramp_end=500, noise_initial=0., noise_zero_at=100,
+                               learning_rate=70., max_step_norm=.5)
+    scheduled = replace(fixed, max_step_norm_final=.25)
+    point = torch.zeros((1, 2))
+    gradient = torch.ones_like(point)
+    for step, cap in ((0, .5), (250, .5 - .25 * 250 / 499), (499, .25)):
+        proposal, update = latent_step(point, gradient, gradient, scheduled, step, None)
+        assert update["max_step_norm"] == pytest.approx(cap)
+        assert float(proposal.norm()) == pytest.approx(cap)
+    proposal, update = latent_step(point, gradient, gradient, fixed, 499, None)
+    assert "max_step_norm" not in update
+    assert float(proposal.norm()) == pytest.approx(.5)

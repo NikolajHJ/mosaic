@@ -206,11 +206,11 @@ globalThis.ProtenixTree = (() => {
         let state = start;
         let previousStep = null;
         for (const row of saved) {
-          const [step, relaxed, chemistry, weight, valence] = row;
+          const [step, relaxed, chemistry, weight, valence, contact, affinity] = row;
           if (step < first.step || step > cutoff) continue;
           while (state + 1 < next && route.nodes[state + 1].step <= step) state++;
           points.push({node: route.nodes[state], step, depth: lane.baseDepth + step,
-            relaxed, chemistry, weight, valence, restart: previousStep === null && start > 0,
+            relaxed, chemistry, weight, valence, contact, affinity, restart: previousStep === null && start > 0,
             gap: previousStep !== null && step !== previousStep + 1});
           previousStep = step;
         }

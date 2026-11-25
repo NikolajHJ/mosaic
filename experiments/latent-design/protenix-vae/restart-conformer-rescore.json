@@ -1,0 +1,140 @@
+{
+  "study": "conformer_rescore",
+  "source_job": "29943712",
+  "source_result": {
+    "path": "/work3/s234818/latentmol/runs/protenix-restart-lr60-long-zero-noise-20261109a-near-valid/result.json",
+    "sha256": "e2f3897ebb71fe6d0629f1ab47076fc26bb952d0faee52ed637da178bb260694"
+  },
+  "historical_seed": 1201,
+  "geometry_seeds": [
+    1201,
+    2203,
+    3209,
+    4211
+  ],
+  "max_pairwise_similarity": 0.6,
+  "selection": {
+    "source_waves": {
+      "early": [
+        1,
+        7
+      ],
+      "late": [
+        8,
+        20
+      ]
+    },
+    "count_per_group": 4,
+    "rule": "Anchor the wave-3 incumbent and wave-7 winner, then alternate late and early pools by the lowest original loss compatible with the global similarity limit",
+    "observed_max_pairwise_similarity": 0.5671641791044776
+  },
+  "anchors": {
+    "incumbent": "early-2",
+    "challenger": "early-1"
+  },
+  "sources": {
+    "3": {
+      "path": "/work3/s234818/latentmol/runs/protenix-restart-lr60-long-zero-noise-20261109a-near-valid/cycle-03/fresh/summary.json",
+      "sha256": "25d4fe11d33ef83fdea07bdc0abeff59e9e766bfc42dddd83d81dd799737d16a"
+    },
+    "4": {
+      "path": "/work3/s234818/latentmol/runs/protenix-restart-lr60-long-zero-noise-20261109a-near-valid/cycle-04/fresh/summary.json",
+      "sha256": "12a8dae2b0984ced74504ff21897ee489c3ead330fd934fb22a9cd9bba1e7d46"
+    },
+    "7": {
+      "path": "/work3/s234818/latentmol/runs/protenix-restart-lr60-long-zero-noise-20261109a-near-valid/cycle-07/fresh/summary.json",
+      "sha256": "02417a6487b5d6328b21629176598af500be0d0ac62635b90c74d6c5d59ddf18"
+    },
+    "8": {
+      "path": "/work3/s234818/latentmol/runs/protenix-restart-lr60-long-zero-noise-20261109a-near-valid/cycle-08/fresh/summary.json",
+      "sha256": "b5321a9eabb5a7f25e7654c5f9406b86d1ea823d2dcc30384444e3860960ec93"
+    },
+    "9": {
+      "path": "/work3/s234818/latentmol/runs/protenix-restart-lr60-long-zero-noise-20261109a-near-valid/cycle-09/fresh/summary.json",
+      "sha256": "c5c0621c70a844cfc653e90cc58424a4631c2c4254268d99b5e1df2f5e499d41"
+    },
+    "16": {
+      "path": "/work3/s234818/latentmol/runs/protenix-restart-lr60-long-zero-noise-20261109a-near-valid/cycle-16/fresh/summary.json",
+      "sha256": "d89b59db6a6bad64ca7255bffb2fdf6fd94c8492fb4f0904bbad916e30e5987c"
+    }
+  },
+  "panel": [
+    {
+      "wave": 7,
+      "score": 2.0513231669179173,
+      "smiles": "CC12CC13C14C5OC6C7C6C6(C8SC9C%10C8C%10C7(NNC(=O)N96)C51)C243",
+      "branch": "cycle-07/branch-02",
+      "step": 432,
+      "id": "early-1",
+      "group": "early"
+    },
+    {
+      "wave": 3,
+      "score": 2.060812317105847,
+      "smiles": "CC12CC13C14C5OC6C7C6C6(NNC(O)N(C8SCC9C8C96)C7C213)C54",
+      "branch": "cycle-03/branch-02",
+      "step": 413,
+      "id": "early-2",
+      "group": "early"
+    },
+    {
+      "wave": 9,
+      "score": 2.0802475873556374,
+      "smiles": "CC1(C)C2C3C4COC5C6C5C45NNC(=O)N(C4SCC7C4C75)C6C321",
+      "branch": "cycle-09/branch-03",
+      "step": 438,
+      "id": "late-1",
+      "group": "late"
+    },
+    {
+      "wave": 4,
+      "score": 2.068919902188798,
+      "smiles": "CC12CC13C14C5OC6C7C6C6(C8SC9N%10C8C%10C7(NNC(O)N96)C51)C243",
+      "branch": "cycle-04/branch-02",
+      "step": 259,
+      "id": "early-3",
+      "group": "early"
+    },
+    {
+      "wave": 8,
+      "score": 2.086265228762599,
+      "smiles": "CC1(C)CC23C4OC5C6C5C5(C7SC8C9C7C9C6(NNC(=O)N85)C42)C13",
+      "branch": "cycle-08/branch-04",
+      "step": 288,
+      "id": "late-2",
+      "group": "late"
+    },
+    {
+      "wave": 7,
+      "score": 2.0714767899607023,
+      "smiles": "CC12CC13C14C5OC6C7C6C6(C8SC9N6C(=O)NN6C7(C51)C61C8N91)C243",
+      "branch": "cycle-07/branch-05",
+      "step": 254,
+      "id": "early-4",
+      "group": "early"
+    },
+    {
+      "wave": 16,
+      "score": 2.087294634744488,
+      "smiles": "CC1NC2CNC(N)NC2C12C13C(Cl)CCCC1CCC21C24C5C32C514",
+      "branch": "cycle-16/branch-06",
+      "step": 436,
+      "id": "late-3",
+      "group": "late"
+    },
+    {
+      "wave": 9,
+      "score": 2.090688053210538,
+      "smiles": "CC1NC2CNC(N)NC2C12C1C(CCC[SH]2CCl)CC2C34C5C13C254",
+      "branch": "cycle-09/branch-06",
+      "step": 482,
+      "id": "late-4",
+      "group": "late"
+    }
+  ],
+  "tasks": {
+    "panel": {
+      "queue": "gpul40s"
+    }
+  }
+}

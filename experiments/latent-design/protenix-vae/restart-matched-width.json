@@ -1,0 +1,44 @@
+{
+  "study": "matched_width",
+  "design": {
+    "updates": 500,
+    "schedule_horizon": 500,
+    "seed": 17,
+    "noise_seed": 230017,
+    "occupied_atoms": 25,
+    "learning_rate": 60.0,
+    "max_step_norm": 0.25,
+    "chemistry_initial": 1.0,
+    "chemistry_final": 1.0,
+    "chemistry_hold": 375,
+    "chemistry_ramp_end": 500,
+    "valence_excess_weight": 1.0,
+    "temperature_initial": 1.0,
+    "temperature_final": 1.0,
+    "noise_initial": 0.0,
+    "noise_zero_at": 100
+  },
+  "search": {
+    "waves": 6,
+    "branches_per_arm": 12,
+    "fresh_per_branch": 6,
+    "exact_children": 2,
+    "min_step_gap": 100,
+    "max_similarity": 0.85,
+    "ancestor_lookback": 3,
+    "max_ancestor_fraction": 0.5,
+    "high_score_ceiling": 2.30,
+    "diversity_max_similarity": 0.60,
+    "time_budget_seconds": 82800
+  },
+  "allocations": {
+    "p6-c2": {"parents": 6, "children": 2},
+    "p4-c3": {"parents": 4, "children": 3},
+    "p3-c4": {"parents": 3, "children": 4}
+  },
+  "tasks": {
+    "seed-a": {"seed": 541101, "queue": "gpul40s"},
+    "seed-b": {"seed": 651101, "queue": "gpua100"},
+    "seed-c": {"seed": 761101, "queue": "gpua100"}
+  }
+}

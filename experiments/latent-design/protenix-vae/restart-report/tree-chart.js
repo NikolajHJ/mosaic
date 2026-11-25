@@ -1,9 +1,8 @@
 "use strict";
 
 const ProtenixPathChart = (() => {
-  const names = {relaxed: "Relaxed contact loss", chemistry: "Repair loss", valence: "Valence excess"};
-
   function mount(host, selectMetric, status, selectPoint) {
+    const names = Object.fromEntries(Array.from(selectMetric.options, option => [option.value, option.textContent]));
     let points = [], index = 0, position = null;
     const observer = new ResizeObserver(draw);
     observer.observe(host);

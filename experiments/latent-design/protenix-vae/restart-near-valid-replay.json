@@ -1,0 +1,10 @@
+{
+  "study": "near_valid",
+  "source_run": "/work3/s234818/latentmol/runs/protenix-restart-lr60-long-zero-noise-20261109a-near-valid",
+  "source_job_id": 29943712,
+  "design": {"updates": 500},
+  "fresh_per_arm": 6,
+  "tasks": {
+    "paired": {"waves": [2, 3, 4, 5]}
+  }
+}

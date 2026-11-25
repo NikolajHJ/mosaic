@@ -1,0 +1,97 @@
+{
+  "study": "boltz_generations",
+  "scorer": {
+    "kind": "boltz2_dbmol",
+    "assets_config": "restart-boltz-dtu.json"
+  },
+  "search_config": "restart-boltz-brd4.json",
+  "target_arm": "brd4-jq1",
+  "parent_state": {
+    "path": "/work3/s234818/latentmol/runs/boltz-restart-brd4-method-inputs-20261117a/search-state.pt",
+    "sha256": "7d79faed8503c897a38b82cffac956f4ea857c655b41797d1f0b68f95e3c4f24",
+    "identity": "1a1be4c3256d4240a67fdf8431de33c7a3b887576a039b49cc431c12d2571255",
+    "source_job": 30082565,
+    "completed_wave": 4
+  },
+  "output_cap_mib": 512,
+  "generation_settings": {
+    "generations": 3,
+    "updates_per_generation": 3600,
+    "fresh_per_generation": 48
+  },
+  "seeds": {
+    "a": 2935011,
+    "b": 3135031,
+    "c": 3335051
+  },
+  "cases": {
+    "fixed150": {
+      "policy": "fixed150",
+      "start": "archive"
+    },
+    "fixed400": {
+      "policy": "fixed400",
+      "start": "archive"
+    },
+    "extend": {
+      "policy": "promote",
+      "start": "archive"
+    }
+  },
+  "tasks": {
+    "fixed150-a": {
+      "case": "fixed150",
+      "panel": "a",
+      "queue": "gpuv100",
+      "host_resource": "gpu32gb"
+    },
+    "fixed400-a": {
+      "case": "fixed400",
+      "panel": "a",
+      "queue": "gpuv100",
+      "host_resource": "gpu32gb"
+    },
+    "extend-a": {
+      "case": "extend",
+      "panel": "a",
+      "queue": "gpuv100",
+      "host_resource": "gpu32gb"
+    },
+    "fixed150-b": {
+      "case": "fixed150",
+      "panel": "b",
+      "queue": "gpuv100",
+      "host_resource": "gpu32gb"
+    },
+    "fixed400-b": {
+      "case": "fixed400",
+      "panel": "b",
+      "queue": "gpuv100",
+      "host_resource": "gpu32gb"
+    },
+    "extend-b": {
+      "case": "extend",
+      "panel": "b",
+      "queue": "gpuv100",
+      "host_resource": "gpu32gb"
+    },
+    "fixed150-c": {
+      "case": "fixed150",
+      "panel": "c",
+      "queue": "gpuv100",
+      "host_resource": "gpu32gb"
+    },
+    "fixed400-c": {
+      "case": "fixed400",
+      "panel": "c",
+      "queue": "gpuv100",
+      "host_resource": "gpu32gb"
+    },
+    "extend-c": {
+      "case": "extend",
+      "panel": "c",
+      "queue": "gpuv100",
+      "host_resource": "gpu32gb"
+    }
+  }
+}

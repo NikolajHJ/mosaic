@@ -22571,3 +22571,465 @@ had completed. Mutation B favored latent kicks over all-row 50/50 on mean
 fresh-loss gain. Duration B gave four shorter branches a 0.005 mean gain
 advantage over one longer branch across eight parents.
 [Matched repeats](../experiments/latent-design/protenix-vae/restart-followup.md#completed-repeats-on-8-november-2026).
+
+9 November 2026 at 15:49 CET. Five six-cycle restart arms at each of LR 30
+and LR 70 finished all 46,000 updates. LR 70 had lower best fresh contact
+loss in four of five pairs, with the lowest at 2.08529 (cap 0.5).
+Both top-parents arms were still running. The final two noise panels,
+Graph B and Persistence B, also finished.
+[Learning-rate results](../experiments/latent-design/protenix-vae/restart-lr30.md#completed-six-cycle-arms-on-9-november-2026).
+
+The LR 70 cap 0.5 and 0.25 combined arms produced 86 and one candidate
+below 2.20 with 665 and 684 successful scores. A retrospective comparison
+at 626 successful scores per arm gave expected counts of 84.92 and 0.71.
+None of 34 jointly valid parent-seeded sibling endpoint pairs matched
+across the three completed 500-update noise panels.
+
+9 November 2026 at 19:42 CET. The zero-noise cap seed C (**29943710**)
+split its two parent comparisons. The schedules job (**29943720**)
+favored 0.25→0.5 on mean gain across two parents. The near-valid
+long run (**29943712**) reached fresh loss 2.06081 by wave three.
+[Cap results](../experiments/latent-design/protenix-vae/restart-step-cap.md)
+and [long search](../experiments/latent-design/protenix-vae/restart-search.md).
+
+9 November 2026 at 20:34 CET. The near-valid long run (**29943712**)
+completed five waves and 30,000 updates with 333 fresh attempts and
+315 successful scores. Best loss was 2.06081 and top-three mean was
+2.06990. Wide and deep had no completed wave.
+[Long search](../experiments/latent-design/protenix-vae/restart-search.md).
+
+10 November 2026. Near-valid **29943712** finished 120,000 updates and
+978 successful fresh scores. Its best loss reached 2.05132 at 42,000
+updates and held through the remaining 78,000. Adaptive lineage feedback
+beat fixed parents in all three panels, while independent starts found
+the best single molecule in two. Initialization **29943695** favored
+exact and screened starts on mean gain. In timing panel **29948071**,
+parent-only radius 0.003 separated all six jointly valid sibling endpoint
+pairs. The V100 benchmark **29936883** measured a 46% update-throughput
+gain with eight children and four overlapping CPU workers.
+[Completed results and artifacts](../experiments/latent-design/protenix-vae/restart-search.md#completed-results-on-10-november-2026).
+
+10 November 2026. In the 500-update noise panel **29948086**, radius 0.03
+alone had the largest mean per-parent gain (0.27808) and six of 24 scores
+below 2.40. Early update noise alone found the lowest individual loss
+(2.29133). In graph-edit panel **29948378**, mean per-parent best was
+2.45124 for graph edits and 2.45228 for latent restarts at 24 successful
+scores each. Direct edits spent 0.42 seconds generating proposals and
+latent restarts spent 643 seconds, including native startup. Exact valid
+continuations won all four paired near-valid slots in **29948379**. The
+two frontier policies chose identical parents and seeds. Across four cap
+panels, 0.5 won on five of eight parents.
+[Eight additional results](../experiments/latent-design/protenix-vae/restart-search.md#eight-additional-results-on-10-november-2026).
+
+10 November 2026. In hybrid panel B (**29973703**), adaptive and hybrid
+found the same best molecule at fresh loss 2.25195, while independent
+reached 2.28914. All three policies completed 2,880 updates and 90 fresh
+attempts. The diverse low-loss counts were 6, 5, and 2, respectively.
+[Follow-up results](../experiments/latent-design/protenix-vae/restart-followup-20261110.md).
+
+11 November 2026. Long wide **29943696** and deep **29943705** finished
+120,000 updates each. Best fresh losses were 2.09213 at 96,000 updates
+and 2.08135 at 90,000 updates. The conformer check **29973777** preserved
+the near-valid wave-7 winner's advantage over wave 3 on all three held-out
+seeds, with mean gain 0.00786. No-bond weighting **29948080** favored the
+25%-mixing 8× arm on mean gain across three parents, while trajectory
+validity fell relative to 1× at both doses.
+[Long-run results](../experiments/latent-design/protenix-vae/restart-search.md#long-searches-completed-on-11-november-2026)
+and [follow-up results](../experiments/latent-design/protenix-vae/restart-followup-20261110.md).
+
+11 November 2026, 10:24 CET. Matched search panel A **29980366** is
+running on L40S with one of eight matched waves complete (6,000 updates
+and seven successful fresh scores per method). Best fresh losses are
+2.35332 adaptive, 2.41079 continuous, and 2.35332 independent. Adaptive
+and independent share the first-wave starts. Continuous supplied only
+seven eligible new scoring candidates, so the matched scoring budget
+was seven per arm. Wave two is in progress; panels B/C remain pending
+on A100. These are partial results, not a completed comparison.
+[Progress evidence and interpretation](../experiments/latent-design/protenix-vae/restart-matched-search.md).
+
+11 November 2026, 10:40 CET. Four pending A100 matched-comparison panels
+were cancelled before startup and replaced on V100 at the user's request.
+Adaptive/continuous/independent B/C: **29980367→29994157**,
+**29980368→29994216**. Parent/child allocation B/C:
+**29980891→29994169**, **29980892→29994218**. All replacements are pending;
+source/config/seeds and update/scoring budgets are unchanged. The 12 GB
+GPU reservation permits 16 GB / 32 GB V100s; scalar sampled optimization
+memory was 2.9 GiB, fresh-score 16 GB peak remains unmeasured. DTU rejected
+in-place bmod as administrator-only. Matched panel A 29980366 remains
+running on L40S. [Receipts and migration notes](../experiments/latent-design/protenix-vae/restart-matched-search.md#gpu-queue-replacements-on-11-november).
+
+11 November 2026. Three long-search winners (near-valid 29943712, deep
+29943705, wide 29943696) were evaluated using Mosaic molecule-evaluation
+commit ef2cc6e on DTU interactive node n-62-30-8, PBS job 726394.hnode41.
+CPU evaluation plus imports took 1.32 seconds. All three were valid,
+distinct, neutral 25-heavy-atom molecules. QED values were 0.66254,
+0.40602, 0.49183; SA estimates 8.36914, 7.49542, 8.04736; ring counts
+13, 6, 14. High synthetic difficulty remains despite favorable contact
+loss. No docking, pose geometry or new native predictions were run.
+Reports include exact source jobs/waves/branches/steps and selection
+notes. [Protocol, outputs and limits](../experiments/latent-design/protenix-vae/restart-evaluation.md).
+
+11 November 2026. Frozen pretrained SynFrag and DFRscore adapters were
+added as opt-in synthesis guidance, without model training. Actual-decoder
+finite-path checks passed on all three long-search winners in interactive
+PBS job 726433.hnode41. A 90-update synthesis-only diagnostic (10 updates
+per model/combination and founder) completed in 35.5 seconds, PBS job
+726434.hnode41: eight of nine endpoints were valid and every valid endpoint
+had lower independent SA. Near-valid combined SA fell 8.369→5.549; wide
+DFR SA fell 8.047→5.241. Combined/deep endpoint was invalid. Binding was
+not measured in this diagnostic. Three 9,000-update matched Protenix
+panels were submitted as **29996683** V100, **29996684** L40S and
+**29996685** A10, all pending at 12:17 CET. Six variants per panel compare
+baseline, weak/strong individual guides and combined guidance at LR 60,
+500 updates per child, zero optimization noise, matched fresh-score
+attempts and unchanged chemical guidance. Soft features remain experimental;
+DFR near-zero-bond sensitivity and feature discrepancies are recorded.
+[Protocol, results, code and receipts](../experiments/latent-design/protenix-vae/restart-synthesis-pilot.md).
+
+11 November 2026, 13:06 CET. Matched-compute panel A **29980366**
+completed three waves (18,000 updates per method), with wave four in
+progress. Its continuous arm supplied no new fresh candidates in waves
+two and three, forcing zero scores for every arm under minimum-pool
+matching despite 71 adaptive and 72 independent candidates each wave.
+Only the seven first-wave scores per method exist; adaptive cannot update
+its archive from new descendants. This is a scoring-design bottleneck,
+not a negative adaptive-search result. The other five comparison panels
+remain pending. No jobs or sealed sources changed.
+[Evidence and interpretation](../experiments/latent-design/protenix-vae/restart-matched-search.md#partial-status-and-scoring-bottleneck-11-november-1306-cet).
+
+11 November 2026, 13:09 CET. Synthesis panel C **29996685** started on
+A10 at 12:28 and completed baseline/weak-SynFrag optimization; strong
+SynFrag is in progress, about 3,816/9,000 updates complete. No matched
+fresh-score result yet. Synthesis A/B remain pending. Matched-search A
+**29980366** has three completed waves (18,000 updates per method) and
+wave four underway; B/C **29994157/29994216** remain pending. Continuous
+provided zero new scoring candidates in waves two/three, so the minimum
+matching rule blocked fresh scoring for every arm and adaptive feedback.
+No GPU panel in either group has finished. [Evidence](../outputs/restart-status-20261111T130951/status.json).
+
+11 November 2026, 13:15 CET. The scoring bottleneck in matched search
+was fixed with equal independent fresh-scoring allowances (up to 72 per
+method/wave, 576 per method total), recording unused allowance and actual
+costs. Three CPU regression cases passed against an isolated original-source
+snapshot. At the user's request, **29980366/29994157/29994216** were
+cancelled and confirmed EXIT; corrected seed A/B/C jobs **29998584**,
+**29998585**, **29998586** were accepted on L40S/V100/V100 and are PEND.
+Seeds 541101/651101/761101 and 48,000 updates per method remain unchanged.
+Original partial outputs were preserved, and allocation jobs were untouched.
+[Corrected protocol and receipts](../experiments/latent-design/protenix-vae/restart-matched-search.md#corrected-submissions-on-11-november-1315-cet).
+
+11 November 2026, 23:09 CET. Allocation seeds A **29980890** (L40S)
+and B **29994169** (V100) are running, with three of six waves complete
+and 18,000 updates / 216 fresh attempts per allocation. Best losses for
+6×2 / 4×3 / 3×4 are 2.18608 / 2.13539 / 2.12226 in A and
+2.13872 / 2.11417 / 2.11417 in B. No completed-wave scoring shortfalls.
+Corrected adaptive/continuous/independent panels remain pending. Hybrid
+panels A **29973702** and C **29973704**, tiny-kick B **29973697** and
+noise-timing B **29948076** are completed with return code zero. Hybrid
+won A; independent won C; earlier B tied adaptive/hybrid. At 500 updates
+parent-only radius 0.03 gave the largest mean gain in kick B (0.31148);
+at 128 updates radius 0.003 led timing B (0.28526), and adding early
+update noise lowered that gain. [Comparison progress](../experiments/latent-design/protenix-vae/restart-matched-search.md#progress-on-11-november-2309-cet)
+and [completed follow-ups](../experiments/latent-design/protenix-vae/restart-followup-20261110.md).
+
+11 November 2026. Detached rank-20 analysis of saved fresh scores found
+380 near-valid and 372 deep distinct valid molecules after six generations
+(36,000 updates). Best / 20th / diversity-capped 20th losses were
+2.06081 / 2.13421 / 2.15057 near-valid and
+2.10786 / 2.17615 / 2.19262 deep (Morgan similarity cap 0.60).
+Current 3×4 allocation A improved rank 20 from 2.25057 at generation 3
+to 2.21483 at generation 4, with its best unchanged at 2.12226.
+Median SA of the long six-generation distinct top-20 panels remained
+high (7.86 and 7.19). No new native scoring or optimization was run.
+[Protocol, selections and proposed baseline](../experiments/latent-design/protenix-vae/restart-evaluation.md#rank-20-archive-audit-and-proposed-six-generation-baseline).
+
+12 November 2026. The new seven-protein campaign was changed by the user to
+Boltz2/full DBMol, LR 1, with six generations and a shorter update budget to be
+chosen after timing. No staged Protenix target jobs were submitted. Local
+scorer/search checks passed (15 passed, one optional-gemmi skip; three preparer
+checks separately passed with gemmi). Allocated CPU preparation PBS 726693
+prepared glucocerebrosidase, ERK2 and p53; IOK exposed an explicit-H reference
+codec limitation, while three other targets hit FP32 distance-guard cancellation.
+Those outcomes are retained. Revised allocated CPU preparation PBS 726694
+prepared all seven in 126.87s, with exact native seed-feature parity, all pocket
+residues retained, and ligand-to-pocket distance error ≤5.82e-7 Å. IOK's explicit-H
+reference limitation remains recorded. Six additional focused checks passed;
+native GPU timing/gradients remain pending.
+[Current experiment](../experiments/latent-design/protenix-vae/restart-boltz-targets.md).
+
+Seven eight-update Boltz2/full-DBMol timing pilots were submitted at LR 1:
+30013381, 30013386, 30013390, 30013396, 30013400, 30013405 and 30013406.
+At 00:25 CET, 30013381 was RUN on A10 and six were PEND. Each also budgets
+one native reference-fixture forward and at most one generated hard score.
+No native GPU timing/gradient success has yet been collected; six-generation
+baseline update counts remain pending. [Submission plan](../outputs/boltz-restart-timing-20261112a/gpu-plan.json).
+
+At 00:29 CET, pilot 30013381 DONE / exit 0: eight LR-1 optimizer updates,
+finite connected gradients, frozen-state checks passed. A10 median full lean
+iteration 14.8455s over six measured updates; peak allocated 15.59GiB.
+No generated valid states appeared in this short timing trajectory; its native
+reference-fixture forward passed. Six pilots remained queued. This does not
+establish search quality or derivative/native correctness.
+[Native timing/result receipt](../outputs/boltz-restart-timing-20261112a/er-alpha-timing-snapshot-001.json).
+
+12 November, 10:22–10:31 CET: six Boltz timing pilots remained queued, while
+A10 was idle. Identical held replacements 30016143/30016144/30016150/30016152/
+30016153/30016188 were submitted to A10; originals were guarded as unstarted
+PEND jobs, cancelled and confirmed EXIT before replacement release. At 10:31,
+30016152 and 30016143 were running. Source bytes, LR 1, seeds, update and scoring
+budgets are unchanged. [Migration and receipts](../experiments/latent-design/protenix-vae/restart-boltz-targets.md#morning-queue-migration-12-november).
+
+12 November 2026, 00:44 CET. Synthesis GPU panel C **29996685** completed successfully: 9,000 updates, 108 fresh attempts, 6,705 seconds. Weak DFR selected mean SA/QED 7.265/0.573 versus baseline 7.562/0.467; top-three new fresh loss 2.06730 versus 2.08566, with 95% versus 100% valid trajectory states. Strong DFR had 58.9% valid states. No arm beats the best founder (2.05132); this is one seed and proxy evidence, not route validation. Other synthesis panels and all three corrected method comparisons remain queued. Allocation A has four/six waves complete and wave five underway; B has three/six and wave four underway; C queued. No jobs changed. [Results and status](../experiments/latent-design/protenix-vae/restart-synthesis-pilot.md#first-completed-gpu-panel-12-november-0044-cet).
+
+12 November 2026, 09:35 CET. Allocation A **29980890** and B **29994169** completed six waves/36,000 updates per allocation; launcher return codes zero. Best fresh losses for 6x2/4x3/3x4: A 2.15770/2.13539/2.12226; B 2.09097/2.10123/2.11417. Actual attempts matched within seed (419 A, 430 B); successful scores differ. The ranking changes by seed, with 6x2 improving late in B, so early preference for more children is not established. Allocation C **29994218**, synthesis A **29996683**, and corrected method-comparison B **29998585** started on V100 this morning. No new completed synthesis panel; method comparison has no completed wave. Three remaining jobs queued; no job modifications. [Final allocation records and live evidence](../experiments/latent-design/protenix-vae/restart-matched-search.md#two-allocation-panels-complete-12-november-0935-cet).
+
+13 November 2026. User-requested HPC storage maintenance: archived 45 old source056 native-scoring prepared contexts into a 12,363,073-byte local tar.gz and verified every member SHA256. Removed only 44 unreferenced prepared.pt tensors, reclaiming **1,448,878,080 allocated bytes (1.349 GiB)**; kept count-25 (SHA84a0d35d...) because current ipSAE configs still reference it. Independent postflight confirms all 44 absent and the other 1,561 original study files unchanged. Scientific results/latents/logs, model checkpoints and active/pending dependencies retained. WORK3 quota read 17.928 GiB free /100 GiB after concurrent cleanup activity; only the 1.349 GiB above is attributed to this operation. The overlapping old Mosaic report plan was abandoned before any unlink after another cleanup removed source files; archive job30025466 stopped at preflight (per-node device IDs differ), with no source writes. [Receipts and exact scope](../outputs/hpc-storage-cleanup-20261113T001245/summary.json). Local backup and restore map: C:/Users/nikol/HPC_Archives/DBMol_exploratory/2026-11-13/source056-native-contexts/RESTORE.txt.
+
+13 November 2026, 14:50 CET. Corrected matched-search A/B **29998584/29998585** completed all eight waves and 48,000 updates per method. Best adaptive/continuous/independent losses: A 2.12258/2.28249/2.18616; B 2.09676/2.26136/2.17370. Adaptive also wins top-three mean and filtered low-loss diversity in both seeds. Actual fresh attempts A532/82/576 and B566/34/564: equal allowances, not equal consumed scoring costs. C **29998586** is RUN V100, wave two after one completed wave. Allocation C **29994218** completed; each parent/child allocation wins best loss on one of three seeds, so no consistent winner. Synthesis A/B also completed, making3/3panels and27,000updates/324freshattempts complete; chemistry proxy gains and validity costs vary by guide/seed, with no improvement over the best founder binding loss. All seven Boltz eight-update timing pilots completed successfully; longer baseline remains unsubmitted. No jobs changed. [Method/width results](../experiments/latent-design/protenix-vae/restart-matched-search.md#corrected-method-panels-ab-complete-13-november-1450-cet), [full fresh snapshot](../outputs/restart-status-20261113T145039/remote.jsonl).
+
+13 November 2026. One-seed synthesis-guidance follow-ups submitted on `codex/protenix-restart-search`: short panels **30043380/30043381/30043383/30043384/30043385/30043386**, wave comparison **30043389**, all observed PEND. LR60, 500 updates/child, zero optimization noise; 58,500 total updates and up to 702 independently allowed fresh attempts. Tests cover total gradient caps/validity grace, within-child phases, binding-conflict projection, sharper views, frozen GASA/DeFoG, low-SA versus unfiltered latent banks, and four-wave focus versus constant guidance with a Pareto-selection arm. CPU bank preparation 30042663 and actual frozen-model backward smoke 30043136 DONE; final 68 scoped local tests passed. Initial preparation/smoke failures and corrections are retained; finite/attached/frozen checks do not establish numerical/native parity or synthesis feasibility. SynFormer graph checkpoint availability remains unresolved, so no fabricated graph-gradient arm was submitted. No existing jobs changed. [Question, exact configs and receipts](../experiments/latent-design/protenix-vae/restart-synthesis-next.md).
+
+13 November, 19:48 CET. Fresh seven-target Boltz2 pilot collection confirms
+all seven completed eight LR-1 updates with zero launcher return codes.
+A10 median full-iteration times span 13.22–15.64s; peak allocated GPU memory
+14.13–15.75GiB. ERK2/p53 each visited four distinct valid states and
+glucocerebrosidase one; four pilot archives stayed empty. Recommend 50 updates
+per child for the first six-generation 3×4 baseline: 3,600 planned updates,
+13.2–15.6 optimization hours plus overhead (roughly 14–18h/protein). This is a
+runtime recommendation, not demonstrated twenty-molecule yield. No new jobs
+submitted or existing settings changed. [Timing table and estimates](../experiments/latent-design/protenix-vae/restart-boltz-targets.md#measured-timing-and-recommended-baseline-13-november).
+
+13 November 2026, 21:03 CET. Boltz2/full-DBMol speed tests submitted:
+**30046016 A10, 30046017 A40, 30046018 A100 80 GB, 30046054 L40S**, all observed
+PEND. Matched six-child/two-update cases compare one/two/three independent CUDA
+workers, TF32, neural-block BF16 and checkpoint policies; the L40S scout exercises
+the actual CPU-autograd/resident-worker search pool. Ceiling across four jobs:
+384 optimizer updates plus 192 initial gradient probes; no generated hard scores.
+Thirty-five scoped CPU checks passed, including exact unaveraged mock VJPs,
+real process overlap, failure cleanup, matched-start/device guards and search
+resume wiring; ten checks passed again after adding pool timing/memory logging.
+No native speedup/equivalence claim yet. The user selected 200 updates/child for
+the seven-target baseline; full searches remain unsubmitted and direct FP32,
+and existing jobs/releases were not modified.
+[Config, command, budget and limitations](../experiments/latent-design/protenix-vae/restart-boltz-speed.md).
+
+14 November 2026, 21:12 CET. L40S scout **30046054** completed 18:19–18:33 CET
+with zero launcher return code: all four cases, 48 optimizer updates plus 24
+warmup gradient probes. For the same 12 timed updates, FP32 serial/pool-two took
+85.60/91.17s; neural-block BF16 serial/pool-two 62.45/57.22s. FP32 parallel took
+6.5% longer; BF16 parallel improved throughput 9.1% over BF16 serial, with the
+combined setting 1.496x FP32 throughput (33.2% less optimizer time). Short inclusive
+group times including final verification were 90.39/103.62/67.27/69.91s, so the
+small optimizer-only parallel gain is not yet a long-run speed guarantee.
+Within each precision, pooled and serial initial values/gradients and terminal
+latents/graphs matched exactly for all six children. BF16 differed from FP32 by
+up to 0.03291 loss and 4.49% gradient relative L2 (minimum cosine 0.9998628), and
+changed two/six terminal molecules after two updates; all 24 terminal observations
+were valid. Frozen-state/cleanup checks passed; zero NVML samples prevents GPU
+utilization or physical-peak claims. A10/A40/A100 remain PEND on job-slot limits.
+No existing jobs or full-search defaults changed.
+[Measurements, scope and next quality check](../experiments/latent-design/protenix-vae/restart-boltz-speed.md#first-native-results-l40s).
+
+16 November 2026, 09:16 CET. Speed controllers **30046016 A10** (00:09–00:29)
+and **30046017 A40** (06:38–07:15) completed with zero launcher return codes.
+A10: four completed cases/48 optimizer updates, two predicted-memory skips.
+A40: eight completed cases/96 updates, one predicted-memory skip and two OOM
+failures for half checkpoint coverage, including the one-worker arm. Workers
+cleaned up cooperatively with frozen checks. Same-work TF32 throughput gains
+were 1.167x A10/1.083x A40; neural-block BF16 serial gains 1.518x/1.468x.
+A40 parallel gains at fixed FP32/TF32/BF16 were only 2.8%/2.1%/3.6%; BF16-two
+was 1.520x FP32 serial. RNG-preservation opt-out had no meaningful timing gain.
+TF32 retained six/six short terminal molecules on both cards with max gradient
+relative L2 difference 0.72%; BF16 changed three/six A10 and two/six A40 endpoints,
+with max differences 8.59%/7.30%. All completed terminal observations were valid.
+These are six-child/two-update probes, not long-quality evidence. A100 **30046018**
+remains PEND on host slots. No jobs/defaults changed.
+[Results, failures and interpretation](../experiments/latent-design/protenix-vae/restart-boltz-speed.md#a10-and-a40-results-16-november).
+
+16 November 2026. Fresh report collection confirms corrected method panels
+**29998584/29998585/29998586** all completed eight waves, 48,000 updates and
+48,096 relaxed calls per method, with zero launcher exit codes. Seed C final
+adaptive/continuous/independent best losses: **2.13091/2.30458/2.20542**;
+top-three means **2.15719/2.31640/2.20710**, diverse low-loss counts **97/0/16**.
+Adaptive wins all three readouts in all three seeds. Across-seed mean best loss
+adaptive/independent/continuous: **2.11675/2.18843/2.28281**; consumed fresh attempts
+**1,572/1,703/170**, with equal allowances 1,728 each. This supports adaptive
+feedback on the tested BRD4/Protenix setting, with unequal actual total costs and
+seed-dependent plateaus; it does not establish affinity or synthesis quality.
+Created a three-page PDF with final scores, learning curves and budget accounting,
+rendered and visually checked. No native scoring, optimization or job changes.
+[Report and saved data](../experiments/latent-design/protenix-vae/restart-matched-search.md#all-corrected-method-panels-complete-16-november-collection).
+
+16 November 2026, 13:54 CET. Submitted six paired 200-update Boltz2/full-DBMol
+FP32-versus-neural-block-BF16 quality pilots: **30078756/30078757/30078758/30078760**
+on L40S and **30078761/30078762** on A100, all observed PEND. Each pair reuses
+one ERK2 parent and the same initialization/seed in both arms (six local
+perturbation seeds 281113–281118), LR1/cap0.25/chemistry+valence1/no update noise.
+Arm order is counterbalanced. Each arm has 200 updates and 201 saved gradient
+observations; all distinct valid trajectory pose graphs are ranked by a separate
+common FP32/TF32-off scorer, with checkpoint membership tracked per arm.
+Total optimizer cap 2,400 updates; common FP32 scoring cap 402 graphs per pair,
+usually reduced by validity and exact-graph union caching. Four-hour limits,
+one GPU/four CPUs/MPS off. Seventeen scoped CPU checks passed; no native quality
+result yet. A10 excluded due its closed reservation until 24 November. No existing
+jobs, caches, checkpoints or full-search defaults changed.
+[Protocol, checks and submission receipts](../experiments/latent-design/protenix-vae/restart-boltz-precision.md).
+
+16 November 2026, 16:50 CET collection. A100 80 GB speed controller **30046018**
+completed 09:35–10:03 CET with zero launcher return code: ten completed cases,
+one predicted-memory skip. ERK2 FP32 serial took 7.038s/update; neural-block BF16
+serial/three-worker aggregate took 4.652/3.855s, a 20.7% parallel throughput gain
+within BF16 and 1.826x combined versus FP32 serial. BF16 changed one/six short
+terminal graphs; max initial gradient relative L2 difference 7.28%, minimum cosine
+0.999794. TF32 geometry-bin probes changed despite six/six terminal graph matches.
+Half-checkpoint BF16 serial reserved 77.54GiB, so its memory margin is poor.
+All four speed controllers have finished; long-search quality remains unmeasured.
+A read-only investigation identified original BRD4/3MXF/JQ1 and an older Mosaic
+V100 smoke, but no current VAE/BRD4 V100 timing; no new long job was submitted.
+[Results and scope](../experiments/latent-design/protenix-vae/restart-boltz-speed.md#a100-80-gb-results-16-november).
+
+16 November 2026. All seven synthesis follow-up jobs 30043380/381/383/384/385/386/389 completed with zero launcher codes, totaling 58,500 updates. Low-SA latent attraction and DeFoG showed modest independent hard-SA/QED improvements with validity/binding trade-offs; GASA and wave focus alone showed no clear synthesis advantage. Pareto wave selection found SA 4.217 at fresh loss 2.2028, while best founder binding 2.051323 remained unbeaten. One-seed results and differing actual fresh consumption preclude a general ranking. Corrected method seed C 29998586 also completed all 8 waves/48k updates per method: adaptive/continuous/independent best 2.13091/2.30458/2.20542, top-three 2.15719/2.31640/2.20710, diverse low-loss 97/0/16. Adaptive now wins all three readouts across all three seeds; equal update and fresh allowances, actual attempts 474/54/563. No active account job name contains restart; no jobs modified. [Synthesis records](../experiments/latent-design/protenix-vae/restart-synthesis-next.md#all-seven-pilots-complete-16-november-2026), [method results](../experiments/latent-design/protenix-vae/restart-matched-search.md#all-three-corrected-method-panels-complete-16-november-2026).
+
+16 November 2026, synthesis detailed audit. Allocated CPU diagnostic30077712 DONE/frozen unchanged/no optimization: low-SA bank decodes29/32valid at original slots0–24 but1/32 at search slots0–23,25; control25/32→3/32. Effective anchor counts30.1–30.8/32 imply nearly centroid attraction at T0.5. Initial harness30077685 failed an API call and was corrected without editing existing jobs/assets. Saved-result analysis shows anchor gains dominated by one founder; only anchor-only produces one selected successful SA≤5/loss≤2.3 candidate. Pareto policy preserves a founder1 lineage abandoned by binding-only selection, producing SA 4.217/loss2.20284 at wave3/update278 (fresh call42), versus its parentSA6.127/loss2.16734. The terminal regresses and recovery misses this archive point. Independent DFR does not agree with the SA gain; selection/diversity/schedule attribution remains unresolved. No new GPU optimization submitted. [Analysis, diagnostics and proposed controls](../experiments/latent-design/protenix-vae/restart-synthesis-next.md#detailed-attraction-and-parent-selection-audit-16-november-2026).
+
+16 November 2026. Synthesis follow-up implemented/submitted: 18 optimization panels across 3 seeds (270,000 Protenix updates, 3,240 maximum fresh attempts) plus 12-call geometry readout 30078398. Selection jobs 30078310/311/313; replay 30078381/382/384; attraction mechanism 30078617/619/622, strength 30078624/626/629, screening 30078631/633/636; combined 30078656/658/660. At final snapshot 30078310 and 30078381 RUN on V100, 17 PEND. Actual-mask frozen-decoder bank preparation 30078294 DONE in 796s; paired 16-entry banks all valid/exact source identities, mean SA 2.3794 versus 3.2504, unchanged frozen weights/no model training/no norm rescaling. Added calibrated local versus broad/centroid attraction, common-rule SA-aware selection and SA-slot, exact joint-intermediate replay, binding/SA scoring shortlist, joint successful-score diversity metrics and authenticated saved-endpoint rescoring. 79 focused tests and actual-bank finite-gradient smoke passed. Existing jobs/assets preserved; new sealed source/config paths; no claims of completed optimization outcomes yet. [Question, controls, commands and receipts](../experiments/latent-design/protenix-vae/restart-synthesis-followup.md).
+
+16 November 2026, 16:52 CET. Synthesis follow-up: 2 completed, 2 RUN, 15 PEND;
+no failures observed. Replay 30078381 completed 18,000 updates/four waves, launcher exit 0.
+All three policies yield 2 candidates at SA≤5/loss≤2.3; joint replay broadens the
+SA≤5/loss≤2.4 yield to 4 versus 2, with 99.27% versus 99.73% validity, without a
+strict-best improvement. Readout 30078398 completed all 12 scores, launcher exit 0.
+Parent/intermediate/terminal mean losses 2.16654/2.20191/2.23171: intermediate
+SA 4.217 beats terminal SA 6.758 on both objectives. Previously unscored attraction
+endpoint SA 4.363 has mean loss 2.49877 and fails the study's 2.3 binding cutoff.
+Selection 30078310/30078311 RUN in the final wave; corrected-attraction panels
+still queued. No jobs changed. [Results and receipts](../experiments/latent-design/protenix-vae/restart-synthesis-followup.md#first-two-completions-16-november-2026-1652-cet).
+
+
+16 November 2026, 17:27 CET. BRD4 Boltz2 full-DBMol long trial submitted as **30082565** to `gpuv100`, PEND at the first check. LR1, 400 updates/child, 3 parents x 2 children, six bootstrap starts, FP32, constant chemistry/valence weights1, no optimization noise. Six nominal waves/14,400 updates; 20-wave/48,000-update and720-fresh-score ceilings under a22h completed-wave time budget and24h allocation. Prepared31-atom native JQ1 fixture passed exact feature parity in CPU job728493 (30.45s); aromatic-H reference codec warning retained, generated validity strict. Twenty-four focused CPU checks passed; no native GPU outcome yet. Existing jobs unchanged. [Config, commands and receipts](../experiments/latent-design/protenix-vae/restart-boltz-brd4.md).
+
+17 November 2026, 20:16 CET. Synthesis follow-up: 17 successful completions
+(16 optimization panels/238,500 updates plus readout), zero running, two A40
+jobs pending: 30078631 and 30078660. No failures or job modifications. Corrected
+bank attraction has no consistent mechanism win over SynFrag alone. Weak 0.025
+attraction yields 3/2/3 strict SA/binding candidates versus 2/1/0 at 0.05.
+Strong 0.2 lowers selected mean SA but validity falls to 90.60%. Chemistry-aware
+screening yields 1/3 versus 0/0 qualifying candidates at equal consumed scoring
+calls in two seeds. Selection/schedule and replay remain seed dependent; no
+repeatable strict joint-replay win. A saved projected-guide SA 1.1607 outlier
+was independently reproduced with local RDKit, but remains nine-ring/DFR5.89
+and is not a synthesis-feasibility claim.
+[Results and receipts](../experiments/latent-design/protenix-vae/restart-synthesis-followup.md#seventeen-completed-17-november-2026-2016-cet).
+
+17 November 2026, 20:31 CET. User-authorized queue migration: screening 30078631
+and combined 30078660 cancelled while unstarted; identical held V100 replacements
+30099741/30099744 released and verified PEND. V100 selected from live idle-host
+and queue evidence; exclusive 12 GiB request matches successful campaign siblings.
+Site disables bstop and restricts bmod to administrators, so replacements were
+used. Unused held attempt 30099736 also exited without starting. Exact sealed
+source hashes and scientific argv/budgets are unchanged; original output paths
+were empty before replacement release. Existing unrelated jobs preserved.
+[Receipts and mapping](../outputs/synthesis-queue-move-20261117T192347Z/migration-summary.json).
+
+17 November 2026. Offline SA audit found a discontinuity in the installed RDKit high-score transformation. In 16 completed follow-up optimization panels, 509 distinct nonfounder valid molecules passed the pre-smoothing SA 5 cutoff and 64 of these were fresh-scored. At fresh loss up to 2.3 the archived 41 SA-5 hits became zero and 85 SA-6 hits became six. At loss up to 2.4 there were 17 and 38 audited hits respectively. This supersedes earlier threshold-based method rankings. No optimizer or job changes. [Analysis and receipts](../experiments/latent-design/protenix-vae/restart-synthesis-followup.md#audited-synthesis-scores-and-validity-17-november-2026).
+
+
+17 November 2026, 20:55 CET. Submitted 18 paired BRD4 Boltz2 DBMol pilot jobs for branch allocation, prior screening and local gradient reuse. Three seed panels on V100 32 GB, A40 and A100 80 GB, all pending. Total 34,200 updates with at most 720 fresh FP32 scores. The CPU preflight reproduced the paired archived starts for every seed. None of the 1,536 raw prior draws was valid; the 15 selected replacements had verified repair paths of one to three edits. [Run record, budgets and job IDs](../experiments/latent-design/protenix-vae/restart-boltz-search-methods.md).
+
+17 November 2026, 21:17 CET. Submitted three follow-ups to the audited SA analysis. The BRD4 archive readout (30099905) queues 48 unscored SA-at-most-5 molecules and three near-miss conformer calls. Three matched GPU seed panels (30099918, 30099919, 30099920) compare binding-first, accessible-library and near-miss founders, with 40,500 updates in total and 513 maximum fresh calls including the founders. All four GPU jobs were pending. The independent fixed-budget AiZynthFinder CPU array 30099916 finished with routes for aspirin and paracetamol and zero for 24 binding-matched archive candidates, including zero of six with audited SA at most 5. Every target returned a result. Frozen RetroGNN hard scores were collected before planner comparison; the study panel has zero positive/negative pairs to validate its ranking. We kept RetroGNN as a readout. The shared audited SA implementation reproduced all 7,921 archived nonfounder scores to within 3e-15. [Archive scoring](../experiments/latent-design/protenix-vae/restart-synthesis-archive-screen.md), [founder comparison](../experiments/latent-design/protenix-vae/restart-synthesis-founders.md), and [route planning and RetroGNN](../experiments/latent-design/protenix-vae/restart-synthesis-route.md).
+17 November 2026, 21:26 CET. Staged a three-generation BRD4 Boltz2 DBMol comparison and registered CPU job 30099978 to select two allocation policies from nine pilot results and submit six paired V100 runs. Each arm receives 10,800 updates and up to 144 fresh FP32 scores. Verified paired archive starts on three new seeds. The nine pilot jobs were pending and no follow-up GPU jobs had been submitted. [Configuration, policy choice and receipt](../experiments/latent-design/protenix-vae/restart-boltz-generations.md).
+
+18 November 2026, 08:39 CET. The [long BRD4 Boltz2 run](../experiments/latent-design/protenix-vae/restart-boltz-brd4.md) finished seven waves with 20 distinct valid molecules exported and a best fresh loss of −3.105. The first [allocation pilot](../experiments/latent-design/protenix-vae/restart-boltz-search-methods.md), A40 fixed-400, scored 17 distinct novel valid molecules with best loss −2.791 and tenth-best −0.547 in 2,400 updates. The V100 fixed-400 pilot was active and 16 pilots were pending. Controller 30099978 was waiting for its remaining allocation results.
+
+18 November 2026, 10:09 CET. The V100 BRD4 fixed-400 pilot (30099848) finished 2,400 updates in 3 h 30 min and scored 35 distinct new valid molecules, with best loss −2.843 and tenth-best −0.985. The fixed-150 and selective-extension runs were still queued on all three seeds. [Allocation results](../experiments/latent-design/protenix-vae/restart-boltz-search-methods.md).
+
+
+18 November 2026, 10:24 CET. Five of six overnight synthesis GPU jobs finished with successful receipts. [Archive screening](../experiments/latent-design/protenix-vae/restart-synthesis-archive-screen.md) found two audited SA-at-most-5, loss-at-most-2.3 molecules in 24 ranked choices versus zero in 24 matched controls. [Founder seeds 1 and 3](../experiments/latent-design/protenix-vae/restart-synthesis-founders.md) yielded six and seven new-to-history molecules at SA at most 6 and loss at most 2.3 for near-miss starts, including one SA 3.976 / loss 2.287. Seed 2 remained pending on A10. The last two jobs from the earlier 19-job campaign also finished. [Combined seed 3](../experiments/latent-design/protenix-vae/restart-synthesis-followup.md#final-screening-and-combined-seeds-18-november-2026) produced two strict hits with 98.22% valid trajectory states.
+18 November 2026, 11:38 CET. Submitted three 75-update BRD4 Boltz2 allocation pilots on the same seeds, archive, GPU families, and budget as the fixed-150 and fixed-400 controls. Jobs 30104381 (V100), 30104382 (A40), and 30104383 (A100) were pending. Each allocates 32 × 75 updates and up to 48 fresh FP32 scores. The V100 fixed-150 control had started. [Configuration and receipts](../experiments/latent-design/protenix-vae/restart-boltz-search-methods.md#fixed-75-comparison).
+
+18 November 2026, 14:01 CET. Founder seed 2 moved from unstarted A10 job 30099919 to V100 job 30105078, verified pending after release. Same sealed scientific command, using the 12 GiB V100 reservation of the completed siblings. [Receipt and current job ID](../experiments/latent-design/protenix-vae/restart-synthesis-founders.md#seed-2-moved-to-v100-18-november-2026).
+
+18 November 2026. Founder comparison completed on all three seeds. Final V100 job 30105078 exited zero after 13,500 updates. Near-miss starts led on new-to-history distinct yield at audited SA <=6 and fresh loss <=2.3 in every seed. [Experiment record](../experiments/latent-design/protenix-vae/restart-synthesis-founders.md).
+
+18–19 November 2026. Adopted the three-wave, synthesis-aware BRD4 preset with replayable diverse near-miss founders, weak SynFrag, an audited-SA-first fresh shortlist and independent geometry confirmation. On the frozen near-miss trajectories the shortlist selected 96 candidates, 50 with audited SA ≤5, versus 143 actual prior fresh calls. DTU CPU job 30110680 redocked JQ1 to 0.690 Å crystal-frame heavy-atom RMSD and −7.878 kcal/mol. Paired V100 pilot 30110682 tests Vina selection of the third parent at 4,500 updates per arm and equal fresh allowances. [Protocol, controls and paired receipts](../experiments/latent-design/protenix-vae/restart-synthesis-standard.md).
+
+19 November 2026. Three of six archived hard molecules produced a native Vina pose in the bounded local readout. For the strict founder-3 descendant, fresh contact loss improved from 2.3412 to 2.2867 and Vina weakened from −7.833 to −5.289 kcal/mol. Three attempts reached the 180-second time limit. The V100 parent-selection pilot started and completed its shared founder rescores. [Individual results and scope](../experiments/latent-design/protenix-vae/restart-synthesis-standard.md#six-archived-molecules-docked-before-the-comparison).
+
+19 November 2026. CPU job 30110686 scored all three eligible third parents in the archived second-seed decision. The Vina-selected parent's predicted energy was 0.172 kcal/mol more favorable than the actual standard parent's. [Matched parent readout](../experiments/latent-design/protenix-vae/restart-synthesis-standard.md#paired-pilot).
+
+19 November 2026. Recomputed audited SA offline on saved hard molecules from the six completed Protenix method/width panels. Nine distinct discovery hits met SA ≤5 and fresh loss ≤2.3, seven after diversity filtering. The strict matched-method yield was 0/0/3 across seeds for adaptive and 1/1/1 for independent starts. Seven of nine pooled SA ≤6 near-miss descendants shared a local motif absent from all nine baseline strict hits. Two previously omitted synthesis panels add 1,065 identities to the frozen history. [Search retrospective and individual data](../experiments/latent-design/protenix-vae/restart-synthesis-standard.md#earlier-search-results-under-the-joint-cutoff-19-november-2026).
+
+19 November 2026. Eight Boltz BRD4 method pilots returned results. A40 fixed-150 yielded 40 distinct scored molecules versus 17 under fixed-400 at 2,400 updates each. V100 gradient reuse made zero proxy calls. The V100 allocation panel used different device models, which the sealed follow-up selector rejects. [Pilot results and device check](../experiments/latent-design/protenix-vae/restart-boltz-search-methods.md#completed-pilot-receipts-19-november-2026).
+
+19 November 2026. Expanded the synthesis reference to 59,211 distinct hard molecules. All nine retrospective strict hits are included. Geometry job 30110998 and CPU route job 30111000 test the two archived leads. Paired V100 jobs 30111017, 30111018 and 30111020 test an independent final child versus continuation at the same 4,500 updates per arm. CPU job 30111066 will pool the three paired comparisons, and 30111016 will independently recompute novelty for the active Vina pilot using the expanded reference. [Protocol and receipts](../experiments/latent-design/protenix-vae/restart-synthesis-standard.md#candidate-and-search-follow-ups-19-november).
+
+19 November 2026. Timing repeat 30111011 requests the original Boltz fixed-150 input and a V100 SXM2 32 GB host. Analysis job 30111012 will verify the starts and select policies from hardware-matched elapsed-time measurements once the remaining pilots finish. [Hardware-matched study](../experiments/latent-design/protenix-vae/restart-boltz-search-methods.md#hardware-matched-timing-repeat).
+
+19 November 2026. The Vina parent-selection pilot completed. Vina changed the third parent, whose child and continuation supplied zero candidates for fresh scoring versus four for the standard lineage. Both arms found zero new hits at SA ≤5 or ≤6 and fresh loss ≤2.3 against the expanded history. The closest new SA ≤5 molecule came from a shared branch in both arms. [Results and receipts](../experiments/latent-design/protenix-vae/restart-synthesis-standard.md#completed-vina-parent-selection-pilot-19-november).
+
+19 November 2026. Two local CPU probes tested per-update docking guidance on archived founder 3. The frozen TacoGFN QuickVina proxy for the campaign BRD4 pocket 3MXF gave gradients through atoms and existing bond orders to the archived VAE latent. The measured slope was 0.25972 versus 0.25996 from autograd. It agreed with native docking on 6/10 comparisons within the five-parent panel. Native receptor maps independently gave site-specific gradients through a relaxed atom-type choice at the saved pose. [Methods, limits and receipts](../experiments/latent-design/protenix-vae/restart-synthesis-standard.md#can-a-docking-score-guide-an-individual-update).
+
+19 November 2026. Submitted V100 jobs 30112608, 30112609 and 30112610 to compare per-update TacoGFN guidance off versus a 5% latent gradient cap on the three archived BRD4 founders. Each arm gets 500 updates per founder and matched hard-molecule scoring and native redocking attempts. All three local short paired trials exercised the runner; production jobs were pending at 10:22 CET. [Experiment and scheduler receipts](../experiments/latent-design/protenix-vae/restart-synthesis-standard.md#paired-tacogfn-guidance-on-the-brd4-founders).
+
+19 November 2026. Submitted 32 GB V100 jobs 30112884, 30112885 and 30112886 for the three archived 31-slot Boltz2 BRD4 founders. Each pairs 500 control updates with 500 updates using TacoGFN at exactly half the Boltz2 latent-gradient norm on usable states. Hard Boltz2 and native Vina scoring allowances match within each founder pair. All three jobs were pending at 11:01 CET. [Experiment and scheduler receipts](../experiments/latent-design/protenix-vae/restart-synthesis-standard.md#tacogfn-at-half-the-boltz2-gradient-norm).
+19 November 2026, 10:56 CET. The first fixed-75 BRD4 pilot (30104381) returned 48 freshly scored distinct molecules versus 32 for its hardware- and seed-matched fixed-150 control. Time to ten was 48 versus 56 minutes. The same molecule led both; at 32 actual fresh calls both had the same tenth loss. The A40 and A100 fixed-75 runs were pending. [Paired outcomes](../experiments/latent-design/protenix-vae/restart-boltz-search-methods.md#first-fixed-75-result-19-november).
+
+19 November 2026, 11:21 CET. Submitted job 30112966 for an 18-wave FP32 Boltz2 DBMol search in the human ERK2 CQ8 pocket. CPU replay verified all six scored ERK2 founders and the eight distinct first-wave children. The 80 GB A100 job was pending with a budget of 10,800 updates and 144 fresh attempts. [Configuration and receipt](../experiments/latent-design/protenix-vae/restart-boltz-erk2-18.md).
+
+19 November 2026. BRD4 job 30082565 produced two carbonyl-containing molecules and zero aromatic-ring molecules among 63 distinct valid identities. A CPU replay recovered all 20 exports and found nonzero latent gradients for a soft carbonyl and triangle count on each. [Counts and replay settings](../experiments/latent-design/protenix-vae/restart-boltz-brd4.md#functional-groups-in-the-saved-brd4-molecules).
+
+19 November 2026, 12:38 CET. Submitted three direct relaxed-graph Boltz2 BRD4 jobs (30113968, 30113970, 30113971) and paired dependent CPU docking readouts (30113972–30113974). Each seed compares control, carbonyl, triangle and combined objectives over 75 updates per arm. Seven focused CPU tests passed. A flat-binding smoke gave valid new carbonyls for two of three founders under motif guidance and zero under control. All HPC jobs were pending. [Experiment and receipts](../experiments/latent-design/protenix-vae/restart-boltz-brd4-direct.md).
+
+19 November 2026, 12:41 CET. Submitted the matched ERK2 graph-logit search as 30114008. All eight first-wave relaxed graphs exactly matched the VAE control on CPU. A two-wave fixture replayed a newly scored molecule and optimized without further VAE calls. Both 80 GB A100 jobs were pending. [Run settings, checks and receipt](../experiments/latent-design/protenix-vae/restart-boltz-erk2-18.md#matched-search-in-relaxed-graph-space).
+
+19 November 2026. Submitted BRD4 PharmacoNet comparison 30115064 and dependent redocking job 30115065, one seed, matched 75 updates and eight fresh-score slots per arm. The independent neutral (+)-JQ1 calibration recovered the Asn140 contact at 2.87 Å after redocking with a 0.75 Å heavy-atom RMSD. Candidate outcomes are pending. [Paired experiment and controls](../experiments/latent-design/protenix-vae/restart-boltz-pharmaconet.md).
+
+19 November 2026. Replaced the pending LR 0.1 BRD4 PharmacoNet pair with GPU job 30115179 and dependent redocking job 30115180 at LR 1. Source comparison confirmed identical optimization and readout code, founder seed, per-row 0.25 step cap, update budget and fresh-score limits. The first pair was cancelled before execution. [LR 1 experiment and receipts](../experiments/latent-design/protenix-vae/restart-boltz-pharmaconet.md).
+
+19 November 2026, 13:31 CET. Submitted VAE-free ERK2 graph search 30115233, with 18 waves, 75 updates per child and LR 1. The prepared CQ8 ligand and three valid pose-guided tree founders replayed on CPU. Their four initial FP32 scores count toward the 144-score cap. All three ERK2 searches were pending on 80 GB A100s. [Experiment and receipt](../experiments/latent-design/protenix-vae/restart-boltz-erk2-18.md#erk2-with-graph-space-founders-throughout).
+
+19 November 2026, 22:34 CET. Seed A (30113968) completed all four BRD4 direct-logit variants at LR 0.1. Each had 14 valid observations and zero novel valid molecules after 75 updates. [Results and receipt](../experiments/latent-design/protenix-vae/restart-boltz-brd4-direct.md#first-completed-brd4-seed).
+
+20 November 2026. BRD4 LR 1 jobs 30115179 and 30115180 finished. Control and guided each decoded only the shared founder at steps 0–10 and failed sanitization at steps 11–75. Both had 0 new valid, 0 freshly scored and 0 docked descendants. The guided final map loss improved to 2.441 versus control 2.958, with candidate contact retention unmeasurable. The founder retained zero strict hotspots and two hydrophobic protein-partner contacts. Neutral (+)-JQ1 independently retained the Asn140 hydrogen bond. [Results and trajectories](../experiments/latent-design/protenix-vae/restart-boltz-pharmaconet.md#completed-lr-1-comparison).
+
+20 November 2026. Seed C (30113971) returned the same single charge variant across all four BRD4 direct-logit arms at LR 0.1. Its Vina score was −6.842 kcal/mol versus −6.852 for the founder. [GPU and redocking results](../experiments/latent-design/protenix-vae/restart-boltz-brd4-direct.md#second-completed-brd4-seed).
+
+20 November 2026. All three 25-atom native sparse founders for the direct Protenix BRD4 repair comparison were valid and connected on CPU. Twelve focused tests passed. Submitted seeds 111210, 111310 and 111410 as 30129256–30129258 with matched repair weights 0, 0.1 and 1 on each GPU. CPU job 30129259 collects outcomes after the GPU jobs end. [Settings, budgets and receipts](../experiments/latent-design/direct-jump/repair-search.md).
+
+20 November 2026. Cancelled 30129256–30129259 before startup. Submitted the replacement direct BRD4 repair weights 1, 5 and 10 across the same three sparse founders. A founder and five child generations of 4 parents × 3 children give 12,500 updates per arm. All nine GPU jobs and dependent report 30129354 were verified pending. Fifteen focused CPU tests passed, including projected weight comparisons and split-job report collection. [Jobs, configuration and report](../experiments/latent-design/direct-jump/repair-search.md).
+
+20 November 2026. Added repair weight 0.1 on all three founders as jobs 30129506–30129508, 12,500 updates each. The staged optimizer sources and all remaining search settings matched the original nine jobs. Report job 30129512 collects all four weights across the three seeds. [Full comparison](../experiments/latent-design/direct-jump/repair-search.md).
+
+20 November 2026. Native Nesso-1 BRD4 smoke job 30131386 measured 1.700 s per prepared five-recycle forward and 0.854 s per warm single-pass direct optimization update on a 40 GB A100. Seed 111210's relaxed affinity improved from 0.4566 to 0.1258 over three steps. Both directions retained the hard founder. Submitted three 100-update paired pilots as 30131388, 30131390 and 30131391. [Protocol, measurements and receipts](../experiments/latent-design/direct-jump/nesso-pilot.md).
+
+20 November 2026. Nesso-1 A100 job 30131395 replayed seed 111210 through its first new valid graph at step 8. Fresh five-recycle predicted affinity improved from 0.523669 to 0.470817, with binary binder probability falling from 0.152 to 0.089. [Hard-readout receipt](../outputs/nesso1-brd4-pilot-20261120a/first-new-hard-rescore.json).
+
+20 November 2026. Nesso-1 L40S job 30131390 finished both 100-update BRD4 arms in 154 seconds. Warm downhill updates averaged 0.618 s. Two of three new valid molecules improved on the founder under fresh affinity scoring. The reverse direction yielded zero new valid molecules. [Measured timings and outcomes](../outputs/nesso1-brd4-pilot-20261120a/111310-result.json).
+
+20 November 2026. The four direct Protenix BRD4 searches for founder 111410 completed 50,000 updates in total. Weight 10 gave the lowest discrete predicted contact loss (−0.33069 from −0.22809) during the founder trajectory. Weight 0.1 found the most distinct new valid molecules (19) and improved its best score after branching. The other two seeds were pending. [Four-weight results](../experiments/latent-design/direct-jump/repair-search.md#first-completed-four-weight-comparison).
+
+20 November 2026. A retrospective alignment of exact child continuations on seed 111410 identified seven archived valid molecules first discovered after 200 uninterrupted updates on their own paths. Four came from one weight-0.1 child lineage and three from one weight-1 lineage, including the weight-1 winner at cumulative step 319. Twelve extended child paths at weights 5 and 10 yielded no new identities after step 200. [Child-length evidence](../experiments/latent-design/direct-jump/repair-search.md#did-extending-a-child-past-200-updates-help).
+
+20 November 2026. Paired native BRD4 calibrations on two 40 GB A100 allocations measured Protenix/Nesso-1 weights of 0.61843/0.06259 for seed 111310 and 0.68926/0.07326 for seed 111410. The seven-state median combined pre-repair gradient norm matched Protenix alone for both fits. Submitted six 42,700-update direct searches with 700 updates per trajectory and repair weight 2. Twelve focused CPU tests passed. L40S control 30135336 started. [Settings, measurements and job IDs](../experiments/latent-design/direct-jump/combined-search.md).
+
+21 November 2026. The first 700-update BRD4 Protenix control finished with 49 joint improvements among 64 new valid molecules. At 25,900 updates the fixed blend had 220 joint improvements, versus 11 in the same-seed control. The standalone Nesso pilots completed with improvements on two of three seeds in the downhill arms. Four V100 repair-weight searches completed on founder 111210. Weight 5 produced 49 improved molecules. [Combined search](../experiments/latent-design/direct-jump/combined-search.md#first-completed-control-and-partial-fixed-blend) · [Standalone Nesso](../experiments/latent-design/direct-jump/nesso-pilot.md) · [Repair-weight comparison](../experiments/latent-design/direct-jump/repair-search.md#second-completed-four-weight-comparison)
+
+21 November 2026. Two allocated GPU calibrations for BRD4 verified mean model gradient contributions of 35% contact, 35% affinity and 30% binder probability loss, with repair weight 2 added afterward. Submitted confidence searches 30147216 and 30147217 for a paired comparison at 42,700 updates against the existing fixed jobs, followed by an exploratory 8,400-update generation. Comparison jobs 30147218 and 30147219 wait for the paired searches. [Configuration, calibration and receipts](../experiments/latent-design/direct-jump/combined-search.md#adding-calibrated-binder-probability)
+
+23 November 2026. At 42,700 updates on BRD4 seed 111310, the fixed Protenix–Nesso blend produced 496 distinct new valid molecules with improved predicted contact and affinity, versus 49 with Protenix alone. One blend molecule also improved predicted binder probability, versus five for Protenix alone. The matched relaxed-graph Boltz2 ERK2 run finished 18 waves in 20 h 43 min. All nine scored new molecules appeared in its first three waves, and the best retained founder outscored every new molecule. [BRD4 comparison](../experiments/latent-design/direct-jump/combined-search.md#completed-fixed-blend-on-seed-111310) · [ERK2 results](../experiments/latent-design/protenix-vae/restart-boltz-erk2-18.md#matched-search-in-relaxed-graph-space)
+
+23 November 2026. The paired ERK2 runs reached six completed waves each (3,600 updates, about seven hours). With identical first-wave relaxed starts, VAE optimization returned 48 distinct novel hard-scored molecules, 14 better than the strongest founder. Direct graph optimization returned nine, with zero beating that founder. Best predicted DBMol losses were −6.2721 and −3.7950, respectively. The VAE job stopped during wave seven on a hard-graph identity check. [Paired ERK2 results](../experiments/latent-design/protenix-vae/restart-boltz-erk2-18.md#matched-results-through-wave-six)
+
+24 November 2026. Loaded the epoch-48 VAE at update 623116 through the repository loader. The research and training checkouts produced identical CPU encoder outputs, decoder outputs and latent gradients on a deterministic probe with frozen weights. The previous ERK2 wave-seven failure was reproduced from the saved graph. Its reported SMILES changed aromatic bond assignments on reparsing. The new ERK2 jobs count that case as an unsuccessful score and preserve the graph identity check. Submitted two ERK2 Boltz2 DBMol searches (30359611, 30359612; 3,600 updates each) and two BRD4 Protenix searches with independently screened founders (30359605, 30359606; up to 22,000 updates each). [Loader receipt](../outputs/vae-e48-search-validation-20261124a/research-epoch48.json) · [ERK2 settings](../experiments/latent-design/protenix-vae/restart-boltz-erk2-18.md#epoch-48-erk2-searches-from-newly-drawn-founders) · [BRD4 settings](../experiments/latent-design/protenix-vae/restart-brd4-e48.md)
+
+24 November 2026. Epoch 48 reproduced the historical 25-atom BRD4 lead M02 exactly from its encoder posterior mean. Submitted A40 job 30359672 to search for descendants using up to 9,000 latent updates and rescore the top three new molecules and the founder on two held-out geometries. The broad L40S run 30359606 started. With operator approval, moved the 1,855,662,080-byte Boltz2 installation tarball to HPC home, verified its pinned SHA-256 before and after the atomic switch, and read it through its original work path. BeeGFS reported 4.39 GiB free afterward, against 3.75 GiB in combined output caps for these five jobs. [Focused BRD4 search](../experiments/latent-design/protenix-vae/restart-brd4-e48.md#focused-search-from-m02) · [Verified storage move](../outputs/vae-e48-search-validation-20261124a/storage-move.json)
+
+24 November 2026. Through wave three of epoch-48 BRD4 job 30359606, 68 of 70 freshly scored descendants from valid starting molecules beat their own original founder on predicted Protenix pocket contact. A separate two-molecule rescore (30360581) used the same discovery geometry and frozen scorer. The best losses per lineage were 2.19681 from 2.55430 and 2.22918 from 2.70658. Forty-one additional scored molecules came from invalid starts. [Wave-three lineage comparison and receipts](../experiments/latent-design/protenix-vae/restart-brd4-e48.md#seed-b-through-wave-three)
+
+24 November 2026. Submitted the first BRD4 search combining the epoch-48 VAE with Protenix contact and Nesso-1 affinity (30361092, exclusive L40S). It shares founder M02, seed 9312401 and a 9,000-update cap with the Protenix-only control (30359672). A shared A100 startup test reproduced M02's hard Protenix loss at 2.25233438 and ran out of GPU memory during the first native Nesso gradient. The dedicated search measures both gradients before optimizing. Paired evaluator 30361095 waits for both searches and compares their distinct new molecules against M02 on predicted contact, affinity and binder probability. [Experiment settings and receipts](../experiments/latent-design/protenix-vae/restart-brd4-e48.md#paired-protenix-and-nesso-1-search-from-m02)
+
+25 November 2026. Both epoch-48 BRD4 searches from M02 completed six waves and 9,000 updates. Paired evaluator 30361095 found 31 distinct molecules with better predicted Protenix contact and Nesso-1 affinity in the Protenix-only arm (30359672), versus seven with the fixed contact–affinity blend (30361092). Of the new molecules with a Nesso score, 66 of 94 and 98 of 101, respectively, beat M02 on affinity. The three best contact candidates in each arm also beat M02 on both held-out ligand geometries. The two broad BRD4 runs finished 22,000 updates each, with best discovery contact losses of 2.13666 (30359605) and 2.13147 (30359606). [BRD4 results](../experiments/latent-design/protenix-vae/restart-brd4-e48.md)
+
+25 November 2026. Submitted two epoch-48 BRD4 Protenix repeats using 100 updates per branch, six parents by three children after the founder wave and 13 waves. Both retain the earlier founder seeds and caps of 22,000 updates and 264 fresh scores. The scheduler showed V100 job 30364144 and L40S job 30364145 pending. [Settings and submissions](../experiments/latent-design/protenix-vae/restart-brd4-e48.md#wider-and-deeper-search-with-100-update-branches)
+
+25 November 2026. The 100-update BRD4 seed B job 30364145 completed 13 waves and 21,400 updates. Its best fresh loss was 2.10916 versus 2.13147 for the 500-update control. [Results](../experiments/latent-design/protenix-vae/restart-brd4-e48.md#wider-and-deeper-search-with-100-update-branches)

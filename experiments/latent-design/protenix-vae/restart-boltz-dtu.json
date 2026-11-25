@@ -1,0 +1,14 @@
+{
+  "checkpoint": "/work3/s234818/latentmol/cache/boltz2/boltz2_aff.ckpt",
+  "checkpoint_sha256": "dcc5cd3722b1c9eaa34267e4ae32f55cbbf1963f4c19319381ccfa30fdd2ca9e",
+  "confidence_checkpoint": {
+    "path": "/work3/s234818/latentmol/cache/boltz2/boltz2_conf.ckpt",
+    "sha256": "090e82ac8c92f5e943fa1b39e7410a44027bea7243c0bbb3caa67a77fc1428e1"
+  },
+  "cache": "/work3/s234818/latentmol/cache/boltz2",
+  "device": "cuda",
+  "recycling_steps": 0,
+  "allow_lossy_charge": true,
+  "max_tokens": 256,
+  "max_atoms": 2048
+}

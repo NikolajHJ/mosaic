@@ -1,0 +1,136 @@
+{
+  "study": "synthesis_pilot",
+  "design": {
+    "updates": 500,
+    "schedule_horizon": 500,
+    "seed": 17,
+    "noise_seed": 230017,
+    "occupied_atoms": 25,
+    "learning_rate": 60.0,
+    "max_step_norm": 0.25,
+    "chemistry_initial": 1.0,
+    "chemistry_final": 1.0,
+    "chemistry_hold": 375,
+    "chemistry_ramp_end": 500,
+    "valence_excess_weight": 1.0,
+    "temperature_initial": 1.0,
+    "temperature_final": 1.0,
+    "noise_initial": 0.0,
+    "noise_zero_at": 100
+  },
+  "parent_count": 3,
+  "fresh_per_parent": 6,
+  "parent_panel": {
+    "path": "/work3/s234818/latentmol/assets/restart-synthesis-20261111a/parents.json",
+    "sha256": "3926e699fd1cff7e88adb1839c71cb71ad7b346ea562fb3acedb6188a7cb440f"
+  },
+  "research_profile": "exploratory",
+  "synthesis_assets": {
+    "synfrag": {
+      "path": "/work3/s234818/latentmol/assets/restart-synthesis-20261111a/synfrag_default.pth",
+      "sha256": "b199767d33d30dd9314c2a06de35786f29b3b230ca84d3043a830da854b96eba"
+    },
+    "dfr": {
+      "path": "/work3/s234818/latentmol/assets/restart-synthesis-20261111a/Best_model_163.pt",
+      "sha256": "56e6c58c8baf3770ac5eab7dbae81fd7f9622ab9ec6b9a453ed5dc93029faffd"
+    }
+  },
+  "fresh_scoring_policy": "equal_allowance",
+  "shortlist_policy": "binding-sa",
+  "guided_controls": true,
+  "waves": 4,
+  "recovery_wave": 4,
+  "chemistry_profile": [
+    1.0,
+    1.0,
+    1.0,
+    2.0
+  ],
+  "parent_max_similarity": 0.85,
+  "min_parent_step_gap": 100,
+  "parent_binding_ceiling": 2.35,
+  "apply_binding_ceiling_to_all": true,
+  "tasks": {
+    "seed-1": {
+      "seed": 1613113,
+      "queue": "gpuv100"
+    },
+    "seed-2": {
+      "seed": 1613117,
+      "queue": "gpul40s"
+    },
+    "seed-3": {
+      "seed": 1613129,
+      "queue": "gpua40"
+    }
+  },
+  "anchor_libraries": {
+    "low-local": {
+      "path": "/work3/s234818/latentmol/assets/restart-synthesis-aligned-20261116a/low-sa.json",
+      "sha256": "6680a569c3b75e01b66681e183f732e55159c8cc6291ad73548486660791e59c",
+      "target_effective_anchors": 4
+    }
+  },
+  "variants": {
+    "binding": {
+      "ratios": {
+        "synfrag": 0.05
+      },
+      "controller": {
+        "max_ratio": 0.05,
+        "ema_decay": 0.9,
+        "invalid_grace": 20,
+        "invalid_scale": 0.2
+      },
+      "parent_selection": "binding",
+      "selection_ranking": "diversity",
+      "recovery_start": "terminal"
+    },
+    "binding-anchor": {
+      "ratios": {
+        "synfrag": 0.05
+      },
+      "controller": {
+        "max_ratio": 0.1,
+        "ema_decay": 0.9,
+        "invalid_grace": 20,
+        "invalid_scale": 0.2
+      },
+      "anchor_ratio": 0.05,
+      "anchor_library": "low-local",
+      "parent_selection": "binding",
+      "selection_ranking": "diversity",
+      "recovery_start": "terminal"
+    },
+    "pareto": {
+      "ratios": {
+        "synfrag": 0.05
+      },
+      "controller": {
+        "max_ratio": 0.05,
+        "ema_decay": 0.9,
+        "invalid_grace": 20,
+        "invalid_scale": 0.2
+      },
+      "parent_selection": "pareto",
+      "selection_ranking": "diversity",
+      "recovery_start": "terminal"
+    },
+    "pareto-anchor": {
+      "ratios": {
+        "synfrag": 0.05
+      },
+      "controller": {
+        "max_ratio": 0.1,
+        "ema_decay": 0.9,
+        "invalid_grace": 20,
+        "invalid_scale": 0.2
+      },
+      "anchor_ratio": 0.05,
+      "anchor_library": "low-local",
+      "parent_selection": "pareto",
+      "selection_ranking": "diversity",
+      "recovery_start": "terminal"
+    }
+  }
+}

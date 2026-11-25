@@ -1,0 +1,45 @@
+{
+  "fresh_config_sha256": "1e704e93a207ceceff2a51e5a74516090e1dcf78c3939432661c9ee9d575cda0",
+  "assets_sha256": "ce29d29d41dd4404678df2f11057ac397fbb03474218bc8683e649a8a6d15dd2",
+  "discovery_seed": 1201,
+  "geometry_seeds": [
+    2203,
+    3209
+  ],
+  "hits": [
+    {
+      "id": "M01",
+      "smiles": "CN(C(=O)c1cc(N)ncn1)C1CC2CC2C(F)C1CC1CC1(F)F",
+      "audited_sa": 4.940089698820818,
+      "discovery": {
+        "group": "method",
+        "job_id": "29998586",
+        "seed": "seed-c",
+        "arm": "adaptive",
+        "wave": 5,
+        "branch": "parent-07-adaptive-00",
+        "step": 478,
+        "fresh_loss": 2.238484368713965,
+        "receipt": "/work3/s234818/latentmol/runs/protenix-restart-matched-search-allowance-20261111a-seed-c/cycle-05/batch.json",
+        "sha256": "5115d94d261555280f7ce4e6a7a035b99ff4d3548fa05ac12ab0341ea6663d2e"
+      }
+    },
+    {
+      "id": "M02",
+      "smiles": "NC(=O)c1nc(Cl)ccc2ccc(C(=O)N3CCC3c3nccs3)c1-2",
+      "audited_sa": 3.148928088244431,
+      "discovery": {
+        "group": "width",
+        "job_id": "29994169",
+        "seed": "seed-b",
+        "arm": "p6-c2",
+        "wave": 5,
+        "branch": "parent-03-p6-c2-00",
+        "step": 169,
+        "fresh_loss": 2.252334254771897,
+        "receipt": "/work3/s234818/latentmol/runs/protenix-restart-matched-width-20261110a-seed-b/cycle-05/batch.json",
+        "sha256": "a61abc253a22fb2fad8f20918e21064951abc57dbc263911abe26226c48ee4eb"
+      }
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "study": "restart_search",
+  "optimization_space": "vae_latent",
+  "vae_checkpoint": {
+    "path": "/zhome/95/e/206121/dbmol-control/vae-e48-encoder-bonds-early-20261124a/source/checkpoint-000623116.pt",
+    "sha256": "504fccee8954f684bace24c84e3b04af239260927531248b3ce5f974725d5df8",
+    "updates": 623116
+  },
+  "design": {
+    "updates": 500,
+    "schedule_horizon": 500,
+    "seed": 9112401,
+    "noise_seed": 7112401,
+    "occupied_atoms": 25,
+    "learning_rate": 60.0,
+    "max_step_norm": 0.5,
+    "chemistry_initial": 1.0,
+    "chemistry_final": 1.0,
+    "chemistry_hold": 375,
+    "chemistry_ramp_end": 500,
+    "valence_excess_weight": 1.0,
+    "temperature_initial": 1.0,
+    "temperature_final": 1.0,
+    "noise_initial": 0.0,
+    "noise_zero_at": 100
+  },
+  "perturbation_seed": 4011241,
+  "search": {
+    "initialization": "bootstrap",
+    "bootstrap_screen_pool": 64,
+    "bootstrap_branches": 4,
+    "parents": 4,
+    "children": 2,
+    "waves": 6,
+    "batch_size": 1,
+    "cpu_workers": 1,
+    "parent_policy": "frontier",
+    "frontier_keep_best": true,
+    "duplicate_refill_attempts": 4,
+    "perturbation": "latent",
+    "shortlist": "mixed",
+    "fresh_per_branch": 6,
+    "exact_children": 2,
+    "invalid_children": 0,
+    "min_step_gap": 100,
+    "max_similarity": 0.85,
+    "ancestor_lookback": 3,
+    "max_ancestor_fraction": 0.5,
+    "diversity_limit": 20,
+    "diversity_max_similarity": 0.75,
+    "audit_chemistry": true
+  },
+  "arms": {
+    "seed-a": {"queue": "gpuv100"},
+    "seed-b": {"queue": "gpul40s", "design": {"seed": 9212401, "noise_seed": 7212401}}
+  }
+}

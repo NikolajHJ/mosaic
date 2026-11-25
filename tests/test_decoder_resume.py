@@ -99,6 +99,18 @@ def test_resume_rejects_another_arm_and_incomplete_epoch_receipt(tmp_path, monke
         fit_case(**arguments, resume=resume)
 
 
+def test_resume_from_checkpoint_before_epoch48_model_fields(tmp_path, monkeypatch):
+    arguments, full, resume = setup_case(tmp_path, monkeypatch, "cpu")
+    checkpoint = torch.load(resume["checkpoint"], map_location="cpu", weights_only=False)
+    for field in ("atom_refinement_dropout", "extra_bond_rounds", "encoder_graph_attention_layers"):
+        del checkpoint["model_config"][field]
+    path = tmp_path / "legacy.pt"
+    torch.save(checkpoint, path)
+    resumed = fit_case(**arguments, resume={**resume, "checkpoint": str(path),
+                                           "checkpoint_sha256": file_sha256(path)})
+    assert resumed["terminal_rng"] == full["terminal_rng"]
+
+
 def test_segment_budget_reserves_three_complete_cases_and_evaluation(tmp_path):
     path = Path(__file__).parents[1] / "configs/decoder_budget_recovery.json"
     current = read_recovery(path, file_sha256(path))

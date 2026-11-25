@@ -12,6 +12,18 @@ from .encoder import GraphEncoder
 from .refined_decoder import RefinedGraphDecoder
 
 
+def comparable_model_config(record):
+    """Fill optional architecture additions with the historical disabled defaults."""
+    return ({"atom_refinement_dropout": 0., "extra_bond_rounds": 0,
+             "encoder_graph_attention_layers": 0, **record} if isinstance(record, dict) else record)
+
+
+def comparable_train_config(record):
+    if isinstance(record, dict) and "model" in record:
+        return {**record, "model": comparable_model_config(record["model"])}
+    return record
+
+
 @dataclass(frozen=True)
 class ModelConfig:
     hidden: int = 128
@@ -29,8 +41,14 @@ class ModelConfig:
     encoder_aggregation: str = "mean"
     encoder_degree_features: bool = False
     encoder_sum_scale: float = 3.
+    atom_refinement_dropout: float = 0.
+    extra_bond_rounds: int = 0
+    encoder_graph_attention_layers: int = 0
 
     def __post_init__(self):
+        if (type(self.extra_bond_rounds) is not int or self.extra_bond_rounds < 0
+                or (self.extra_bond_rounds and self.decoder_variant != "triangle_refine")):
+            raise ValueError("Extra typed-bond rounds require a triangle decoder")
         if self.hidden < 1 or self.latent < 1 or self.layers < 1:
             raise ValueError("Model widths and encoder layer count must be positive")
         if self.encoder_pooling not in ("ordered", "invariant", "canonical"):
@@ -39,12 +57,23 @@ class ModelConfig:
             raise ValueError("Encoder aggregation must be mean or sum")
         if type(self.encoder_degree_features) is not bool:
             raise ValueError("Encoder degree_features must be boolean")
+        if (type(self.encoder_graph_attention_layers) is not int or self.encoder_graph_attention_layers < 0
+                or (self.encoder_graph_attention_layers and
+                    (self.encoder_pooling != "canonical" or self.attention_heads < 1
+                     or self.hidden % self.attention_heads))):
+            raise ValueError("Graph attention requires canonical hard inputs and a divisible head width")
         if not math.isfinite(self.encoder_sum_scale) or self.encoder_sum_scale <= 0:
             raise ValueError("Encoder sum scale must be finite and positive")
         if self.decoder_variant not in ("legacy", "residual", "pair_refine",
                                         "deep_pair_refine", "global_bond",
-                                        "wide_global_bond", "stable_deep_pair_refine", "triangle_refine"):
+                                        "wide_global_bond", "stable_deep_pair_refine",
+                                        "triangle_refine", "bond_message", "triangle_bond_message"):
             raise ValueError("Unknown decoder variant")
+        if (type(self.atom_refinement_dropout) not in (int, float)
+                or not 0 <= self.atom_refinement_dropout < 1):
+            raise ValueError("Atom refinement dropout must be a probability in [0, 1)")
+        if self.atom_refinement_dropout and self.decoder_variant in ("legacy", "residual"):
+            raise ValueError("Atom refinement dropout requires a decoder with refinement rounds")
         if self.global_hidden is not None and self.global_hidden < 1:
             raise ValueError("Global hidden width must be positive")
         if self.pair_hidden < 1 or self.refinement_rounds < 0 or self.attention_heads < 1:
@@ -58,12 +87,13 @@ class ModelConfig:
         if self.decoder_variant != "legacy":
             if self.global_hidden is None or self.global_hidden < self.latent:
                 raise ValueError("Refined decoders require a global width at least as large as the latent")
-            if self.hidden % self.attention_heads:
+            if self.decoder_variant not in ("bond_message", "triangle_bond_message") and self.hidden % self.attention_heads:
                 raise ValueError("Atom width must be divisible by the attention head count")
             if self.decoder_variant == "residual" and self.refinement_rounds != 0:
                 raise ValueError("The residual control must declare zero pair-refinement rounds")
             if self.decoder_variant in ("pair_refine", "deep_pair_refine", "global_bond",
-                                        "wide_global_bond", "stable_deep_pair_refine", "triangle_refine") and self.refinement_rounds < 1:
+                                        "wide_global_bond", "stable_deep_pair_refine",
+                                        "triangle_refine", "bond_message", "triangle_bond_message") and self.refinement_rounds < 1:
                 raise ValueError("Pair refinement needs at least one round")
             if self.decoder_variant in ("deep_pair_refine", "global_bond",
                                         "wide_global_bond", "stable_deep_pair_refine"):
@@ -93,20 +123,26 @@ class GraphAutoencoder(nn.Module):
                                     pooling=config.encoder_pooling,
                                     aggregation=config.encoder_aggregation,
                                     degree_features=config.encoder_degree_features,
-                                    sum_scale=config.encoder_sum_scale)
+                                    sum_scale=config.encoder_sum_scale,
+                                    graph_attention_layers=config.encoder_graph_attention_layers,
+                                    attention_heads=config.attention_heads)
         if config.decoder_variant == "legacy":
             self.decoder = GraphDecoder(spec, config.hidden, config.latent)
         else:
+            typed_messages = config.decoder_variant in ("bond_message", "triangle_bond_message")
+            triangle = config.decoder_variant in ("triangle_refine", "triangle_bond_message")
+            direct_slots = typed_messages or triangle
             self.decoder = RefinedGraphDecoder(spec, config.hidden, config.latent,
                                                config.global_hidden, config.pair_hidden,
                                                config.refinement_rounds, config.attention_heads,
                                                trunk_hidden=config.trunk_hidden,
-                                               stable_refinement=config.decoder_variant in (
-                                                   "stable_deep_pair_refine", "triangle_refine"),
-                                               direct_slots=config.decoder_variant == "triangle_refine",
-                                               deep_refinement=config.decoder_variant == "triangle_refine",
-                                               triangle_hidden=config.triangle_hidden if
-                                               config.decoder_variant == "triangle_refine" else None,
+                                               stable_refinement=direct_slots or config.decoder_variant == "stable_deep_pair_refine",
+                                               direct_slots=direct_slots,
+                                               bond_messages=typed_messages,
+                                               extra_bond_rounds=config.extra_bond_rounds,
+                                               atom_refinement_dropout=config.atom_refinement_dropout,
+                                               deep_refinement=direct_slots,
+                                               triangle_hidden=config.triangle_hidden if triangle else None,
                                                global_bond_context=config.decoder_variant in (
                                                    "global_bond", "wide_global_bond"),
                                                wide_trunk=config.decoder_variant == "wide_global_bond")

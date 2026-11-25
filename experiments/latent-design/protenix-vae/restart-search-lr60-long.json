@@ -15,7 +15,7 @@
     "valence_excess_weight": 1.0,
     "temperature_initial": 1.0,
     "temperature_final": 1.0,
-    "noise_initial": 0.05,
+    "noise_initial": 0.0,
     "noise_zero_at": 100
   },
   "parent_cohorts": [

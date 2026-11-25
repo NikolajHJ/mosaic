@@ -133,3 +133,50 @@ at all six starts and had 98.5% and 77.8% valid observations, versus 79.8% and
 62.2% for dense-high. Dense-high had no jointly valid endpoint pair in panel C.
 
 [Snapshot and path readouts](../../../outputs/protenix-restart-status-20261108-2205/).
+
+Graph B (**29924375**) finished at 22:48 CET on 8 November. Persistence B
+(**29924377**) finished at 00:26 CET on 9 November. DTU terminal records
+and the final result files confirm all seven panels completed.
+
+Across the three 500-update persistence parents, none of the 34 jointly
+valid parent-seeded sibling endpoint pairs matched. Protected sparse-high
+kept the exact parent SMILES in all nine starts and yielded 77.8–98.5%
+valid observations across the three parents, versus 62.2–88.9% for
+protected dense-high. In both short graph panels, sparse-low gave
+93.8–95.5% valid observations, versus 81.6–88.5% for all-row mixing.
+
+## Minimal dose and timing follow-up
+
+The [timing config](restart-noise-timing.json) crosses latent parent
+radii of 0, 0.003, and 0.03 with initial update-noise ratios of 0%, 1%,
+and 5%. Update noise is relative to the binding-gradient step and
+fades linearly to zero at update 100. The two 128-update jobs cover
+four distinct archived parents, with three children per parent and
+condition. Seeds match across conditions, including the directions
+shared by nonzero doses. A 500-update panel repeats the four timing
+conditions at radius 0.03 and 1% update noise, using two parents and
+two children per condition. All jobs use LR 70 and cap 0.25.
+
+The bond panel uses three parents, three repeats, and 160 updates per
+child. It compares 1× and 8× weight on the `NONE` category with the same
+random weights and row support, at 5% and 25% of the safe graph mixing
+budget. All graph arms preserve the initial hard graph. They use zero
+update noise, and the graph offset fades by update 25.
+
+Each panel matches fresh attempts per parent across conditions, up to
+12. Read sibling divergence alongside the number of valid pairs,
+late fingerprint similarity, early soft and hard bond counts, and
+fresh loss. Use the smallest tested dose that reliably produces
+different valid trajectories while retaining useful fresh scores.
+
+DTU accepted all four jobs at 19:55 CET on 9 November. Each requests
+two hours. The [submission records](../../../outputs/protenix-restart-noise-timing-20261109a/)
+contain the sealed inputs and receipts. The run saves `path-analysis.json`,
+`early-bond-density.json`, and the matched score readout in `result.json`.
+
+| Job | Updates | Queue | DTU ID |
+| --- | ---: | --- | ---: |
+| Dose and timing A | 6,912 | gpul40s | 29948071 |
+| Dose and timing B | 6,912 | gpuv100 | 29948076 |
+| No-bond weighting | 7,200 | gpua100 | 29948080 |
+| 500-update persistence | 8,000 | gpul40s | 29948086 |
