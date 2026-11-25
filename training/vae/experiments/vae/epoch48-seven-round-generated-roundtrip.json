@@ -1,0 +1,46 @@
+{
+  "parent_epoch": 47,
+  "parent_updates": 575498,
+  "parent_config_sha256": "e3ef03097c4c39b54e2dbc66754f95f8db5db37da7e75c14cf07ffcf4a524b6c",
+  "epochs": 1,
+  "leg_updates": 25000,
+  "atom_order": "graph",
+  "wall_seconds": 81000,
+  "batch_size": 240,
+  "microbatch": 48,
+  "extension_seed": 2026112048,
+  "shuffle_seed": 11060151,
+  "checkpoint_every_updates": 1000,
+  "atom_refinement_dropout": 0.05,
+  "data": "/work3/s234818/latentmol/data/pubchem-hac60m-view-20261106a",
+  "data_sha256": "64247d04ec1f94d00320bb1e5a0d9c5540419eb37830050d3100775bf4385e18",
+  "hpc_cuda_ownership_helper": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-release-26/source/scripts/cuda_ownership.py",
+  "hpc_cuda_ownership_sha256": "578d2b6c9453ad14ce6778d306aa6c1d926acb442dcf8ae9f9a75bccc6b2e3cb",
+  "cuda_by_extra_rounds": {
+    "0": {"name_contains": "V100", "minimum_gib": 30, "maximum_gib": 34},
+    "3": {"name_contains": "V100", "minimum_gib": 30, "maximum_gib": 34}
+  },
+  "execution": {"gpu_cpus": 8, "torch_threads": 4},
+  "step_control": {"version": "adamw-displacement-scale-v2-half-continuation", "factor": 0.125},
+  "generated_roundtrip": {"weight": 0.1, "every_updates": 4, "draws": 16, "max_parents": 8},
+  "projection": {"max_edits": 8, "reference_priors": 16, "weight": 0.375},
+  "functional_groups": {
+    "ring_size": {"reference": "pubchem60m-train50k-v1", "weight": 0.1},
+    "activation_gate": {
+      "version": 2, "seed": 2026112287,
+      "control": {
+        "score_draws": 240, "neighbor_weight": 3.0,
+        "weight": 0.3, "every_updates": 4, "draws": 48, "seed": 2026112148,
+        "aromatic_floor": 0.87056, "amide_floor": 0.47988
+      }
+    },
+    "score_draws": 240, "neighbor_weight": 3.0,
+    "weight": 0.3, "every_updates": 4, "draws": 48, "seed": 2026112148,
+    "aromatic_floor": 0.87056, "amide_floor": 0.47988
+  },
+  "prior_only": {"guidance": {
+    "reference": {"path": "/work3/s234818/latentmol/runs/vae-pubchem60m-prior15-20261106a/combined-02/checkpoint-000325498.pt", "sha256": "b239143056b561d5b08249c5b28e0366722c06d34f3bf94e1faf7acdfead4109", "epoch": 46},
+    "occupancy_weight": 1.0, "conditional_weight": 1.0
+  }},
+  "quality_panel": {"seed": 2026111909, "prior_points": 512, "validation_points": 256, "interval_updates": 1000, "early_updates": [10, 100], "batch_size": 8}
+}

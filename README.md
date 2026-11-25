@@ -5,6 +5,8 @@
 `main` tracks the upstream Mosaic library, examples, and tests. Use the
 installation instructions below for the standard library.
 
+The [VAE training project](training/vae/README.md) provides the graph VAE trainer.
+
 The reusable [small-molecule pipeline](src/mosaic/small_molecule/README.md) supports
 [VAE latent optimization](src/mosaic/small_molecule/README.md#optimize-a-vae-latent)
 and optional [Stage 3 DeFoG guidance](src/mosaic/small_molecule/Stage3/README.md).

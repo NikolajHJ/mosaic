@@ -1,0 +1,7 @@
+{
+  "source_recipe": "epoch48-seven-round-generated-roundtrip.json",
+  "encoder_seed": 2026112303,
+  "excess_confidence": {"weight": 0.1, "tolerance": 1.0},
+  "updates": 25000,
+  "wall_seconds": 81000
+}
