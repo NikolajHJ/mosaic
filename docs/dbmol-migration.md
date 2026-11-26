@@ -6,6 +6,7 @@ The active graph-VAE trainer lives in [training/vae](../training/vae/README.md) 
 | --- | --- |
 | Main DBMol archive | [dbmol/main](https://github.com/NikolajHJ/mosaic/tree/dbmol/main) |
 | DBMol working-tree source, project notes, timeline, and other experiments | [dbmol/flow-guided-hallucination-worktree](https://github.com/NikolajHJ/mosaic/tree/dbmol/flow-guided-hallucination-worktree) |
+| Shareable 24-milestone timeline | [VAE training timeline PDF](vae-training-timeline.pdf) |
 | DiffSBDD and Protenix linked worktree histories | [dbmol/diffsbdd-vae-alternation-hpc](https://github.com/NikolajHJ/mosaic/tree/dbmol/diffsbdd-vae-alternation-hpc) and [codex/protenix-restart-search](https://github.com/NikolajHJ/mosaic/tree/codex/protenix-restart-search) |
 | Portable Git history, checkout snapshots, checkpoints, PDF, logs, and results | `C:/Users/nikol/mosaic-artifacts/DBMol_exploratory-2026-11-26/` on the research laptop |
 | Current VAE training segment, job 30387778 | `~/dbmol-control/vae-e48-attention-20261126a/segment/` on DTU |
