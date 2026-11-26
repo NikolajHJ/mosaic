@@ -30,7 +30,7 @@
 \renewcommand{\headrulewidth}{0pt}
 \renewcommand{\footrulewidth}{0.35pt}
 \fancyfoot[L]{\sffamily\footnotesize\color{muted}Mosaic\enspace/\enspace Stage 3 research draft}
-\fancyfoot[R]{\sffamily\footnotesize\color{muted}\thepage\enspace/\enspace\pageref*{stage3verdict}}
+\fancyfoot[R]{\sffamily\footnotesize\color{muted}\thepage\enspace/\enspace\pageref*{mechanismresults}}
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{5pt}
 \setlength{\tabcolsep}{5pt}
@@ -70,7 +70,7 @@
   \foreach \u in {0,250,500} {\node[text=muted] at ({.0091*\u},1.29) {\u};}
 }
 \begin{document}
-\topic{Molecular design\enspace/\enspace Stage 3\hfill 25 November 2026}
+\topic{Molecular design\enspace/\enspace Stage 3\hfill 26 November 2026}
 \heading{How do we tell an invalid molecule which bonds to change?}
 Protenix can give a promising pocket-contact score to a graph that falls apart when we pick its most likely bonds. A yes/no validity test tells us that the graph failed. For optimization we also need a direction. We built the custom repair loss so we could specify which parts of the molecule a repair may change, how much an edit costs, and how strongly the proposed repair competes with pocket contact.
 
@@ -536,4 +536,36 @@ A good rank means the teacher points toward a repair. The chosen label still has
 \textbf{Agreement between relaxed and hard scores.} The mean absolute score gap grew from 0.021 to 0.039. Choosing the best hard molecule remains important even when the relaxed search visits more valid graphs.
 
 \textbf{Contact score and exploration.} The selected teacher improved best valid hard contact in all nine BRD4 comparisons with projection alone. Those guided runs found 7 to 468 distinct valid molecules. The earlier 1,000-update pilot stayed on one carbon chain, so exploration depends on the optimization setup. The strongest evidence supports retrieving the best valid molecule visited with the tested projection settings. \footlink{https://github.com/NikolajHJ/mosaic/blob/2eeeba20261633cd297ff79b15b527465ead890e/docs/project_desc.pdf}{Project description, \S 6.3.}
+\newpage
+\topic{Stage 3\enspace/\enspace Preliminary teacher controls}
+\heading{Does the teacher need to follow the changing graph?}
+\phantomsection\label{mechanismresults}
+The main BRD4 runs showed a benefit from adding DeFoG to connected projection. The controls here ask what produces that benefit. We copied the archived live-teacher settings at weight 0.5 and teacher time 0.8, including the fragmented starts, learning rate 60 and 500-update budget. Four of the six control runs have finished. The two controls for seed 42 are queued as of 26 November.
+
+\subhead{What the controls change}
+\textbf{Frozen initial target.} Query DeFoG once on the starting graph and use its prediction for all 500 updates. The regularizer keeps pulling toward the same probabilities as Protenix and projection move the graph.
+
+\textbf{Shuffled live target.} Query the current graph at each update, then permute prediction rows among atoms with the same current winning element and among bonds with the same current winning bond category. Rescale each head to match the gradient norm that the live teacher would have produced on that graph. This preserves category-level preferences and gradient magnitude while testing how much it matters which row receives each prediction.
+
+\subhead{The first two matched seeds}
+\begin{center}\small\sffamily
+\begin{tabular*}{.97\linewidth}{@{\extracolsep{\fill}}llrrc@{}}
+\toprule
+Seed & Teacher & Best valid hard contact & Valid / 501 & Valid end\\
+\midrule
+17 & Live, archived & 0.335 & 47 & No\\
+17 & Frozen initial & 0.335 & 441 & Yes\\
+17 & Shuffled live & 0.379 & 117 & No\\
+\addlinespace
+23 & Live, archived & 0.404 & 440 & Yes\\
+23 & Frozen initial & 0.334 & 431 & Yes\\
+23 & Shuffled live & 0.472 & 451 & Yes\\
+\bottomrule
+\end{tabular*}
+\end{center}
+\fignote{Validity requires sanitization and one connected component in the raw argmax. Results were checked against the archived starting tensors, scoring key and model context. For seed 23 the archived run used a V100 SXM2 and the controls used a V100 PCIe.}
+
+The frozen target gave the most valid observations across the two seeds (872 of 1,002) and finished valid twice. It matched the live teacher's best score to three decimals on seed 17 and scored lower on seed 23. It required one DeFoG query per run. Both live variants made 500.
+
+The shuffled target found the best valid candidate on both seeds. Its mean best score was 0.426, versus 0.369 for the archived live teacher and 0.334 for the frozen target. On these starts, keeping each prediction at its original row was unnecessary for finding a high-scoring candidate. The shuffled control still carries the checkpoint's category-level preferences and responds to the current graph. The third seed and independent live reruns would help establish how consistently this result holds. \footlink{run:../experiments/learned-prior/protenix-defog-composition-30000/teacher-mechanism-20261125.md}{Verified results and run details.}
 \end{document}

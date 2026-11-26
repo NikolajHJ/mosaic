@@ -40,3 +40,18 @@ The primary outcomes are the best valid hard Protenix contact, distinct valid id
 Generate the six-arm plan with [plan_defog_mechanism.py](scripts/plan_defog_mechanism.py) using the original campaign's `plan.json`. The GPU wrappers call the standard `stage3_campaign.py run-bundle` entry point with the new plan. The sources derive from the archived 18 November source snapshot with the teacher-control change in the runner. Results are written under `/work3/s234818/mosaic/runs/20261125-defog-mechanism-01`. LSF job 30364247 waits for the GPU allocations to end and runs [the matched results collector](scripts/summarize_defog_mechanism.py).
 
 Both three-update mock controls completed in CPU allocation 30364252. Its post-run check attempted to open compressed gradients, while mock mode saves plain JSONL. The saved-output check of the correct file verified the 1 and 3 teacher calls and a maximum error of about `1.2e-9` in matching the per-head tangent gradient norm. This checks the control's execution and calibration on the fixture.
+
+## 26 November · first four completed controls
+
+Seeds 17 and 23 completed both controls with 500 updates and 501 states per run. The collection verified the initial tensors, model keys, scorer identity, optimizer settings, frozen checks and teacher query counts. Both shuffled runs completed without degenerate norm matches. The V100 controls used PCIe while the archived seed-23 live teacher ran on SXM2. The seed-42 job remained pending on A40 due to the slot limit. [Verified read-only snapshot](../../../results/hpc/20261125-defog-mechanism-01/mechanism-20261126-snapshot.json)
+
+| Seed | Teacher | Best valid hard contact | Valid states / 501 | Distinct valid molecules | Final components | Valid end |
+|---:|---|---:|---:|---:|---:|:---:|
+| 17 | Archived live | 0.3349 | 47 | 47 | 4 | No |
+| 17 | Frozen initial | 0.3351 | 441 | 441 | 1 | Yes |
+| 17 | Shuffled live | 0.3793 | 117 | 117 | 8 | No |
+| 23 | Archived live | 0.4037 | 440 | 440 | 1 | Yes |
+| 23 | Frozen initial | 0.3338 | 431 | 431 | 1 | Yes |
+| 23 | Shuffled live | 0.4723 | 451 | 450 | 1 | Yes |
+
+The two-seed mean best scores were 0.3693 live, 0.3344 frozen and 0.4258 shuffled. Frozen had the most valid states and valid endpoints, with one query per run. The shuffled teacher found the highest-scoring valid molecule on both seeds. It kept category-level information and used the current input, so these outcomes constrain the role of row-specific predictions on these starts. The preliminary comparison pairs the controls with archived live runs.

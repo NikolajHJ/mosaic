@@ -140,3 +140,18 @@ High repair rank shows that the gradient points toward a useful edit. Hard valid
 - **Improve hard validity and connectivity.** Guided projection increased the number of valid states from 54 to 2,563 out of 4,509. Three of nine guided runs finished valid. The three fragmented starts with no projection yielded no valid state.
 - **Reduce the soft-to-hard gap.** The mean absolute gap grew from 0.021 to 0.039.
 - **Retain contact quality and exploration.** The selected teacher improved best valid contact in all nine matched pairs and yielded 7 to 468 distinct valid identities per run. The earlier 1,000-update carbon-chain pilot retained one identity throughout.
+
+## Does the teacher need to follow the changing graph?
+
+At weight 0.5 and time 0.8, we compared the archived live teacher with two controls using the same fragmented starts, connected projection, learning rate 60 and 500-update budget. The frozen control kept the initial prediction throughout the run. The shuffled control queried every update, permuted prediction rows within each current winning category, and matched the live gradient norm separately for atoms and bonds on the same graph. Four runs have finished. Seed 42 was still queued on 26 November. [Protocol and verified results](../experiments/learned-prior/protenix-defog-composition-30000/teacher-mechanism-20261125.md#26-november--first-four-completed-controls)
+
+| Seed | Teacher | Best valid hard contact | Valid states / 501 | Valid end |
+|---:|---|---:|---:|:---:|
+| 17 | Archived live | 0.335 | 47 | No |
+| 17 | Frozen initial | 0.335 | 441 | Yes |
+| 17 | Shuffled live | 0.379 | 117 | No |
+| 23 | Archived live | 0.404 | 440 | Yes |
+| 23 | Frozen initial | 0.334 | 431 | Yes |
+| 23 | Shuffled live | 0.472 | 451 | Yes |
+
+The frozen target kept 872 of 1,002 states valid and finished valid on both seeds with one query per run. The shuffled teacher found the highest-scoring candidate on both seeds. Mean best contact was 0.426 shuffled, 0.369 live and 0.334 frozen. The shuffled control retained category-level information and responded to the current graph. These two seeds suggest the original row assignment was dispensable for finding a high-scoring valid molecule in this setup. The live runs are historical and seed 23 used different V100 variants across the archived and new arms.

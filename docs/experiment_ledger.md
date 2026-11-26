@@ -270,3 +270,7 @@ A saved-output calculation also compared categorical draws on both sides. On eac
 ### 2026-11-25 - One-query repair direction and teacher controls
 
 CPU job 30364221 completed 36 queries on 12 archived valid BRD4 graphs and their two single-bond corruptions. The best valid one-edit repair ranked in the top ten for 12/12 valence defects and 1/12 deleted bridges. A quarter-step toward the target repaired zero hard graphs. A three-quarter-step repaired 2/12 valence defects and 0/12 deleted bridges, and kept 8/12 clean controls valid. The checkpoint remained frozen. Three GPU jobs carry the six 500-update frozen-initial and norm-matched shuffled controls. [Experiment note and results](../experiments/learned-prior/protenix-defog-composition-30000/teacher-mechanism-20261125.md)
+
+### 2026-11-26 - First two DeFoG teacher-control seed pairs
+
+Both controls on seeds 17 and 23 completed 500 updates. The two-seed mean best valid hard contacts were 0.369 archived live, 0.334 frozen-initial and 0.426 shuffled. The frozen-initial control ended valid twice and used one teacher query per run. The shuffled control beat the archived live score on both seeds. Seed 42 was still queued on A40. [Verified comparison](../experiments/learned-prior/protenix-defog-composition-30000/teacher-mechanism-20261125.md#26-november--first-four-completed-controls) · [Updated draft](stage3_defog_report_draft.pdf)
