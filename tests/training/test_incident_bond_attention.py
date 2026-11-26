@@ -2,8 +2,11 @@
 
 from dataclasses import replace
 
+import pytest
 import torch
+from torch.func import functional_call
 
+from latentmol.models import bond_attention
 from latentmol.models.autoencoder import GraphAutoencoder, ModelConfig
 from latentmol.models.bond_attention import IncidentBondAttention
 from latentmol.representation import GraphSpec
@@ -69,3 +72,40 @@ def test_second_round_connects_disjoint_pairs_and_handles_empty_context():
     assert torch.autograd.grad(out[0, 0, 1, 0], pair)[0][0, 2, 3].norm() > 0
     empty = first(pair, torch.zeros_like(occ))
     torch.testing.assert_close(empty, pair, rtol=0, atol=0)
+
+
+@pytest.mark.parametrize("device", [
+    "cpu",
+    pytest.param("cuda", marks=pytest.mark.skipif(not torch.cuda.is_available(), reason="CUDA unavailable")),
+])
+def test_checkpointed_attention_repeats_frozen_call_and_preserves_input_gradients(device, monkeypatch):
+    torch.manual_seed(29)
+    block = active_block().to(device)
+    pair = symmetric_inputs(50, 8).expand(6, -1, -1, -1).contiguous().to(device).requires_grad_()
+    occupancy = torch.rand(6, 50, device=device, requires_grad=True)
+    params = {name: param.detach() for name, param in block.named_parameters()}
+    checkpoint = bond_attention.checkpoint
+    with monkeypatch.context() as direct:
+        direct.setattr(bond_attention, "checkpoint", lambda fn, *args, **kwargs: fn(*args))
+        expected = functional_call(block, params, (pair, occupancy))
+        expected_grad = torch.autograd.grad(expected.square().mean(), (pair, occupancy))
+
+    calls = []
+
+    def record_checkpoint(fn, *args, **kwargs):
+        calls.append(args[0].shape[0])
+        return checkpoint(fn, *args, **kwargs)
+
+    monkeypatch.setattr(bond_attention, "checkpoint", record_checkpoint)
+    if device == "cpu":
+        # Exercise the same recomputation path in portable CPU tests.
+        monkeypatch.setattr(torch.Tensor, "is_cuda", property(lambda tensor: tensor is pair))
+    actual = functional_call(block, params, (pair, occupancy))
+    actual.square().mean().backward()
+
+    assert calls == [256, 44]
+    torch.testing.assert_close(actual, expected)
+    for actual_grad, reference_grad in zip((pair.grad, occupancy.grad), expected_grad):
+        assert actual_grad.isfinite().all() and actual_grad.norm() > 0
+        torch.testing.assert_close(actual_grad, reference_grad)
+    assert all(param.grad is None for param in block.parameters())

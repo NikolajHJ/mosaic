@@ -31,11 +31,12 @@ class IncidentBondAttention(nn.Module):
             nn.init.zeros_(projection.weight)
             nn.init.zeros_(projection.bias)
 
-    def _endpoint(self, rows, occupancy, anchors, slots, diagonal):
+    def _endpoint(self, rows, occupancy, anchors, slots, diagonal,
+                  norm_weight, norm_bias, qkv_weight, qkv_bias, output_weight, output_bias):
         # Each row fixes one endpoint and contains all candidate incident pairs.
         count, nodes, _ = rows.shape
-        qkv = self.qkv(self.attention_norm(rows)).reshape(
-            count, nodes, 3, self.heads, self.head_dim)
+        normalized = F.layer_norm(rows, (rows.shape[-1],), norm_weight, norm_bias, self.attention_norm.eps)
+        qkv = F.linear(normalized, qkv_weight, qkv_bias).reshape(count, nodes, 3, self.heads, self.head_dim)
         query, key, value = qkv.permute(2, 0, 3, 1, 4).unbind(0)
         eligible_keys = (slots[None] != anchors[:, None]) & (occupancy > 0)
         eligible = eligible_keys[:, None, :] & ~diagonal
@@ -44,7 +45,7 @@ class IncidentBondAttention(nn.Module):
         # Attention works on N keys per query without an [N,N,N,H,D] value tensor.
         context = F.scaled_dot_product_attention(query, key, value, attn_mask=bias[:, None])
         context = context.transpose(1, 2).reshape(count, nodes, -1)
-        return self.output(context) * eligible.any(dim=-1, keepdim=True)
+        return F.linear(context, output_weight, output_bias) * eligible.any(dim=-1, keepdim=True)
 
     def forward(self, pair, occupancy):
         batch, nodes, neighbors, width = pair.shape
@@ -57,11 +58,16 @@ class IncidentBondAttention(nn.Module):
         # panels. Recompute each chunk in backward instead of saving all Q/K/V.
         chunk_size = 256
         recompute = pair.is_cuda and torch.is_grad_enabled() and len(rows) > chunk_size
+        # functional_call can restore live module weights before backward.
+        # Recompute with the exact tensors used by this forward, including
+        # detached weights in the encoder-only round-trip branch.
+        weights = (self.attention_norm.weight, self.attention_norm.bias, self.qkv.weight,
+                   self.qkv.bias, self.output.weight, self.output.bias)
         messages = []
         for start in range(0, len(rows), chunk_size):
             chunk = rows[start:start + chunk_size]
             ids = torch.arange(start, start + len(chunk), device=pair.device)
-            args = (chunk, occupancy[ids // nodes], ids % nodes, slots, diagonal)
+            args = (chunk, occupancy[ids // nodes], ids % nodes, slots, diagonal, *weights)
             if recompute:
                 message = checkpoint(self._endpoint, *args, use_reentrant=False, preserve_rng_state=False)
             else:

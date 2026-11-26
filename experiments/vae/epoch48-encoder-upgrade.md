@@ -113,3 +113,34 @@ Job **30359446** last logged update 631195 and exited following the stop request
 On a CPU scratch copy of the actual cutover checkpoint, 8/8 reconstructed hard graphs and 8/8 hard prior decodes matched immediately after expansion. The maximum absolute bond-logit difference was 0.000178. Two reduced-batch updates exercised the new bond layers and the inherited generated-parent loss. These checks cover the migration and local training path. The production panel measures reconstruction, random validity, aromatic/amide yield and generated-parent recovery as training progresses. [Checkpoint replay](../../outputs/runs/vae-attention-cutover-20261125a/cpu-631116-graft.json)
 
 Two additional scratch optimizer steps on an RTX 4060 used the saved AdamW state, graph-matched reconstruction and KL. Both new residual output projections received gradients on the first update. On the second, both internal Q/K/V projections received nonzero gradients. The latent and all seven atom-attention layers received gradients on both updates. This small check used a different GPU and batch size from the queued production allocation. [CUDA smoke results](../../outputs/runs/vae-attention-cutover-20261125a/local-full-model-cuda.json)
+
+### Bond-attention backward failure on the V100
+
+Job 30363630 started at 23:34 CET on November 25 and exited after update
+631117. Its initial quality panel and first update were written. The latest
+durable training checkpoint is still 631116, before the attention graft.
+
+The generated-parent round-trip branch uses a functional decoder call with
+detached parameters. CUDA activation checkpointing runs the bond-attention
+endpoint again during backward. The old endpoint read the live module after
+the functional call restored its trainable parameters. Linear backward then
+saved an extra input tensor, shifting the saved-tensor sequence and triggering
+PyTorch's metadata check. The two-molecule reconstruction and KL smoke did
+not invoke the round-trip loss or reach the 256-row recomputation threshold.
+
+The fix passes the exact LayerNorm and linear parameter tensors as arguments
+to the recomputed function. The focused CPU tests passed (13 passed, one CUDA
+case skipped in that environment). A separate local RTX 4060 replay used the
+verified 631116 checkpoint and restored optimizer, two real molecules, and
+eight selected generated parents on each of two scratch steps. The
+round-trip loss produced finite encoder gradients and no gradient on the
+checked decoder attention projection. A full V100 leg still requires a
+replacement allocation and a new release containing this fix.
+
+On November 26 DTU accepted replacement V100 job **30387778** from the same
+verified checkpoint at update 631116. The sealed source archive changes only
+the bond-attention recomputation implementation. The recipe, dataset,
+architecture, GPU resources and checks use the original submission settings.
+The replacement has its own output directory and was released to scheduling
+at 08:37 CET.
+[Submission receipt](../../outputs/hpc-submissions/vae-e48-attention-20261126a/submission.json)
