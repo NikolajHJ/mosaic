@@ -15,7 +15,7 @@ from latentmol.datasets.bulk_view import BalancedSparseCorpus
 from latentmol.datasets.ordering import verify_canonical_training_cache
 from latentmol.experiments import write_json
 from latentmol.models import GraphAutoencoder
-from latentmol.training.attention_expansion import expand_attention
+from latentmol.training.attention_expansion import expand_attention, expanded_attention_config
 from latentmol.training.combined_continuation import _check_cuda_requirement, _load, _train
 from latentmol.training.motif_activation import _digest
 from latentmol.training.projected_continuation import _arm_identity, _read_resume, _student, projected_update
@@ -38,6 +38,24 @@ def inherited_config(base, recipe, source, state, fork):
     return config
 
 
+def restore_expanded(directory, expected_sha256, template, source, payload, train_size,
+                     expected_fork, experiment_state):
+    """Authenticate an already-expanded checkpoint from the same training fork."""
+    fork = json.loads((directory / "fork.json").read_bytes())
+    fields = ("parent", "resume", "config_sha256", "source_config_sha256", "generated_roundtrip",
+              "motif_winner", "quality_panel", "attention")
+    if any(fork[field] != expected_fork[field] for field in fields):
+        raise ValueError("Expanded checkpoint belongs to a different attention training fork")
+    layout = expanded_attention_config(replace(template.config, extra_bond_rounds=3))
+    template = GraphAutoencoder(template.spec, layout)
+    receipt, state = _read_resume(directory / "latest.json", fork["config_sha256"], source,
+                                  template, payload, 3, train_size)
+    if (receipt["sha256"] != expected_sha256 or receipt["updates"] <= fork["resume"]["updates"]
+            or state["experiment_state"] != experiment_state):
+        raise ValueError("Expanded checkpoint digest, cursor or experiment state differs from the requested resume")
+    return template, receipt, state
+
+
 def run(args):
     entered = time.monotonic()
     recipe = json.loads(PILOT_RECIPE.read_bytes())
@@ -49,6 +67,13 @@ def run(args):
         raise ValueError("Unexpected training recipe or overlapping output directory")
     if not os.environ.get("LSB_JOBID", "").isdigit() or not torch.cuda.is_available():
         raise RuntimeError("Requires an allocated GPU")
+    resuming = args.resume_expanded_from is not None
+    if resuming != (args.resume_sha256 is not None):
+        raise ValueError("Specify both the expanded segment directory and its checkpoint SHA-256")
+    if resuming:
+        previous = args.resume_expanded_from.resolve(strict=True)
+        if output.is_relative_to(previous) or previous.is_relative_to(output):
+            raise ValueError("Expanded checkpoint and new output directories must be disjoint")
     receipt = json.loads((directory / "latest.json").read_bytes())
     cutoff = json.loads((directory.parent / "cutover.json").read_bytes())
     if (cutoff["latest"] != receipt or cutoff["terminal_status"] not in {"DONE", "EXIT"}
@@ -77,22 +102,29 @@ def run(args):
     handoff = dict(experiment="epoch48-atom-and-bond-attention-v1", source_protocol=fork["config_sha256"],
                    predecessor_sha256=receipt["sha256"], initialization_seed=2026112507)
     identity = _digest(handoff)
+    experiment_state = dict(state["experiment_state"], attention_graft=handoff)
+    output_fork = dict(parent=parent, resume=receipt, config_sha256=identity,
+                       source_config_sha256=fork["config_sha256"], generated_roundtrip=config["generated_roundtrip"],
+                       motif_winner=fork["motif_winner"], quality_panel=config["quality_panel"],
+                       wall_seconds=config["wall_seconds"], target_updates=config["leg_updates"], attention=handoff)
+    if resuming:
+        template, expanded_receipt, state = restore_expanded(previous, args.resume_sha256, template, source,
+                                                             payload, len(data), output_fork, experiment_state)
+        output_fork["expanded_resume"] = expanded_receipt
     output.mkdir(parents=True, exist_ok=False)
-    write_json(output / "fork.json", dict(parent=parent, resume=receipt, config_sha256=identity,
-               source_config_sha256=fork["config_sha256"], generated_roundtrip=config["generated_roundtrip"],
-               motif_winner=fork["motif_winner"], quality_panel=config["quality_panel"],
-               wall_seconds=config["wall_seconds"], target_updates=config["leg_updates"], attention=handoff))
+    write_json(output / "fork.json", output_fork)
 
     def student(*inputs, **kwargs):
         model, optimizer, training, generators = _student(*inputs, **kwargs, count=3,
             seed=source["extension_seed"], atom_order=source["atom_order"])
-        old_count = sum(p.numel() for p in model.parameters())
-        expand_attention(model, optimizer, seed=handoff["initialization_seed"])
-        count = sum(p.numel() for p in model.parameters())
-        if (old_count, count) != (4_526_158, 5_058_652):
-            raise RuntimeError(f"Unexpected parameter totals {old_count} -> {count}")
-        write_json(output / "attention-graft.json", dict(start_update=receipt["updates"],
-                   original_parameters=old_count, expanded_parameters=count, model=vars(model.config)))
+        if not resuming:
+            old_count = sum(p.numel() for p in model.parameters())
+            expand_attention(model, optimizer, seed=handoff["initialization_seed"])
+            count = sum(p.numel() for p in model.parameters())
+            if (old_count, count) != (4_526_158, 5_058_652):
+                raise RuntimeError(f"Unexpected parameter totals {old_count} -> {count}")
+            write_json(output / "attention-graft.json", dict(start_update=receipt["updates"],
+                       original_parameters=old_count, expanded_parameters=count, model=vars(model.config)))
         if marker := os.environ.get("DBMOL_LAUNCH_READY"):
             write_json(Path(marker), dict(status="models_and_inputs_ready", job_id=os.environ["LSB_JOBID"],
                                           nonce=os.environ["DBMOL_LAUNCH_NONCE"]))
@@ -102,12 +134,14 @@ def run(args):
                   config["batch_size"], state, config["leg_updates"], entered + config["wall_seconds"],
                   config["microbatch"], validation=corpus.split("val"), student_factory=student,
                   teacher_factory=lambda *_: nullcontext(), update_fn=projected_update,
-                  experiment_state=dict(state["experiment_state"], attention_graft=handoff))
+                  experiment_state=experiment_state)
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--config", required=True, type=Path)
     parser.add_argument("--source-dir", required=True, type=Path)
+    parser.add_argument("--resume-expanded-from", type=Path)
+    parser.add_argument("--resume-sha256")
     parser.add_argument("--output", required=True, type=Path)
     run(parser.parse_args())

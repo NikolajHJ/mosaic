@@ -1,13 +1,20 @@
 """Exercise weight, latent-gradient and AdamW continuity across the production head split."""
 
 from copy import deepcopy
+from dataclasses import asdict
 
 import pytest
 import torch
 
+from experiments.vae.attention_next_leg import restore_expanded
+from latentmol.experiments import write_json
 from latentmol.models import GraphAutoencoder, ModelConfig
 from latentmol.representation import GraphSpec, HardGraphBatch
-from latentmol.training.attention_expansion import expand_attention
+from latentmol.train import TrainConfig
+from latentmol.training.attention_expansion import expand_attention, expanded_attention_config
+from latentmol.training.combined_continuation import _checkpoint
+from latentmol.training.losses import LossConfig
+from latentmol.training.projected_continuation import _student
 
 
 def test_attention_graft_and_optimizer_resume():
@@ -75,3 +82,45 @@ def test_attention_graft_and_optimizer_resume():
             torch.testing.assert_close(value, optimizer.state[current][key])
     with pytest.raises(ValueError, match="four atom heads"):
         expand_attention(model, optimizer, seed=479)
+
+
+def test_mosaic_resume_restores_expanded_checkpoint(tmp_path):
+    old = ModelConfig(hidden=12, latent=8, layers=1, decoder_variant="triangle_refine", pair_hidden=8,
+                      global_hidden=16, attention_heads=4, refinement_rounds=4, triangle_hidden=3,
+                      encoder_pooling="canonical", encoder_degree_features=True,
+                      encoder_graph_attention_layers=3, extra_bond_rounds=3)
+    spec = GraphSpec(max_nodes=5)
+    layout = expanded_attention_config(old)
+    expanded = GraphAutoencoder(spec, layout).eval()
+    optimizer = torch.optim.AdamW(expanded.parameters(), lr=.001)
+    z = torch.randn(2, 8, requires_grad=True)
+    expanded.decode(z).bonds.square().mean().backward()
+    optimizer.step()
+    training = TrainConfig(model=layout, loss=LossConfig(atom_order="graph"), batch_size=2, device="cpu")
+    generators = {"fresh_prior": torch.Generator().manual_seed(221)}
+    identity, dataset = "attention-fixture", "dataset-fixture"
+    experiment_state = {"attention_graft": {"experiment": "fixture"}}
+    cursor = dict(epoch=47, row=4, updates=12, real_points=4)
+    receipt, _ = _checkpoint(tmp_path, expanded, optimizer, training, generators, identity,
+                              dataset, cursor, None, 2, experiment_state=experiment_state)
+    fork = dict(parent={}, resume={"updates": 10}, config_sha256=identity, source_config_sha256="pre-graft",
+                generated_roundtrip={}, motif_winner="control", quality_panel={},
+                attention=experiment_state["attention_graft"])
+    write_json(tmp_path / "fork.json", fork)
+    recipe = dict(parent_epoch=47, parent_updates=10, data_sha256=dataset, atom_order="graph",
+                  batch_size=2, microbatch=2)
+    payload = dict(loss_config=asdict(training.loss), train_config=asdict(training))
+    template = GraphAutoencoder(spec, old)
+    parent, verified, state = restore_expanded(tmp_path, receipt["sha256"], template, recipe,
+                                               payload, 10, fork, experiment_state)
+    restored, resumed_optimizer, _, resumed_generators = _student(
+        parent, payload, None, 2, "cpu", state, count=3, seed=42, atom_order="graph")
+    assert verified == receipt and restored.config == layout
+    assert state["continuation"]["row"] == 4
+    restored.eval()
+    torch.testing.assert_close(restored.decode(z).bonds, expanded.decode(z).bonds, rtol=0, atol=0)
+    assert torch.equal(resumed_generators["fresh_prior"].get_state(), generators["fresh_prior"].get_state())
+    for key, expected in optimizer.state_dict()["state"].items():
+        torch.testing.assert_close(resumed_optimizer.state_dict()["state"][key], expected)
+    with pytest.raises(ValueError, match="digest, cursor or experiment state"):
+        restore_expanded(tmp_path, "wrong-sha", template, recipe, payload, 10, fork, experiment_state)

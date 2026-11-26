@@ -56,6 +56,17 @@ def _replicate(value, name, head_ids, old_heads, head_width, moment):
     return result.flatten(-3).movedim(-1, axis).contiguous()
 
 
+def expanded_attention_config(old_config):
+    """Give the graft and subsequent checkpoint restores one architecture."""
+    if (old_config.attention_heads != 4 or old_config.bond_attention_layers != 0
+            or old_config.encoder_graph_attention_layers != 3 or old_config.refinement_rounds != 4
+            or old_config.decoder_variant != "triangle_refine" or old_config.extra_bond_rounds != 3):
+        raise ValueError("Expected the three-block encoder and seven-round decoder with four atom heads")
+    head_width = old_config.attention_head_width or old_config.hidden // old_config.attention_heads
+    return replace(old_config, attention_heads=10, attention_head_width=head_width,
+                   bond_attention_layers=2, bond_attention_heads=10, bond_attention_head_dim=24)
+
+
 @torch.no_grad()
 def expand_attention(model, optimizer, *, seed):
     """Expand four equal-width heads to ten and add two identity residual blocks.
@@ -66,19 +77,14 @@ def expand_attention(model, optimizer, *, seed):
     update. Later training trajectories can differ immediately.
     """
     old_config = model.config
-    if (old_config.attention_heads != 4 or old_config.bond_attention_layers != 0
-            or old_config.encoder_graph_attention_layers != 3 or old_config.refinement_rounds != 4
-            or old_config.decoder_variant != "triangle_refine" or old_config.extra_bond_rounds != 3):
-        raise ValueError("Expected the three-block encoder and seven-round decoder with four atom heads")
+    config = expanded_attention_config(old_config)
+    head_width = config.attention_head_width
     if not isinstance(optimizer, torch.optim.AdamW) or len(optimizer.param_groups) != 1:
         raise ValueError("Attention expansion expects the production single AdamW group")
     group = optimizer.param_groups[0]
     original = dict(model.named_parameters())
     if [id(p) for p in group["params"]] != [id(p) for p in original.values()]:
         raise ValueError("AdamW parameter order differs from the source model")
-    head_width = old_config.attention_head_width or old_config.hidden // old_config.attention_heads
-    config = replace(old_config, attention_heads=10, attention_head_width=head_width,
-                     bond_attention_layers=2, bond_attention_heads=10, bond_attention_head_dim=24)
     with torch.random.fork_rng(devices=[]):
         torch.random.default_generator.manual_seed(seed)
         expanded = GraphAutoencoder(model.spec, config)
