@@ -485,21 +485,26 @@ function archivePlot(rows, {metric = "Best fresh contact loss", selectedCycle = 
   return svg(body,239,"Best saved fresh Protenix loss by cycle. Lower is better.");
 }
 
+function* savedFreshCandidates(job) {
+  for(const branch of job.branches || []){
+    for(const candidate of branch.candidates?.fresh || []){
+      if(candidate.status!=="scored" || !candidate.smiles || !Number.isFinite(candidate.loss))continue;
+      yield {...candidate,cycle:Number(branch.cycle),branch:branch.name,arm:branch.arm};
+    }
+  }
+}
+
+function compareFreshCandidates(a,b) {
+  return a.loss-b.loss || (a.smiles < b.smiles ? -1 : Number(a.smiles > b.smiles));
+}
+
 function cycleWinners(job, arm) {
   const completedCycles=new Set((job.archives || []).map(archive=>Number(archive.cycle)));
   const best=new Map();
-  for(const branch of job.branches || []){
-    if(arm && branch.arm!==arm)continue;
-    const cycle=Number(branch.cycle);
-    if(!completedCycles.has(cycle))continue;
-    for(const candidate of branch.candidates?.fresh || []){
-      if(candidate.status!=="scored" || !candidate.smiles || !Number.isFinite(candidate.loss))continue;
-      const previous=best.get(cycle);
-      if(!previous || candidate.loss<previous.loss ||
-        (candidate.loss===previous.loss && candidate.smiles<previous.smiles)){
-        best.set(cycle,{...candidate,cycle,branch:branch.name});
-      }
-    }
+  for(const candidate of savedFreshCandidates(job)){
+    if((arm && candidate.arm!==arm) || !completedCycles.has(candidate.cycle))continue;
+    const previous=best.get(candidate.cycle);
+    if(!previous || compareFreshCandidates(candidate,previous)<0)best.set(candidate.cycle,candidate);
   }
   return [...best.values()].sort((a,b)=>a.cycle-b.cycle);
 }

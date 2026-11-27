@@ -174,6 +174,19 @@ globalThis.ProtenixTree = (() => {
       return lookup(branch, cycle)?.byStep.get(number(step)) || null;
     }
 
+    function observationAt(branch, cycle, step) {
+      const lane = lookup(branch, cycle);
+      const requested = number(step);
+      if (!lane || requested === null) return null;
+      const exactNode = lane.byStep.get(requested);
+      if (exactNode) return exactNode;
+      const observations = lane.branch.loss_series || [];
+      const offset = lowerBound(observations, requested, row => row[0]);
+      if (observations[offset]?.[0] !== requested || lane.branch.missing_steps?.includes?.(requested)) return null;
+      const index = lowerBound(lane.nodes, requested, node => node.step);
+      return lane.nodes[index - 1] || null;
+    }
+
     function ancestry(nodeOrIndex) {
       let node = typeof nodeOrIndex === "number" ? nodes[nodeOrIndex] : nodeOrIndex;
       const path = [], links = [];
@@ -187,7 +200,7 @@ globalThis.ProtenixTree = (() => {
 
     const laneById = new Map(lanes.map(lane => [lane.id, lane]));
 
-    function timeline(route) {
+    function timeline(route, {endStep = null} = {}) {
       const points = [];
       let distinctOnly = false;
       for (let start = 0; start < route.nodes.length;) {
@@ -201,7 +214,8 @@ globalThis.ProtenixTree = (() => {
         distinctOnly ||= !full;
         const saved = full ? lane.branch.loss_series : lane.branch.states.map(row => [row[0], row[4]]);
         const lastSavedStep = saved.at(-1)?.[0] ?? last.step;
-        const cutoff = fork?.kind === "restart" ? fork.sourceStep
+        const cutoff = next === route.nodes.length && endStep !== null ? endStep
+          : fork?.kind === "restart" ? fork.sourceStep
           : last === lane.nodes.at(-1) ? Math.max(last.step, lastSavedStep) : last.step;
         let state = start;
         let previousStep = null;
@@ -269,7 +283,7 @@ globalThis.ProtenixTree = (() => {
       return closest;
     }
 
-    return {nodes, edges, roots, lanes, bounds, nodeAt, ancestry, timeline, visible, nearest};
+    return {nodes, edges, roots, lanes, bounds, nodeAt, observationAt, ancestry, timeline, visible, nearest};
   }
 
   return {build, branchKey};

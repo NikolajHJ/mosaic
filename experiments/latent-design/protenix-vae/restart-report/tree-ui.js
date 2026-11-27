@@ -122,6 +122,19 @@ const RestartTreeView = (() => {
   }
 
   function mount(job,model,data,content) {
+    const playback = jobs.find(row=>String(row.id)===String(job.id)) || job;
+    const ranked = [...savedFreshCandidates(playback)].sort(compareFreshCandidates);
+    const top = [], seen = new Set();
+    for (const row of ranked) {
+      if (seen.has(row.smiles)) continue;
+      seen.add(row.smiles);
+      top.push(row);
+      if (top.length === 20) break;
+    }
+    const rankedPaths = top.map(row=>{
+      const node = model.observationAt(row.branch,row.cycle,row.step);
+      return node?.valid && node.smiles===row.smiles ? node : null;
+    });
     const roots=model.roots.map(node=>getNode(model,node));
     const edges=model.edges.map(edge=>({
       source:getNode(model,edge.source),target:getNode(model,edge.target),kind:edge.kind,
@@ -142,6 +155,13 @@ const RestartTreeView = (() => {
     content.innerHTML=`<div class="legend tree-legend">${badge(job)}<span>${escape(summary+disclaimer)}</span><span><i class="swatch tree-valid"></i>Valid</span><span><i class="swatch tree-invalid"></i>Invalid</span><span><i class="swatch tree-selected"></i>Selected path</span></div>
       <div class="tree-stack">
         <div class="tree-panel">
+          ${top.length ? `<div class="tree-tools tree-ranked"><label for="tree-top">Top 20 molecules
+            <select id="tree-top" aria-describedby="tree-top-info">
+              <option value="">Choose by fresh contact loss</option>
+              ${top.map((row,i)=>`<option value="${i}"${rankedPaths[i] ? "" : " disabled"}>
+                ${escape(`#${i+1} · ${fmt(row.loss,5)} · cycle ${row.cycle} · ${row.branch} · update ${row.step}${rankedPaths[i] ? "" : " · path unavailable"}`)}
+              </option>`).join("")}
+            </select></label><span class="quiet small" id="tree-top-info" aria-live="polite"></span></div>` : ""}
           <div class="tree-tools">
             <button type="button" id="tree-fit">Fit tree</button>
             <button type="button" id="tree-plus" aria-label="Zoom in">+</button>
@@ -191,12 +211,13 @@ const RestartTreeView = (() => {
       </div>
       <p class="tree-note">An unchanged hard state occupies one node within a branch. An independent start has its own root.${missing ? ` Raw topology is unavailable for ${escape(count(missing))} saved observations.` : ""}</p>`;
 
-    renderCycleWinners(jobs.find(row=>String(row.id)===String(job.id)) || job,byId("tree-winner-content"));
+    renderCycleWinners(playback,byId("tree-winner-content"));
     const canvas=byId("tree-canvas");
     const ctx=canvas.getContext("2d");
     const stage=byId("tree-stage");
     const slider=byId("tree-path");
     const leafSelect=byId("tree-leaf");
+    const topSelect=byId("tree-top");
     const metricSelect=byId("tree-loss-metric");
     const chart=ProtenixPathChart.mount(byId("tree-loss-chart"),metricSelect,byId("tree-loss-value"),
       index=>showNode(index,true));
@@ -345,16 +366,20 @@ const RestartTreeView = (() => {
       queueDraw();
     }
 
-    function selectNode(node,follow=true) {
+    function selectNode(node,follow=true,endStep=null) {
       const ancestry=model.ancestry(node);
       path=ancestry.nodes;
       pathLinks=ancestry.edges;
       pathSet=new Set(path.map(indexOf));
-      const timeline=model.timeline(ancestry);
+      const timeline=model.timeline(ancestry,{endStep});
       points=timeline.points;
       chart.set(points);
       slider.max=String(Math.max(0,points.length-1));
-      leafSelect.value=leafIndices.has(node.index)?String(node.index):"";
+      leafSelect.value=endStep===null && leafIndices.has(node.index)?String(node.index):"";
+      if (topSelect && endStep === null) {
+        topSelect.value="";
+        byId("tree-top-info").textContent="";
+      }
       byId("tree-loss-coverage").textContent=timeline.distinctOnly
         ? "Older snapshot coverage includes saved state nodes. Repeated updates may be absent."
         : `${count(points.length)} recorded updates, including repeated molecular states.`;
@@ -408,6 +433,18 @@ const RestartTreeView = (() => {
     byId("tree-minus").addEventListener("click",()=>zoom(1/1.55));
     byId("tree-fit-path").addEventListener("click",()=>fit(path));
     byId("tree-latest").addEventListener("click",()=>{if(leaves.length){selectNode(leaves[0],false);fit(path);}});
+    topSelect?.addEventListener("change",()=>{
+      const index=Number(topSelect.value);
+      if (topSelect.value==="") {
+        byId("tree-top-info").textContent="";
+        return;
+      }
+      const node=rankedPaths[index], row=top[index];
+      if (!node) return;
+      selectNode(node,false,row.step);
+      fit(path);
+      byId("tree-top-info").textContent=`Rank ${index+1} selected · fresh contact loss ${fmt(row.loss,5)}`;
+    });
     leafSelect.addEventListener("change",()=>{if(leafSelect.value!==""){selectNode(model.nodes[Number(leafSelect.value)],false);fit(path);}});
     byId("tree-prev").addEventListener("click",()=>showNode(pathIndex-1,true));
     byId("tree-next").addEventListener("click",()=>showNode(pathIndex+1,true));
